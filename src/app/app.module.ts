@@ -30,7 +30,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
   ],
