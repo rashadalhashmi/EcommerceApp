@@ -5,6 +5,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRippleModule} from "@angular/material/core";
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatInputModule} from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 const MaterialComponent=[
@@ -13,7 +14,8 @@ const MaterialComponent=[
   MatCheckboxModule,
   MatRippleModule,
   MatBadgeModule,
-  MatInputModule
+  MatInputModule,
+  MatTabsModule
 ]
 @NgModule({
   imports: [MaterialComponent ],

@@ -21,18 +21,17 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    // LoginComponent,
     HomeComponent
   ],
   imports: [
-    // UserAuthModule,
-    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
