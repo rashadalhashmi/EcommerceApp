@@ -19,7 +19,7 @@ const routes:Routes = [
   declarations: [
     LoginComponent,
     RegisterComponent,
-    LoginRegisterViewComponent,
+    LoginRegisterViewComponent,    
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,6 @@ const routes:Routes = [
     AngularMaterialModule,
     ReactiveFormsModule,
     FormsModule
-
 
   ],
 
