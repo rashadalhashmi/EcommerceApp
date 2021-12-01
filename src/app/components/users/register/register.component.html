@@ -6,7 +6,7 @@
       <!-- First Name -->
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="firstNameId">First Name</label>
-        <div class="col-md-8">
+        <div class="col-md-10">
           <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
             formControlName="firstName"
             [ngClass]="{'is-invalid': (userForm.get('firstName').touched || userForm.get('firstName').dirty) && !userForm.get('firstName').valid }" />
@@ -23,7 +23,7 @@
       <!-- Last Name -->
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="lastNameId">Last Name</label>
-        <div class="col-md-8">
+        <div class="col-md-10">
           <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
             formControlName="lastName"
             [ngClass]="{'is-invalid': (userForm.get('lastName').touched || userForm.get('lastName').dirty) && !userForm.get('lastName').valid }" />
@@ -40,7 +40,7 @@
       <!-- Email -->
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="emailId">Email</label>
-        <div class="col-md-8">
+        <div class="col-md-10">
           <input class="form-control" id="emailId" type="email" placeholder="Email (required)" formControlName="email"
             [ngClass]="{'is-invalid': (userForm.get('email').touched || userForm.get('email').dirty) && !userForm.get('email').valid }" />
           <span class="invalid-feedback">
@@ -57,7 +57,7 @@
       <div formGroupName="passwordGroup">
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label" for="passwordId">Password</label>
-          <div class="col-md-8">
+          <div class="col-md-10">
             <input class="form-control" id="emailId" type="password" placeholder="password (required)"
               formControlName="password"
               [ngClass]="{'is-invalid': userForm.get('passwordGroup').errors||
@@ -77,7 +77,7 @@
                <!-- confirm password -->
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label" for="confirmPassword">Confirm Password</label>
-          <div class="col-md-8">
+          <div class="col-md-10">
             <input class="form-control" id="emailId" type="password"
                placeholder="confirm Password (required)"
                formControlName="confirmPassword"
