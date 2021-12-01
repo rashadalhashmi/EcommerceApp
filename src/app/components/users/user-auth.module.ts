@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { AngularMaterialModule } from 'src/angular-material/angular-material.module';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { LoginRegisterViewComponent } from './login-register-view/login-register-view.component'
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes:Routes = [
   {path:'registerorlogin', component:LoginRegisterViewComponent},
@@ -19,7 +20,7 @@ const routes:Routes = [
   declarations: [
     LoginComponent,
     RegisterComponent,
-    LoginRegisterViewComponent,    
+    LoginRegisterViewComponent,
   ],
   imports: [
     CommonModule,
@@ -28,8 +29,8 @@ const routes:Routes = [
     ReactiveFormsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    FormsModule
-
+    FormsModule,
+    MatDialogModule
   ],
 
 })
