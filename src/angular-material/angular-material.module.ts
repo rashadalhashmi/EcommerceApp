@@ -6,6 +6,8 @@ import {MatRippleModule} from "@angular/material/core";
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 /**
  * angular material component
@@ -17,7 +19,8 @@ const MaterialComponent=[
   MatRippleModule,
   MatBadgeModule,
   MatInputModule,
-  MatTabsModule
+  MatTabsModule,
+  MatDialogModule
 ]
 @NgModule({
   imports: [MaterialComponent ],
