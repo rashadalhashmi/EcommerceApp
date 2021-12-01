@@ -9,7 +9,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
-
+/**
+ * angular material component
+ */
 const MaterialComponent=[
   MatButtonModule,
   MatIconModule,
