@@ -3,7 +3,7 @@
     <form [formGroup]="loginForm" (onsubmit)="login()">
       <div class=" form-group row mb-3">
         <label for="username" class="col-md-2 col-form-label">username</label>
-        <div class="col-md-8">
+        <div class="col-md-10">
           <input type="text"
             [class.is-invalid]="loginForm.controls['username'].invalid && loginForm.controls['username'].touched"
             [class.is-valid]="loginForm.controls['username'].valid" class="form-control" id="username"
@@ -16,7 +16,7 @@
 
       <div class="form-group row mb-3">
         <label for="password" class="col-md-2 col-form-label">password</label>
-        <div class="col-md-8">
+        <div class="col-md-10">
           <input type="password"
             [class.is-invalid]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
             [class.is-valid]="loginForm.controls['password'].valid" class="form-control" id="password"
