@@ -1,12 +1,17 @@
+<div class="container">
+  <div class="row my-5">
+    <!-- <div style="height: 500px;" class="my-5"> -->
+      <div class="tab col-6 mx-auto">
+        <mat-tab-group mat-align-tabs="center">
+          <mat-tab class="col-12" label="Login">
+            <app-login></app-login>
+          </mat-tab>
 
-
-<div style="height: 500px;" class=" row my-5">
-  <div  class=" tab  row col-6 mx-auto">
-    <mat-tab-group mat-align-tabs="center">
-      <mat-tab class="col-12" label="Login"> <app-login></app-login> </mat-tab>
-      <mat-tab label="Register"> <app-register></app-register> </mat-tab>
-    </mat-tab-group>
+          <mat-tab label="Register">
+            <app-register></app-register>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    <!-- </div> -->
   </div>
-
 </div>
-
