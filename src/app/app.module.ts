@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
-
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
