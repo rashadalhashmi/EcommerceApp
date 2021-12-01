@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { IUser } from 'src/app/viewmodel/iuser';
 
 @Component({
   selector: 'app-login-register-view',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegisterViewComponent implements OnInit {
 
-  constructor() { }
+  // constructor(){}
+  constructor(
+    public dialogRef: MatDialogRef<LoginRegisterViewComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IUser,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit(): void {
   }
