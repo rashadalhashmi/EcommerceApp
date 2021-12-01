@@ -7,7 +7,9 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 
-
+/**
+ * angular material component
+ */
 const MaterialComponent=[
   MatButtonModule,
   MatIconModule,
