@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     AngularMaterialModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
