@@ -23,14 +23,9 @@ nav {
   background-color: #003680;
 }
 
-form
-{
-  margin-left: 35px;
-}
 
-ul{
-  margin-left: 120px;
-}
+
+
 
 ul li a {
   color: white;
@@ -46,9 +41,9 @@ ul li a i {
   left: 63%;
 }
 
-.container-fluid {
-  align-items: baseline;
-}
+// .container-fluid {
+//   align-items: baseline;
+// }
 
 input:hover
 {
@@ -58,4 +53,7 @@ input:hover
 .nav-link
 {
   cursor: pointer;
+}
+.fa-bars{
+  color: #ffc107;
 }
