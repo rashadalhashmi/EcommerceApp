@@ -1,0 +1,16 @@
+<div class="card m-3">
+  <h2>All Department</h2>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let dept of departments">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{dept.departmentName}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="mt-2" *ngFor="let catg of dept.categoryEntities">
+        <a href="">{{catg.name}}</a>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

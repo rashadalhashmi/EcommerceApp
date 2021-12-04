@@ -7,6 +7,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 
 
 /**
@@ -20,7 +21,8 @@ const MaterialComponent=[
   MatBadgeModule,
   MatInputModule,
   MatTabsModule,
-  MatDialogModule
+  MatDialogModule,
+  MatExpansionModule
 ]
 @NgModule({
   imports: [MaterialComponent ],
