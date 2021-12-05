@@ -15,6 +15,7 @@ import { LoginComponent } from './components/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { CookieService } from 'ngx-cookie-service';
+import { SliderComponent } from './components/slider/slider.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
