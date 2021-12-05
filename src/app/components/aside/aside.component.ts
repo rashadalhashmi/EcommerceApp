@@ -13,7 +13,7 @@ export class AsideComponent implements OnInit{
   departments: any;
   categoriesInDept: any;
   deptId: number = 0;
-  constructor(private deptService: DepartmentService, private catgService: CategoryService) {
+  constructor(private deptService:DepartmentService, private catgService: CategoryService) {
     this.deptService.getAllDepartments().subscribe({
       next: (departmentsobj) => {
         this.departments = departmentsobj.data
