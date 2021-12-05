@@ -1,5 +1,12 @@
-<div class="card">
-  <img [src]="product.images[0].imageURL" class="card-img-top">
+<a class="card">
+  <div class="position-relative header">
+    <!-- <div class="position-absolute "> -->
+      <img [src]="product.images[0].imageURL" class="card-img-top position-relative">
+      <div class="discount position-absolute">
+        <span class="text-primary">{{product.discount}}% </span><span class="text-dark">Discount</span>
+      </div>
+    <!-- </div> -->
+  </div>
   <div class="px-2">
     <h4>{{product.name}}</h4>
     <div class="mt-1">
@@ -9,4 +16,4 @@
     </div>
     <button class="btn btn-primary mt-2">Add to cart</button>
   </div>
-</div>
+</a>
