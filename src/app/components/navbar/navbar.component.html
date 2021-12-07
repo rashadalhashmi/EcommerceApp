@@ -1,38 +1,47 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand text-warning" id="logo" routerLink="/Home" routerLinkActive="active">Shopify</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex w-50">
-        <div class="input-group mb-3">
-          <!-- <div class="input-group-prepend">
-            <span class="input-group-text rounded-0 bg-white">
-              <i class="fas fa-map-marker-alt"></i>
-            </span>
-          </div> -->
-          <input type="search" class="form-control rounded-0" placeholder="Search for products">
-          <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
-        </div>
-        <!-- <input class="form-control" type="search" placeholder="Search" aria-label="Search"> -->
-      </form>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" hidden routerLink="/Profile" routerLinkActive="active">User</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" mat-raised-link (click)="openDialog()" routerLinkActive="active">Login or Register</a>
-          <!-- <a class="nav-link" routerLink="/user/registerorlogin" routerLinkActive="active">Login or Register</a> -->
-        </li>
-        <li class="nav-item">
-          <a class="nav-link position-relative" routerLink="/Cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="position-absolute badge rounded-pill bg-warning">0</span>
-          </a>
-        </li>
-      </ul>
+<nav>
+  <div class="container ">
+    <div class="row align-items-center" style="min-height: 80px;" >
+
+
+      <div class="col-md-1 order-md-1 col-6 order-1">
+        <a class="navbar-brand text-warning" id="logo" routerLink="/Home" routerLinkActive="active" id='logo'>Shopify</a>
+      </div>
+
+      <div class="offset-md-1 col-md-5 order-md-2 col-12 order-3 pb-3 pb-md-0">
+        <form class="d-flex">
+          <button class="btn border rounded-0 rounded-start" style="background-color: #fff;"><i class="fas fa-map-marker-alt"></i></button>
+          <input class="form-control rounded-0 " type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success rounded-0 rounded-end"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+
+
+      <div class=" offset-md-1 col-md-4 order-md-3 col-6 order-2 align-self-center mt-3 ">
+
+          <ul class=" d-flex align-self-center ml-auto ">
+
+            <li class="nav-item">
+              <a class="nav-link" hidden routerLink="/Profile" routerLinkActive="active">User</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" mat-raised-link (click)="openDialog()" routerLinkActive="active">Login or Register</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link position-relative" routerLink="/Cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="position-absolute badge rounded-pill bg-warning">0</span>
+              </a>
+            </li>
+          </ul>
+      </div>
+
+
     </div>
+
+
+
   </div>
 </nav>
 <!--  -->

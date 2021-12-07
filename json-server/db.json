@@ -1,0 +1,272 @@
+{
+  "Products":{
+    "isSuccess": true,
+    "data": [
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":1,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"1:18 RCSUNNY RACING CAR",
+        "id":2,
+        "price":55254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":3,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"1:18 RCSUNNY RACING CAR",
+        "id":4,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":5,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"1:18 RCSUNNY RACING CAR",
+        "id":6,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":7,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      }
+    ],
+    "message": "Success"
+  },
+
+  "Product":{
+    "isSuccess": true,
+    "data":
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":1,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          } 
+        ]
+      },
+    "message":"Success"
+    },
+
+  "departments": 
+    {
+      "isSuccess": true,
+      "data": [
+        {
+          "departmentName":"Clothes",
+          "id":1,
+          "categoryEntities":[
+            {
+              "id":1,
+              "name":"Women's Clothing"
+            },
+            {
+              "id":2,
+              "name":"Baby Girls' Clothing"
+            },
+            {
+              "id":3,
+              "name":"Baby Boy's Clothing"
+            }
+          ]
+        },
+        {
+          "departmentName":"Electronics",
+          "id":1,
+          "categoryEntities":[
+            {
+              "id":1,
+              "name":"Headphones"
+            },
+            {
+              "id":2,
+              "name":"Labtop"
+            }
+          ]
+        },
+        {
+          "departmentName":"Computers",
+          "id":1,
+          "categoryEntities":[
+            {
+              "id":1,
+              "name":"Lenovo"
+            },
+            {
+              "id":2,
+              "name":"Dell"
+            },
+            {
+              "id":3,
+              "name":"HP"
+            }
+          ]
+        }
+      ],
+      "message": "Success"
+    }
+}

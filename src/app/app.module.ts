@@ -15,6 +15,8 @@ import { LoginComponent } from './components/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { CookieService } from 'ngx-cookie-service';
+import { AsideComponent } from './components/aside/aside.component';
+import { ProductCardComponent } from './components/Product/product-card/product-card.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    AsideComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
