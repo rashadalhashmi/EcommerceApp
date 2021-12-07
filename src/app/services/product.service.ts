@@ -13,7 +13,7 @@ export class ProductService {
 
   getAllProducts():Observable<IResultViewModel>
   {
-    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/products`);
+    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product`);
   }
 
   getProductsByCategoryID(categoryId: number): Observable<IResultViewModel> {

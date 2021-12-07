@@ -1,0 +1,19 @@
+<a class="card">
+  <div class="position-relative header">
+    <!-- <div class="position-absolute "> -->
+      <img [src]="product.images[0].imageURL" class="card-img-top position-relative">
+      <div class="discount position-absolute">
+        <span class="text-primary">{{product.discount}}% </span><span class="text-dark">Discount</span>
+      </div>
+    <!-- </div> -->
+  </div>
+  <div class="px-2">
+    <h4>{{product.name}}</h4>
+    <div class="mt-1">
+      <span class="text-dark">{{product.price | currency}}</span>
+      <span class="text-secondary text-decoration-line-through px-2">{{priceWithoutDiscount | number}}</span>
+      <span class="text-danger fw-normal pe-2">save {{(priceWithoutDiscount - price) | number}}</span>
+    </div>
+    <button class="btn btn-primary mt-2">Add to cart</button>
+  </div>
+</a>
