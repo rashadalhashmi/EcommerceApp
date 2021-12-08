@@ -17,6 +17,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { CookieService } from 'ngx-cookie-service';
 import { AsideComponent } from './components/aside/aside.component';
 import { ProductCardComponent } from './components/Product/product-card/product-card.component';
+import { ProductdetailsComponent } from './components/Product/productdetails/productdetails.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ProductCardComponent } from './components/Product/product-card/product-
     NavbarComponent,
     HomeComponent,
     AsideComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductdetailsComponent
   ],
   imports: [
     BrowserModule,
