@@ -4,10 +4,20 @@
       <app-aside></app-aside>
     </div>
     <div class="col-9"> -->
-      <router-outlet></router-outlet>
     <!-- </div> -->
 
+    <mat-sidenav-container>
+      <mat-sidenav [opened]="open" ><app-aside ></app-aside></mat-sidenav>
+      <mat-dialog-content>
+        <router-outlet></router-outlet>
+
+      </mat-dialog-content>
+
+
+    </mat-sidenav-container>
+
 <app-footer></app-footer>
+
 
 
 
