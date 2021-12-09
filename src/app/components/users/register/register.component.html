@@ -1,12 +1,12 @@
-<div class="card mt-5">
+<div class="card ">
 
   <div class="card-body">
     <form novalidate (submit)="save()" [formGroup]="userForm">
 
       <!--First Name -->
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label" for="firstNameId">First Name</label>
-        <div class="col-md-10">
+        <label class="col-md-12 col-form-label" for="firstNameId">First Name</label>
+        <div class="col-md-12">
           <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
             formControlName="firstName"
             [ngClass]="{'is-invalid': (userForm.get('firstName').touched || userForm.get('firstName').dirty) && !userForm.get('firstName').valid }" />
@@ -22,8 +22,8 @@
       </div>
       <!-- Last Name -->
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label" for="lastNameId">Last Name</label>
-        <div class="col-md-10">
+        <label class="col-md-12 col-form-label" for="lastNameId">Last Name</label>
+        <div class="col-md-12">
           <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
             formControlName="lastName"
             [ngClass]="{'is-invalid': (userForm.get('lastName').touched || userForm.get('lastName').dirty) && !userForm.get('lastName').valid }" />
@@ -39,8 +39,8 @@
       </div>
       <!-- Email -->
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label" for="emailId">Email</label>
-        <div class="col-md-10">
+        <label class="col-md-12 col-form-label" for="emailId">Email</label>
+        <div class="col-md-12">
           <input class="form-control" id="emailId" type="email" placeholder="Email (required)" formControlName="email"
             [ngClass]="{'is-invalid': (userForm.get('email').touched || userForm.get('email').dirty) && !userForm.get('email').valid }" />
           <span class="invalid-feedback">
@@ -53,11 +53,27 @@
           </span>
         </div>
       </div>
+<!-- username -->
+      <div class="form-group row mb-2">
+        <label class="col-md-12 col-form-label" for="username">Username</label>
+        <div class="col-md-12">
+          <input class="form-control" id="username" type="text" placeholder="username (required)" formControlName="username"
+            [ngClass]="{'is-invalid': (userForm.get('username').touched || userForm.get('username').dirty) && !userForm.get('username').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="userForm.get('username').errors?.required">
+              Please enter your username.
+            </span>
+            <span *ngIf="userForm.get('username').errors?.minlength">
+              the usernaem must be longer than 6 characters.
+            </span>
+          </span>
+        </div>
+      </div>
         <!-- password -->
       <div formGroupName="passwordGroup">
         <div class="form-group row mb-2">
-          <label class="col-md-2 col-form-label" for="passwordId">Password</label>
-          <div class="col-md-10">
+          <label class="col-md-12 col-form-label" for="passwordId">Password</label>
+          <div class="col-md-12">
             <input class="form-control" id="emailId" type="password" placeholder="password (required)"
               formControlName="password"
               [ngClass]="{'is-invalid': userForm.get('passwordGroup').errors||
@@ -76,8 +92,8 @@
         </div>
                <!-- confirm password -->
         <div class="form-group row mb-2">
-          <label class="col-md-2 col-form-label" for="confirmPassword">Confirm Password</label>
-          <div class="col-md-10">
+          <label class="col-md-12 col-form-label" for="confirmPassword">Confirm Password</label>
+          <div class="col-md-12">
             <input class="form-control" id="emailId" type="password"
                placeholder="confirm Password (required)"
                formControlName="confirmPassword"
@@ -96,12 +112,57 @@
           </div>
         </div>
       </div>
+      <!-- address -->
+      <div class="form-group row mb-2">
+        <label class="col-md-12 col-form-label" for="address">Address</label>
+        <div class="col-md-12">
+          <input class="form-control" id="address" type="text" placeholder="address (required)" formControlName="address"
+            [ngClass]="{'is-invalid': (userForm.get('address').touched || userForm.get('address').dirty) && !userForm.get('address').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="userForm.get('address').errors?.required">
+              Please enter your address.
+            </span>
+            <span *ngIf="userForm.get('address').errors?.maxlength">
+              address must be less than 50 charchter
+            </span>
+          </span>
+        </div>
+      </div>
 
+
+      <!-- phone -->
+      <div class="form-group row mb-2">
+        <label class="col-md-12 col-form-label" for="phone">Phone</label>
+        <div class="col-md-12">
+          <input class="form-control" id="phone" type="text" placeholder="phone (required)" formControlName="phone"
+            [ngClass]="{'is-invalid': (userForm.get('phone').touched || userForm.get('phone').dirty) && !userForm.get('phone').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="userForm.get('phone').errors?.required">
+              Please enter your phone.
+            </span>
+
+            <span *ngIf="userForm.get('phone').errors?.pattern">
+              Please enter correct phone number.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group row mb-2">
+        <label class="col-md-12 col-form-label" for="gender">Gender</label>
+        <div class=" row col-md-12">
+          <input formControlName="gender" class="col-1" type="radio" name="gender"  value="0">
+          <label class="col-2" for="gender">Male</label><br>
+          <input  formControlName="gender" class="col-1" type="radio" name="gender"  value="1">
+          <label class="col-2" for="gender">female</label><br>
+        </div>
+      </div>
 
         <!-- submit -->
-      <div class="form-group row mb-2">
-        <div class="offset-md-2 col-md-4">
-          <button class="btn btn-primary mr-3" type="submit" style="width:80px"
+      <div class="form-group row ">
+        <div class=" offset-md-4 col-md-4 offset-md-4">
+          <button class="btn btn-primary mt-2" type="submit" style="width:100%"
             [disabled]="!userForm.valid">
             Submit
           </button>

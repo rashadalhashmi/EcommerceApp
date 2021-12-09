@@ -34,8 +34,8 @@ export class RegisterComponent implements OnInit {
     {
       firstname: "rashad",
       lastname: "alhashmie",
-      email: "rashadami@gamil.com",
-      username: "rad2021",
+      email: "rashaami@gamil.com",
+      username: "rad2kk021",
       password: "djf125522445",
       gender: 0,
       address: "cairo,nasercity",
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
          private userService:UserService)
 
          {
-        //  this.userService.signUP(this.user).subscribe(data=>console.log(data))
+         this.userService.signUP(this.user).subscribe(data=>console.log(data))
 
          }
 
@@ -65,13 +65,18 @@ export class RegisterComponent implements OnInit {
     password:['',[Validators.required,Validators.minLength(7)]],
     confirmPassword:['',[Validators.required]]
     },{validator: passwordMatch}),
-    sendCatalog:true,
-
+    username:['',[Validators.required,Validators.minLength(6)]],
+    address:['',[Validators.required,Validators.maxLength(50)]],
+    phone:['',[Validators.required,Validators.pattern("^01[0-2,5]{1}[0-9]{8}$")]],
+    gender:"0"
    })
+
 
   }
 
-  save(): void {
+  save(){
+
+    console.log(this.userForm.value);
 
     // this.user.id=Math.floor(Math.random()*1000)+"";
     // this.user.firstName=this.userForm.get('firstName').value
