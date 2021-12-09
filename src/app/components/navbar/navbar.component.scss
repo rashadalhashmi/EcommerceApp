@@ -54,3 +54,14 @@ input:hover
 ul {
   list-style: none;
 }
+
+
+
+@media (max-width: 600px) {
+  #logo {
+    font-size: 20px;
+  }
+  .menue {
+    font-size: 20px;
+  }
+}

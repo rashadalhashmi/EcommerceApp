@@ -10,9 +10,8 @@ import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 })
 export class HomeComponent implements OnInit {
   productsList:any;
-  open:boolean=false;
 
-  constructor(private productService:ProductService ,public NaveService:NavService) {
+  constructor(private productService:ProductService ,) {
     this.productService.getAllProducts().subscribe({
       next: (products) =>
       {
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-          this.NaveService.open$.subscribe(open=>this.open=open);
   }
 
 }
