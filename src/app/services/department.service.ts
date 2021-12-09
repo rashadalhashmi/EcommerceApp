@@ -13,6 +13,6 @@ export class DepartmentService {
 
   getAllDepartments():Observable<IResultViewModel>
   {
-    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/departments`);
+    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Department`);
   }
 }

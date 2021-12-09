@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductdetailsComponent implements OnInit {
   productSentedId: number = 0;
-  product:any;
+  product: any;
   //for test
   // product = {
   //   "name": "A4TECH HeadphoneHS-19",
@@ -47,30 +47,40 @@ export class ProductdetailsComponent implements OnInit {
   //   ]
   // }
   priceWithoutDiscount: number = 0;
-  price: number;
+  price: number = 0;
 
   active: boolean = false;
   @ViewChild("img") img!: ElementRef;
   @ViewChild("actv") imgActive!: ElementRef;
 
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService) {
-    //for test
-    this.priceWithoutDiscount = this.product.price;
-    this.price = this.priceWithoutDiscount - (this.priceWithoutDiscount * this.product.discount / 100);
-  }
-
-  ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(
       (params) => {
         this.productSentedId = Number(params.get("PID"));
         this.productService.getProductByID(this.productSentedId).subscribe({
           next: (product) => {
             this.product = product.data;
+            this.priceWithoutDiscount = this.product.price;
+            this.price = this.priceWithoutDiscount - (this.priceWithoutDiscount * this.product.discount / 100);
             console.log(product)
           }
         })
       }
     )
+  }
+
+  ngOnInit(): void {
+    // this.activeRoute.paramMap.subscribe(
+    //   (params) => {
+    //     this.productSentedId = Number(params.get("PID"));
+    //     this.productService.getProductByID(this.productSentedId).subscribe({
+    //       next: (product) => {
+    //         this.product = product.data;
+    //         console.log(product)
+    //       }
+    //     })
+    //   }
+    // )
   }
 
   ngAfterViewInit(imgs: any) {
