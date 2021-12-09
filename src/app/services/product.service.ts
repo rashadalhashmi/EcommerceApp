@@ -23,6 +23,6 @@ export class ProductService {
   }
 
   getProductByID(pID: number): Observable<IResultViewModel> {
-    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/products/${pID}`)
+    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product/${pID}`)
   }
 }
