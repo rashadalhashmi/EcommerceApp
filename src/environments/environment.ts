@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  APIURL: ' http://localhost:3000'
+  APIURL: ' http://localhost:3000',
+  DOTNETAPI:"https://localhost:5001"
+  // APIURL: 'https://localhost:44386/api'
 };
 
 /*

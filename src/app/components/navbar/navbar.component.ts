@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import {  ModalDismissReasons, NgbModual} from "@ng-bootstrap/ng-bootstrap";
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { NavService } from 'src/app/services/nav.service';
 import { LoginRegisterViewComponent } from '../users/login-register-view/login-register-view.component';
 
 @Component({
@@ -15,7 +16,7 @@ export class NavbarComponent implements OnInit {
   password: string = "";
 
   // constructor(){}
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,public NavService :NavService) { }
 
   ngOnInit(): void {
   }

@@ -1,0 +1,113 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-2 p-0">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-xl-10 col-md-12 col-sm-12">
+      <div class="row bg-white mx-2 shadow-sm">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="row">
+            <div class="mainimg col-12" >
+              <img #img [src]="product.images[0]">   <!-- product.images[0].imageURL -->
+            </div>
+            <div class="imgslist col-12">
+              <ul class="list-unstyled" #actv>
+                <li class="d-inline-block" *ngFor="let img of product.images">
+                  <img [src]="img" (click) = ngAfterViewInit($event)>
+                  <!-- <img [src]="img.imageURL" [ngStyle]="{'border-color':(active)? '#fcbf14' : 'white'}" (click) = ngAfterViewInit($event)> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+          <div>
+            <p class="idparag">ID# {{product.id}}</p>
+          </div>
+          <div class="discount shadow-sm">
+            <span class="text-primary">{{product.discount}}% </span><span class="text-dark p-0 pe-2">Discount</span>
+          </div>
+          <div class="mt-4">
+            <h2>{{product.name}}</h2>
+          </div>
+          <div class="fw-bold">
+            <span class="text-dark fs-4">{{price | currency}}</span>
+            <span class="text-secondary text-decoration-line-through px-2 fs-5">{{priceWithoutDiscount | number}}</span>
+            <span class="text-danger fw-normal pe-2 ">save {{(priceWithoutDiscount - price) | number}}</span>
+          </div>
+          <div class="row mt-3">
+            <div class="lock col-xl-2 col-lg-2 col-md-1 col-sm-1 col-xs-2">
+              <img class="lockicon" src="assets/icon-lock.svg">
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-9 p-0 lockparg">
+              <span class="d-block">10%</span>
+              <span>Minimum Booking Amount</span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <button class="btn buy me-2">Buy now</button>
+            <button class="btn cart"> Add to Cart</button>
+          </div>
+          <div class="mt-4">
+            <div class="delivery">
+              <img src="assets/checked.svg">
+              <p>Deliverable to <a href="#">appiAgent stores</a></p>
+            </div>
+            <div class="delivery">
+              <img src="assets/checked.svg">
+              <p>Deliverable to <a href="#">appiHubs</a></p>
+            </div>
+            <div class="delivery">
+              <img src="assets/checked.svg">
+              <p>Deliverable to <a href="#">your Home</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row bg-white mx-2 my-4 shadow-sm">
+        <div class="card rounded-0">
+          <div class="bg-white">
+            <h3>Description</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{product.description}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row bg-white mx-2 my-4 shadow-sm">
+        <div class="card rounded-0">
+          <div class="bg-white">
+            <h3>Offers</h3>
+          </div>
+          <div class="card-body">
+            <div>
+              <h4 class="text-black-50 fw-bold">General Conditions:</h4>
+              <ul>
+                <li>
+                  One customer can avail only one promotion at a time.
+                </li>
+                <li>
+                  12 months Warranty.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-black-50 fw-bold">Exciting Offers:</h4>
+              <ul>
+                <li>
+                  Discounts and freebies with Wuntu app </li>
+                <li>
+                  Free roaming in 70+ worldwide destinations
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

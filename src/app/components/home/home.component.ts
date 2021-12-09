@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavService } from 'src/app/services/nav.service';
 import { ProductService } from 'src/app/services/product.service';
 import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 
@@ -9,8 +10,9 @@ import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 })
 export class HomeComponent implements OnInit {
   productsList:any;
+  open:boolean=false;
 
-  constructor(private productService:ProductService) {
+  constructor(private productService:ProductService ,public NaveService:NavService) {
     this.productService.getAllProducts().subscribe({
       next: (products) =>
       {
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+          this.NaveService.open$.subscribe(open=>this.open=open);
   }
 
 }

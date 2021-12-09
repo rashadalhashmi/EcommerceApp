@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 /**
@@ -22,7 +23,9 @@ const MaterialComponent=[
   MatInputModule,
   MatTabsModule,
   MatDialogModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSidenavModule
+
 ]
 @NgModule({
   imports: [MaterialComponent ],
