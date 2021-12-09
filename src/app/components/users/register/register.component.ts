@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
+import { Gender } from 'src/app/viewmodel/Gender';
+import { IuserSingUp } from 'src/app/viewmodel/user/IuserSingUp';
 
 
 
@@ -27,10 +30,30 @@ function passwordMatch(c:AbstractControl):{[key:string]:boolean}|null{
 })
 export class RegisterComponent implements OnInit {
 
+  user :IuserSingUp=
+    {
+      firstname: "rashad",
+      lastname: "alhashmie",
+      email: "rashadami@gamil.com",
+      username: "rad2021",
+      password: "djf125522445",
+      gender: 0,
+      address: "cairo,nasercity",
+      phone: "01128289672",
+      image: "llf/dff",
+      userRole: "Customer"
+     }
+
   userForm:any;
   constructor(
          private formBuilder:FormBuilder,
-         private route :Router) {}
+         private route :Router,
+         private userService:UserService)
+
+         {
+        //  this.userService.signUP(this.user).subscribe(data=>console.log(data))
+
+         }
 
   ngOnInit(): void {
 

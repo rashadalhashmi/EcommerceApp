@@ -176,6 +176,181 @@
             "imageURL":"assets/products/3.jpg"
           }
         ]
+      },
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":1,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"1:18 RCSUNNY RACING CAR",
+        "id":2,
+        "price":55254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":3,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"1:18 RCSUNNY RACING CAR",
+        "id":4,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":5,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"1:18 RCSUNNY RACING CAR",
+        "id":6,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
+      },
+      {
+        "name":"A4TECH HeadphoneHS-19",
+        "id":7,
+        "price":11254,
+        "quantity":5,
+        "description":"the hhgf hhggg",
+        "discount":15,
+        "images":[
+          {
+            "imageURL":"assets/headphone.png"
+          },
+          {
+            "imageURL":"assets/car.png"
+          },
+          {
+            "imageURL":"assets/products/1.jpg"
+          },
+          {
+            "imageURL":"assets/products/2.jpg"
+          },
+          {
+            "imageURL":"assets/products/3.jpg"
+          }
+        ]
       }
     ],
     "message": "Success"
@@ -206,13 +381,13 @@
           },
           {
             "imageURL":"assets/products/3.jpg"
-          } 
+          }
         ]
       },
     "message":"Success"
     },
 
-  "departments": 
+  "departments":
     {
       "isSuccess": true,
       "data": [
