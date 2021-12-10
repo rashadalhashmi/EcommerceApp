@@ -17,7 +17,8 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { CookieService } from 'ngx-cookie-service';
 import { AsideComponent } from './components/aside/aside.component';
 import { ProductCardComponent } from './components/Product/product-card/product-card.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductCardComponent } from './components/Product/product-card/product-
     NavbarComponent,
     HomeComponent,
     AsideComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +38,9 @@ import { ProductCardComponent } from './components/Product/product-card/product-
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
