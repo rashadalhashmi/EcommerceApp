@@ -16,18 +16,18 @@ export class AsideComponent implements OnInit{
   constructor(private deptService:DepartmentService, private catgService: CategoryService) {
     this.deptService.getAllDepartments().subscribe({
       next: (departmentsobj) => {
-        this.departments = departmentsobj.data
+        this.departments = departmentsobj.data;
       }
     });
   }
 
-  // getCategories(deptId:number) {
-  //   this.catgService.getCategoriesByDeptID(deptId).subscribe({
-  //     next: (categories) => {
-  //       this.categoriesInDept = categories.data
-  //     }
-  //   })
-  // }
+  getCategories(deptId:number) {
+    this.catgService.getCategoriesByDeptID(deptId).subscribe({
+      next: (categories) => {
+        this.categoriesInDept = categories.data
+      }
+    })
+  }
 
   ngOnInit(): void {
   }

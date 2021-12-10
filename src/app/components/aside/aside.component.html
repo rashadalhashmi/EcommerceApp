@@ -1,15 +1,15 @@
 <div class="card">
   <h2>All Categories</h2>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let dept of departments">
-      <mat-expansion-panel-header>
+    <mat-expansion-panel *ngFor="let dept of departments" (opened) = getCategories(dept.id)>
+      <mat-expansion-panel-header >
         <mat-panel-title>
           {{dept.departmentName}}
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <div class="mt-2" *ngFor="let catg of dept.categoryEntities">
-        <a href="">{{catg.name}}</a>
+      <div class="mt-2" *ngFor="let catg of categoriesInDept">
+        <a href="">{{catg.categoryName}}</a>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

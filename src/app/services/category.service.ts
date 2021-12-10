@@ -19,7 +19,7 @@ export class CategoryService {
   getCategoriesByDeptID(deptId: number): Observable<IResultViewModel> {
     if (deptId == 0) return this.httpService.get<IResultViewModel>(`${environment.APIURL}/categories`)
     else
-      return this.httpService.get<IResultViewModel>(`${environment.APIURL}/categories?DeptID=${deptId}`);
+      return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Category/Department/${deptId}`);
   }
 
   getCategoryByID(cID: number): Observable<IResultViewModel> {
