@@ -1,9 +1,9 @@
 <div class="card">
   <h2>All Categories</h2>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let dept of departments">
-      <mat-expansion-panel-header>
-        <mat-panel-title (click) = getCategories(dept.id)>
+    <mat-expansion-panel *ngFor="let dept of departments" (opened) = getCategories(dept.id)>
+      <mat-expansion-panel-header >
+        <mat-panel-title>
           {{dept.departmentName}}
         </mat-panel-title>
       </mat-expansion-panel-header>
