@@ -11,7 +11,7 @@
               <img #img [src]="product.images[0]">   <!-- product.images[0].imageURL -->
             </div>
             <div class="imgslist col-12">
-              <ul class="list-unstyled" #actv>
+              <ul #actv class="list-unstyled">
                 <li class="d-inline-block" *ngFor="let img of product.images">
                   <img [src]="img" (click) = ngAfterViewInit($event)>
                   <!-- <img [src]="img.imageURL" [ngStyle]="{'border-color':(active)? '#fcbf14' : 'white'}" (click) = ngAfterViewInit($event)> -->
@@ -32,9 +32,9 @@
             <h2>{{product.name}}</h2>
           </div>
           <div class="fw-bold">
-            <span class="text-dark fs-4">{{price | currency}}</span>
-            <span class="text-secondary text-decoration-line-through px-2 fs-5">{{priceWithoutDiscount | number}}</span>
-            <span class="text-danger fw-normal pe-2 ">save {{(priceWithoutDiscount - price) | number}}</span>
+            <span class="text-dark fs-5">{{price | currency}}</span>
+            <span class="text-secondary text-decoration-line-through px-2 fs-6">{{priceWithoutDiscount | number}}</span>
+            <span class="text-danger fw-normal pe-2 fs-7">save {{(priceWithoutDiscount - price) | number}}</span>
           </div>
           <div class="row mt-3">
             <div class="lock col-xl-2 col-lg-2 col-md-1 col-sm-1 col-xs-2">
