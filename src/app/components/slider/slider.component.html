@@ -1,0 +1,19 @@
+<div >
+  <ngb-carousel class="carousel-fade">
+    <ng-template *ngFor="let item of sliderItems" ngbSlide>
+      <div class="picsum-img-wrapper" style="width: 100%; height: 25rem">
+        <img
+          src="{{ item.img }}"
+          class="rounded mx-auto d-block"
+          width="100%"
+          height="100%"
+          alt="Random first slide"
+        />
+      </div>
+      <div class="carousel-caption">
+        <p>{{ item.name }}</p>
+        <img src="{{ item.desc }}" alt="" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
