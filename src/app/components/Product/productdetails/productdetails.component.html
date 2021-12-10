@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row mt-3">
-    <div class="col-2 p-0">
-      <app-aside></app-aside>
+    <div class="col-2 d-none d-lg-block p-0" style="height: 100%; background-color: red;">
+      <app-aside ></app-aside>
     </div>
-    <div class="col-xl-10 col-md-12 col-sm-12">
+    <div class="col-lg-10 col-12 ">
       <div class="row bg-white mx-2 shadow-sm">
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <div class="row">
@@ -11,9 +11,9 @@
               <img #img [src]="product.images[0]">   <!-- product.images[0].imageURL -->
             </div>
             <div class="imgslist col-12">
-              <ul #actv class="list-unstyled">
+              <ul class="list-unstyled" #actv>
                 <li class="d-inline-block" *ngFor="let img of product.images">
-                  <img [src]="img" (click) = ngAfterViewInit($event)>
+                  <img [src]="img" (click) ="styleProductImage($event)">
                   <!-- <img [src]="img.imageURL" [ngStyle]="{'border-color':(active)? '#fcbf14' : 'white'}" (click) = ngAfterViewInit($event)> -->
                 </li>
               </ul>
@@ -32,9 +32,9 @@
             <h2>{{product.name}}</h2>
           </div>
           <div class="fw-bold">
-            <span class="text-dark fs-5">{{price | currency}}</span>
-            <span class="text-secondary text-decoration-line-through px-2 fs-6">{{priceWithoutDiscount | number}}</span>
-            <span class="text-danger fw-normal pe-2 fs-7">save {{(priceWithoutDiscount - price) | number}}</span>
+            <span class="text-dark fs-4">{{price | currency}}</span>
+            <span class="text-secondary text-decoration-line-through px-2 fs-5">{{priceWithoutDiscount | number}}</span>
+            <span class="text-danger fw-normal pe-2 ">save {{(priceWithoutDiscount - price) | number}}</span>
           </div>
           <div class="row mt-3">
             <div class="lock col-xl-2 col-lg-2 col-md-1 col-sm-1 col-xs-2">

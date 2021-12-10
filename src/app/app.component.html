@@ -1,16 +1,11 @@
 <app-navbar></app-navbar>
 
-    <!-- <div class="col-3">
-      <app-aside></app-aside>
-    </div>
-    <div class="col-9"> -->
-    <!-- </div> -->
 
-    <mat-sidenav-container>
+    <mat-sidenav-container >
       <mat-sidenav [opened]="open" ><app-aside ></app-aside></mat-sidenav>
-      <mat-dialog-content>
-        <router-outlet></router-outlet>
+      <mat-dialog-content class="container-fluid">
 
+          <router-outlet ></router-outlet>
       </mat-dialog-content>
 
 
