@@ -23,8 +23,8 @@ export class NavbarComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginRegisterViewComponent, {
-      width: '700px',
-      height:'500px',
+      width: '50%',
+
       data: {userName: this.userName, password: this.password},
     });
 

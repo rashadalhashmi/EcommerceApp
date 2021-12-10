@@ -19,6 +19,8 @@ import { AsideComponent } from './components/aside/aside.component';
 import { ProductCardComponent } from './components/Product/product-card/product-card.component';
 import { ProductdetailsComponent } from './components/Product/productdetails/productdetails.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ProductdetailsComponent } from './components/Product/productdetails/pro
     HomeComponent,
     AsideComponent,
     ProductCardComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,8 +41,9 @@ import { ProductdetailsComponent } from './components/Product/productdetails/pro
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
