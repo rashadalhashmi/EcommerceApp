@@ -70,26 +70,15 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.activeRoute.paramMap.subscribe(
-    //   (params) => {
-    //     this.productSentedId = Number(params.get("PID"));
-    //     this.productService.getProductByID(this.productSentedId).subscribe({
-    //       next: (product) => {
-    //         this.product = product.data;
-    //         console.log(product)
-    //       }
-    //     })
-    //   }
-    // )
   }
 
   ngAfterViewInit(imgs: any) {
-    // let images = this.imgActive.nativeElement.children;
-    // for (let i = 0; i < images.length; i++) {
-    //   images[i].nativeElement.style.border = "1px solid white";
-    // }
-    (imgs.target as HTMLInputElement).style.borderColor = "#fcbf14";
+    let images = this.imgActive.nativeElement.children;
+    for (let i = 0; i < images.length; i++) {
+      images[i].children[0].style.border = "1px solid white";
+    }
     this.img.nativeElement.src = (imgs.target as HTMLInputElement).src;
+    (imgs.target as HTMLInputElement).style.borderColor = "#fcbf14";
     // this.img.nativeElement.style.display = "block";
   }
 }
