@@ -15,4 +15,9 @@ export class DepartmentService {
   {
     return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Department`);
   }
+
+  getDepartmentbyId(dID:number):Observable<IResultViewModel>
+  {
+    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Department/${dID}`);
+  }
 }

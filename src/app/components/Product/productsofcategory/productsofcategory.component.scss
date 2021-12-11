@@ -1,12 +1,31 @@
-.container-fluid
-{
+.container-fluid {
   width: 90%;
   padding: 0;
 }
 
-.col-xl-3, .col-md-4, .col-sm-6
-{
+.col-xl-3,
+.col-md-4,
+.col-sm-6 {
   padding: 0px .3rem;
   margin-bottom: .7rem;
 }
 
+.imgheader {
+  width: 100%;
+  height: 290px;
+}
+
+.imgheader img {
+  width: 100%;
+  height: 100%;
+}
+
+h1, a, i{
+  color: #555;
+}
+
+a, i
+{
+  text-decoration: none;
+  font-size: 12px;
+}
