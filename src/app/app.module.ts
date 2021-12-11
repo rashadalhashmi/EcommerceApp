@@ -18,6 +18,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AsideComponent } from './components/aside/aside.component';
 import { ProductCardComponent } from './components/Product/product-card/product-card.component';
 import { ProductdetailsComponent } from './components/Product/productdetails/productdetails.component';
+import { ProductsofcategoryComponent } from './components/Product/productsofcategory/productsofcategory.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ProductdetailsComponent } from './components/Product/productdetails/pro
     HomeComponent,
     AsideComponent,
     ProductCardComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    ProductsofcategoryComponent
   ],
   imports: [
     BrowserModule,

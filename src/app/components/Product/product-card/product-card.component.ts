@@ -24,5 +24,4 @@ export class ProductCardComponent implements OnInit {
     this.priceWithoutDiscount = this.product.price;
     this.price = this.priceWithoutDiscount - (12552 * this.discount/100);
   }
-
 }
