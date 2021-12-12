@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-2 d-none d-lg-block p-0" style="height: 100%; background-color: red;">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-12 col-lg-10" >
+      <div class="row px-2">
+        <div class="shadow-sm bg-white mb-4 p-0">
+          <h1 class="fs-1 fw-bold px-4 pt-4 text-capitalize">{{category.categoryName}}</h1>
+          <div class="px-4">
+            <a routerLink="/Home">All Categories</a>
+            <i class="fas fa-chevron-right px-1"></i>
+            <a>{{deptName}}</a>
+            <i class="fas fa-chevron-right px-1"></i>
+            <a class="fw-bold text-capitalize">{{category.categoryName}}</a>
+          </div>
+
+          <div class="imgheader p-0 mt-4">
+            <img [src]="category.imageURL">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-3 col-md-4 col-sm-6" *ngFor="let product of productsList">
+          <app-product-card [product] = "product"></app-product-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -18,9 +18,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { AsideComponent } from './components/aside/aside.component';
 import { ProductCardComponent } from './components/Product/product-card/product-card.component';
 import { ProductdetailsComponent } from './components/Product/productdetails/productdetails.component';
+import { ProductsofcategoryComponent } from './components/Product/productsofcategory/productsofcategory.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SliderComponent } from './components/slider/slider.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ClickStopPropagationDirective } from './directive/click-stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { SliderComponent } from './components/slider/slider.component';
     ProductCardComponent,
     ProductdetailsComponent,
     SliderComponent,
+    CartComponent,
+    ClickStopPropagationDirective,
+    ProductsofcategoryComponent
   ],
   imports: [
     BrowserModule,

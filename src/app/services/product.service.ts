@@ -19,7 +19,7 @@ export class ProductService {
   getProductsByCategoryID(categoryId: number): Observable<IResultViewModel> {
     if (categoryId == 0) return this.httpService.get<IResultViewModel>(`${environment.APIURL}/products`)
     else
-      return this.httpService.get<IResultViewModel>(`${environment.APIURL}/products?CategoryID=${categoryId}`);
+      return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product/Category/${categoryId}`);
   }
 
   getProductByID(pID: number): Observable<IResultViewModel> {

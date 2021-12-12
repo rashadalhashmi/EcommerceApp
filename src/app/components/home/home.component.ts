@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
       next: (products) =>
       {
         this.productsList = products.data;
-        console.log(this.productsList);
       }
     })
   }

@@ -1,7 +1,7 @@
-<a class="card" [routerLink]="['/Product',product.id]">
+<div class="card" >
   <div class="position-relative header">
     <!-- <div class="position-absolute "> -->
-      <img [src]="product.images[0]" class="card-img-top position-relative">
+     <a [routerLink]="['/Product',product.id]"><img [src]="product.images[0]" class="card-img-top position-relative"></a>
       <div class="discount position-absolute">
         <span class="text-primary">{{product.discount}}% </span><span class="text-dark">Discount</span>
       </div>
@@ -14,6 +14,6 @@
       <span class="text-secondary text-decoration-line-through px-2">{{priceWithoutDiscount | number}}</span>
       <span class="text-danger fw-normal">save {{(priceWithoutDiscount - price) | number}}</span>
     </div>
-    <button class="btn btn-primary mt-2">Add to cart</button>
+    <button class="btn btn-primary mt-2" (click)="addToCart()">Add to cart</button>
   </div>
-</a>
+</div>
