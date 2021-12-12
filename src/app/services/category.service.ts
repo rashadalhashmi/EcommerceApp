@@ -13,7 +13,7 @@ export class CategoryService {
 
   getAllCategories():Observable<IResultViewModel>
   {
-    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/categories`);
+    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Category`);
   }
 
   getCategoriesByDeptID(deptId: number): Observable<IResultViewModel> {
@@ -23,6 +23,6 @@ export class CategoryService {
   }
 
   getCategoryByID(cID: number): Observable<IResultViewModel> {
-    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/categories/${cID}`)
+    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Category/${cID}`)
   }
 }
