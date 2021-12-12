@@ -1,4 +1,32 @@
-<p>cart works!</p>
+<div class="container">
+  <div class="card my-5" >
+    <div class="card-header">
+      Cart
+    </div>
+    <div class="row pt-1" *ngFor="let item of cart.items" >
+      <img class=" col-3 offset-md-1 col-md-3" [src]="item.product.images[0]" alt="" height="50%">
+      <div class="col-6 col-md-4 card-body">
+        <h3 class="card-title">{{item.product.name}}</h3>
+        <p class="card-text">
 
+       {{item.product.description}}
+        </p>
+        <span class="my-1  price">Quntity</span>
+        <input (change)="changeQuantity(item.product.id,$event)" class="mx-1" type="number" min="1" [max]="item.product.quantity" [value]="item.Quantity" style="width: 40px;">
+        <br>
+        <button class="my-1" mat-raised-button color="warn" (click)="removeFromCart(item.product.id)">Delete</button>
 
-<!-- test test test  -->
+      </div>
+      <div class=" col-3 offset-md-2 col-md-2 mt-3 price " >
+          <span class="text-dark">{{item.product.price-(item.product.price * item.product.discount/100) | currency}}</span>
+          <span class="text-secondary text-decoration-line-through px-2">{{item.product.price | currency}}</span>
+
+      </div>
+        <div class="border-bottom offset-1 col-10 offset-1 my-3"></div>
+    </div>
+   <div class="row">
+    <span class=" offset-9 col-3  price mb-3 " > Total Price : {{cart.totalPrice|currency}}</span>
+
+   </div>
+  </div>
+</div>

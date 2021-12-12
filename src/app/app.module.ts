@@ -22,6 +22,7 @@ import { ProductdetailsComponent } from './components/Product/productdetails/pro
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SliderComponent } from './components/slider/slider.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ClickStopPropagationDirective } from './directive/click-stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CartComponent } from './components/cart/cart.component';
     ProductdetailsComponent,
     SliderComponent,
     CartComponent,
+    ClickStopPropagationDirective,
   ],
   imports: [
     BrowserModule,
