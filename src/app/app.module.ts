@@ -20,7 +20,7 @@ import { ProductCardComponent } from './components/Product/product-card/product-
 import { ProductdetailsComponent } from './components/Product/productdetails/productdetails.component';
 import { ProductsofcategoryComponent } from './components/Product/productsofcategory/productsofcategory.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SliderComponent } from './components/slider/slider.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ClickStopPropagationDirective } from './directive/click-stop-propagation.directive';
@@ -47,7 +47,7 @@ import { ClickStopPropagationDirective } from './directive/click-stop-propagatio
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
-    NgbModule,
+    //NgbModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

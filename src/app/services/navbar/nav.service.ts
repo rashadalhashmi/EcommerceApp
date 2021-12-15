@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ export class NavService {
 
   private _open:boolean = false ;
   public open$:BehaviorSubject<boolean>;
-
+  public productsSearch: EventEmitter<string> = new EventEmitter<string>();
   constructor() {
     this.open$=new BehaviorSubject<boolean>(this._open);
   }

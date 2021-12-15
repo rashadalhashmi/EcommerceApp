@@ -2,17 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IResultViewModel } from '../viewmodel/iresult-view-model';
+import { IResultViewModel } from '../../viewmodel/iresult-view-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private httpService:HttpClient) { }
+  constructor(private httpService: HttpClient) { }
 
-  getAllProducts():Observable<IResultViewModel>
-  {
+  getAllProducts(): Observable<IResultViewModel> {
     return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product`);
   }
 
@@ -24,5 +23,12 @@ export class ProductService {
 
   getProductByID(pID: number): Observable<IResultViewModel> {
     return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product/${pID}`)
+  }
+
+  search(prodName: string): Observable<IResultViewModel> {
+    if (prodName == "")
+      return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product`)
+    else
+      return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product/Name/${prodName}`);
   }
 }
