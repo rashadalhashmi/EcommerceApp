@@ -16,7 +16,6 @@ import { ProductService } from '../product/product.service';
 export class CartService {
   _cart: ICart = { items: [], totalPrice: 0 };
   cart$: BehaviorSubject<ICart>;
-  cartQuantity$: BehaviorSubject<number>;
   cartQuantity:number = 0;
 
   order: IOrder = {} as IOrder;
@@ -27,8 +26,6 @@ export class CartService {
 
   constructor(private notificationService: NotificationService, private httpClient: HttpClient) {
     this.cart$ = new BehaviorSubject<ICart>(this._cart);
-    this.cartQuantity$ = new BehaviorSubject<number>(0);
-    this.cartQuantity = 0;
     this.getCartFromLocalStroage();
   }
 
@@ -45,9 +42,6 @@ export class CartService {
 
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
-
-    this.cartQuantity += cartItem?.Quantity!;
-    this.cartQuantity$.next(this.cartQuantity)
   }
 
   removeItemFromCart(productId: number) {
@@ -56,9 +50,6 @@ export class CartService {
     this._cart.totalPrice = this.calcaulateTotalPrice();
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
-
-    this.cartQuantity -= cartItem?.Quantity!;
-    this.cartQuantity$.next(this.cartQuantity)
   }
 
   getCartFromLocalStroage() {
@@ -66,8 +57,6 @@ export class CartService {
     if (cart) {
       this._cart = JSON.parse(cart);
       this.cart$.next(this._cart);
-
-      this.cartQuantity$.next(this.cartQuantity)
     }
     else {
       localStorage.setItem('cart', JSON.stringify(this._cart));
@@ -84,14 +73,10 @@ export class CartService {
     let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: 0 } };
     debugger;
     if (quentity <= cartItem.product.quantity) {
-      this.cartQuantity -= cartItem?.Quantity!;
       cartItem.Quantity = quentity;
-      this.cartQuantity += cartItem?.Quantity!;
       this._cart.totalPrice = this.calcaulateTotalPrice()
       localStorage.setItem('cart', JSON.stringify(this._cart));
       this.cart$.next(this._cart);
-
-      this.cartQuantity$.next(this.cartQuantity)
     }
     else {
 
@@ -125,9 +110,5 @@ export class CartService {
 
     console.log(this.order)
     return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
-  }
-
-  getCartItemQuantity(): Observable<number> {
-    return this.cartQuantity$.asObservable();
   }
 }

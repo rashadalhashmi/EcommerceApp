@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 // import {  ModalDismissReasons, NgbModual} from "@ng-bootstrap/ng-bootstrap";
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ICart } from 'src/app/model/ICartItem';
 import { CartService } from 'src/app/services/cartService/cart.service';
 import { NavService } from 'src/app/services/navbar/nav.service';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -21,18 +22,17 @@ export class NavbarComponent implements OnInit {
   searchInp:string = "";
 
   cartQuanity:number = 0;
-  // constructor(){}
   constructor(public dialog: MatDialog,
               public NavService :NavService,
-              private productService:ProductService,
               private cartService:CartService) {
   }
 
   ngOnInit(): void {
-    this.cartService.getCartItemQuantity().subscribe({
-      next: (quanity) =>
+
+    this.cartService.cart.subscribe({
+      next: (cart) =>
       {
-        this.cartQuanity = quanity;
+        this.cartQuanity = cart.items.length;
       }
     })
   }
@@ -53,10 +53,5 @@ export class NavbarComponent implements OnInit {
   search()
   {
     this.NavService.productsSearch.emit(this.searchInp);
-    // this.productService.search(this.searchInp).subscribe({
-    //   next: (products) => {
-    //     this.productsSearch = products
-    //   }
-    // })
   }
 }
