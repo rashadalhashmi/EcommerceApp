@@ -5,10 +5,13 @@ import { data } from 'node_modules/browserslist';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ICart, ICartItem } from 'src/app/model/ICartItem';
 import { IOrder } from 'src/app/viewmodel/iorder';
+import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 import { Iproduct } from 'src/app/viewmodel/product/iproduct';
 import { environment } from 'src/environments/environment';
 import { NotificationService } from '../notification.service';
 import { ProductService } from '../product/product.service';
+import jwt_decode from 'jwt-decode';
+import { ProfileService } from '../profile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,6 @@ import { ProductService } from '../product/product.service';
 export class CartService {
   _cart: ICart = { items: [], totalPrice: 0 };
   cart$: BehaviorSubject<ICart>;
-  cartQuantity$: BehaviorSubject<number>;
   cartQuantity:number = 0;
 
   order: IOrder = {} as IOrder;
@@ -25,10 +27,10 @@ export class CartService {
     return this.cart$.asObservable();
   }
 
-  constructor(private notificationService: NotificationService, private httpClient: HttpClient) {
+  constructor(private notificationService: NotificationService,
+              private httpClient: HttpClient,
+              private profileService:ProfileService) {
     this.cart$ = new BehaviorSubject<ICart>(this._cart);
-    this.cartQuantity$ = new BehaviorSubject<number>(0);
-    this.cartQuantity = 0;
     this.getCartFromLocalStroage();
   }
 
@@ -45,9 +47,6 @@ export class CartService {
 
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
-
-    this.cartQuantity += cartItem?.Quantity!;
-    this.cartQuantity$.next(this.cartQuantity)
   }
 
   removeItemFromCart(productId: number) {
@@ -56,9 +55,6 @@ export class CartService {
     this._cart.totalPrice = this.calcaulateTotalPrice();
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
-
-    this.cartQuantity -= cartItem?.Quantity!;
-    this.cartQuantity$.next(this.cartQuantity)
   }
 
   getCartFromLocalStroage() {
@@ -66,8 +62,6 @@ export class CartService {
     if (cart) {
       this._cart = JSON.parse(cart);
       this.cart$.next(this._cart);
-
-      this.cartQuantity$.next(this.cartQuantity)
     }
     else {
       localStorage.setItem('cart', JSON.stringify(this._cart));
@@ -83,14 +77,10 @@ export class CartService {
   changeQuantity(productId: number, quentity: number) {
     let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: 0 } };
     if (quentity <= cartItem.product.quantity) {
-      this.cartQuantity -= cartItem?.Quantity!;
       cartItem.Quantity = quentity;
-      this.cartQuantity += cartItem?.Quantity!;
       this._cart.totalPrice = this.calcaulateTotalPrice()
       localStorage.setItem('cart', JSON.stringify(this._cart));
       this.cart$.next(this._cart);
-
-      this.cartQuantity$.next(this.cartQuantity)
     }
     else {
 
@@ -119,14 +109,24 @@ export class CartService {
     });
 
     this.order.status = 0;
-    this.order.orderDate = new Date(),// "2021-12-14";
-    this.order.customerID = "b6e6c9aa-a482-4efc-aa13-45b2f43d987b";
+    this.order.orderDate = new Date();
+    let customerId = localStorage.getItem("token");
+
+
+    // this.httpClient.get<IResultViewModel>(`${environment.APIURL}/Profile/MyProfile`).subscribe(
+    //   {
+    //     next: (profile) => {
+    //       this.order.customerID = profile.data
+    //     }
+    //   }
+    // );
+
+    this.profileService.getProfile().subscribe({
+      next: (profile) => console.log(profile)
+    })
 
     console.log(this.order)
+    console.log(jwt_decode(localStorage.getItem("token")!))
     return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
-  }
-
-  getCartItemQuantity(): Observable<number> {
-    return this.cartQuantity$.asObservable();
   }
 }

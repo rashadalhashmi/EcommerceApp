@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { IUser } from 'src/app/viewmodel/iuser';
+import { IUser } from 'src/app/viewmodel/iuserLogin';
 
 @Component({
   selector: 'app-login-register-view',

@@ -1,6 +1,6 @@
 <nav>
   <div class="container-fluid">
-    <div class="row align-items-center" style="min-height: 80px;" >
+    <div class="row align-items-center" style="min-height: 80px">
       <div class="col-md-5 order-md-1 col-6 col-lg-3 order-1 row">
         <div class="col-2 d-lg-none menue">
           <a (click)="NavService.toggle()"><i class="fas fa-bars"></i></a>
@@ -18,11 +18,23 @@
       </div>
 
       <div class="col-md-4 order-md-2 col-12 col-lg-5 order-3 pb-3 pb-md-0">
-        <div class="d-flex">
-          <!-- <button class="btn border rounded-0 rounded-start" style="background-color: #fff;"><i class="fas fa-map-marker-alt"></i></button> -->
-          <input [(ngModel)] = "searchInp" class="form-control rounded-0" type="search" placeholder="Search" name="search" aria-label="Search">
-          <button class="btn btn-success rounded-0 rounded-end" (click)="search()"><i class="fas fa-search"></i></button>
-        </div>
+        <form class="d-flex">
+          <button
+            class="btn border rounded-0 rounded-start"
+            style="background-color: #fff"
+          >
+            <i class="fas fa-map-marker-alt"></i>
+          </button>
+          <input
+            class="form-control rounded-0"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-success rounded-0 rounded-end">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
       </div>
 
       <div

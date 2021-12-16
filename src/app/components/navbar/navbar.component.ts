@@ -3,9 +3,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 // import {  ModalDismissReasons, NgbModual} from "@ng-bootstrap/ng-bootstrap";
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { userInfo } from 'os';
+import { ICart } from 'src/app/model/ICartItem';
 import { CartService } from 'src/app/services/cartService/cart.service';
 import { NavService } from 'src/app/services/navbar/nav.service';
 import { ProductService } from 'src/app/services/product/product.service';
+import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import { LoginRegisterViewComponent } from '../users/login-register-view/login-register-view.component';
 
 @Component({
@@ -14,27 +17,33 @@ import { LoginRegisterViewComponent } from '../users/login-register-view/login-r
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  IsLogged:boolean = false;
+  User:string = "user";
   userName: string = "";
   password: string = "";
 
   searchInp:string = "";
 
   cartQuanity:number = 0;
-  // constructor(){}
   constructor(public dialog: MatDialog,
               public NavService :NavService,
-              private productService:ProductService,
-              private cartService:CartService) {
+              private cartService:CartService,
+              private userAuth:UserAuthService) {
   }
 
   ngOnInit(): void {
-    this.cartService.getCartItemQuantity().subscribe({
-      next: (quanity) =>
+
+    this.cartService.cart.subscribe({
+      next: (cart) =>
       {
-        this.cartQuanity = quanity;
+        this.cartQuanity = cart.items.length;
       }
     })
+
+    this.userAuth.isloginstatues().subscribe({
+      next: (Islogged) =>
+      this.IsLogged = Islogged
+    });
   }
 
   openDialog(): void {
@@ -53,10 +62,11 @@ export class NavbarComponent implements OnInit {
   search()
   {
     this.NavService.productsSearch.emit(this.searchInp);
-    // this.productService.search(this.searchInp).subscribe({
-    //   next: (products) => {
-    //     this.productsSearch = products
-    //   }
-    // })
+  }
+
+  Logout()
+  {
+    this.userAuth.Logout();
+    //this.isUserLogged = this.userAuth.isLogged();
   }
 }

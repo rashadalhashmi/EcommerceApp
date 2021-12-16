@@ -7,11 +7,12 @@ import { ProductsofcategoryComponent } from './components/Product/productsofcate
 import { CheckoutComponent } from './components/users/checkout/checkout.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { UserActionComponent } from './components/users/user-action/user-action.component';
+import { UserAuthGuard } from './security/user-auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo:'/Home' , pathMatch: 'full' },
   { path: 'Home', component: HomeComponent},
-  {path:"Cart",component:CartComponent},
+  {path:"Cart",component:CartComponent, canActivate:[UserAuthGuard]},
   { path: 'Product/:PID', component: ProductdetailsComponent},
   { path: 'Product/Category/:CID', component: ProductsofcategoryComponent},
   { path: 'user',loadChildren:()=>import('../app/components/users/user-auth.module').then(m=>m.UserAuthModule)},

@@ -11,10 +11,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserActionComponent } from './user-action/user-action.component';
+import { UserAuthGuard } from 'src/app/security/user-auth.guard';
 
-const routes: Routes = [
-  { path: 'registerorlogin', component: LoginRegisterViewComponent },
-];
+const routes:Routes = [
+  {path:"", redirectTo:'/User/MyProfile', pathMatch:"full"},
+  {path:'registerorlogin', component:LoginRegisterViewComponent},
+  {path:'MyProfile', component:LoginRegisterViewComponent, canActivate:[UserAuthGuard]},
+]
+
 
 @NgModule({
   declarations: [
