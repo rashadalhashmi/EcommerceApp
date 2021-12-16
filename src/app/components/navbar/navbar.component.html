@@ -20,11 +20,15 @@
           <ul class=" d-flex align-self-center ml-auto ">
 
             <li class="nav-item">
-              <a class="nav-link" routerLink="/Profile" routerLinkActive="active">User</a>
+              <a class="nav-link" routerLink="/Profile" routerLinkActive="active" [hidden]="!IsLogged">{{User}}</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" mat-raised-link (click)="openDialog()" routerLinkActive="active">Login or Register</a>
+              <a class="nav-link" mat-raised-link (click)="openDialog()" routerLinkActive="active" [hidden]="IsLogged">Login or Register</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" mat-raised-link (click)="Logout()" routerLinkActive="active" [hidden]="!IsLogged">LogOut</a>
             </li>
 
             <li class="nav-item">

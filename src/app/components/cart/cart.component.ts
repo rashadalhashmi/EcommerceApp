@@ -29,8 +29,6 @@ export class CartComponent implements OnInit {
 
   setOrder()
   {
-    this.cartservice.placeOrder().subscribe({
-      next: (b)=> console.log(b)
-    });
+    this.cartservice.placeOrder().subscribe();
   }
 }

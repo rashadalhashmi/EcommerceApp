@@ -9,11 +9,12 @@ import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { LoginRegisterViewComponent } from './login-register-view/login-register-view.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
+import { UserAuthGuard } from 'src/app/security/user-auth.guard';
 
 const routes:Routes = [
+  {path:"", redirectTo:'/User/MyProfile', pathMatch:"full"},
   {path:'registerorlogin', component:LoginRegisterViewComponent},
-
-
+  {path:'MyProfile', component:LoginRegisterViewComponent, canActivate:[UserAuthGuard]},
 ]
 
 
