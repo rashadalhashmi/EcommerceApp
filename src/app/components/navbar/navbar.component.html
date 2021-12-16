@@ -2,8 +2,19 @@
   <div class="container-fluid">
     <div class="row align-items-center" style="min-height: 80px;" >
       <div class="col-md-5 order-md-1 col-6 col-lg-3 order-1 row">
-        <div class="col-2 d-lg-none menue"><a (click)="NavService.toggle()"><i class="fas fa-bars"></i></a></div>
-        <div class="col-10 col-lg-12"><a class="navbar-brand text-warning" id="logo" routerLink="/Home" routerLinkActive="active" id='logo'>Shopify</a></div>
+        <div class="col-2 d-lg-none menue">
+          <a (click)="NavService.toggle()"><i class="fas fa-bars"></i></a>
+        </div>
+        <div class="col-10 col-lg-12">
+          <a
+            class="navbar-brand text-warning"
+            id="logo"
+            routerLink="/Home"
+            routerLinkActive="active"
+            id="logo"
+            >Shopify</a
+          >
+        </div>
       </div>
 
       <div class="col-md-4 order-md-2 col-12 col-lg-5 order-3 pb-3 pb-md-0">
@@ -14,18 +25,36 @@
         </div>
       </div>
 
+      <div
+        class="
+          col-md-3
+          order-md-3
+          col-6
+          order-2
+          col-lg-4
+          align-self-center
+          mt-3
+        "
+      >
+        <ul class="d-flex align-self-center ml-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/userAction"
+              routerLinkActive="active"
+              >User</a
+            >
+          </li>
 
-      <div class="col-md-3 order-md-3 col-6 order-2  col-lg-4 align-self-center mt-3 ">
-
-          <ul class=" d-flex align-self-center ml-auto ">
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/Profile" routerLinkActive="active">User</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" mat-raised-link (click)="openDialog()" routerLinkActive="active">Login or Register</a>
-            </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              mat-raised-link
+              (click)="openDialog()"
+              routerLinkActive="active"
+              >Login or Register</a
+            >
+          </li>
 
             <li class="nav-item">
               <a class="nav-link position-relative" routerLink="/Cart">
@@ -35,12 +64,7 @@
             </li>
           </ul>
       </div>
-
-
     </div>
-
-
-
   </div>
 </nav>
 <!--  -->
