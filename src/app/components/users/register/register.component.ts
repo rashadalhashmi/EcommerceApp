@@ -30,8 +30,7 @@ function passwordMatch(c:AbstractControl):{[key:string]:boolean}|null{
 })
 export class RegisterComponent implements OnInit {
 
-  user :IuserSingUp=
-    {
+  user :IuserSingUp={
       firstname: "",
       lastname: "",
       email: "",
@@ -51,6 +50,7 @@ export class RegisterComponent implements OnInit {
          private userService:UserService)
 
          {
+
 
          }
 
@@ -75,18 +75,14 @@ export class RegisterComponent implements OnInit {
 
   save(){
 
-    // console.log(this.userForm.value);
-
     this.user.firstname=this.userForm.value.firstName;
     this.user.lastname=this.userForm.value.lastName;
     this.user.email=this.userForm.value.email;
     this.user.password=this.userForm.value.passwordGroup.password;
     this.user.phone=this.userForm.value.phone;
-    this.user.gender=this.userForm.value.gender;
+    this.user.gender= +this.userForm.value.gender;
     this.user.address=this.userForm.value.address;
     this.user.username=this.userForm.value.username
-    // console.log(this.user);
-
     this.userService.signUP(this.user).subscribe(data=>console.log(data))
 
 

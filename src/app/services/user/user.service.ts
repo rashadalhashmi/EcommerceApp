@@ -15,7 +15,7 @@ export class UserService {
 
   signUP(user:IuserSingUp):Observable<any>{
 
-   return this.httpclient.post(environment.DOTNETAPI+"/api/Account/SignUp", JSON.stringify(user) , {
+   return this.httpclient.post(environment.DOTNETAPI+"/Account/SignUp", JSON.stringify(user) , {
      headers:new HttpHeaders({
        'content-type':'application/json'
      })
