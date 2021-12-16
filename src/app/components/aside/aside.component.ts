@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { CategoryService } from 'src/app/services/category.service';
-import { DepartmentService } from 'src/app/services/department.service';
+import { CategoryService } from 'src/app/services/category/category.service';
+import { DepartmentService } from 'src/app/services/department/department.service';
 import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 @Component({
   selector: 'app-aside',

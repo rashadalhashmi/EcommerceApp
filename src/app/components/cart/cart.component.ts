@@ -22,9 +22,13 @@ export class CartComponent implements OnInit {
           this.cartservice.removeItemFromCart(id)
   }
 
-
   changeQuantity(id:number,event:any){
     debugger
     this.cartservice.changeQuantity(id,+event.target.value);
+  }
+
+  setOrder()
+  {
+    this.cartservice.placeOrder().subscribe();
   }
 }

@@ -5,15 +5,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AngularMaterialModule } from 'src/angular-material/angular-material.module';
-import {ReactiveFormsModule,FormsModule} from '@angular/forms';
-import { LoginRegisterViewComponent } from './login-register-view/login-register-view.component'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginRegisterViewComponent } from './login-register-view/login-register-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { UserActionComponent } from './user-action/user-action.component';
+import { UserAuthGuard } from 'src/app/security/user-auth.guard';
 
 const routes:Routes = [
+  {path:"", redirectTo:'/User/MyProfile', pathMatch:"full"},
   {path:'registerorlogin', component:LoginRegisterViewComponent},
-
-
+  {path:'MyProfile', component:LoginRegisterViewComponent, canActivate:[UserAuthGuard]},
 ]
 
 
@@ -22,6 +25,8 @@ const routes:Routes = [
     LoginComponent,
     RegisterComponent,
     LoginRegisterViewComponent,
+    CheckoutComponent,
+    UserActionComponent,
   ],
   imports: [
     CommonModule,
@@ -31,9 +36,8 @@ const routes:Routes = [
     AngularMaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [CookieService],
-
 })
-export class UserAuthModule { }
+export class UserAuthModule {}

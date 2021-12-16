@@ -30,17 +30,16 @@ function passwordMatch(c:AbstractControl):{[key:string]:boolean}|null{
 })
 export class RegisterComponent implements OnInit {
 
-  user :IuserSingUp=
-    {
-      firstname: "rashad",
-      lastname: "alhashmie",
-      email: "rashaami@gamil.com",
-      username: "rad2kk021",
-      password: "djf125522445",
+  user :IuserSingUp={
+      firstname: "",
+      lastname: "",
+      email: "",
+      username: "",
+      password: "",
       gender: 0,
-      address: "cairo,nasercity",
-      phone: "01128289672",
-      image: "llf/dff",
+      address: "",
+      phone: "",
+      image: "",
       userRole: "Customer"
      }
 
@@ -51,7 +50,7 @@ export class RegisterComponent implements OnInit {
          private userService:UserService)
 
          {
-         this.userService.signUP(this.user).subscribe(data=>console.log(data))
+
 
          }
 
@@ -76,19 +75,16 @@ export class RegisterComponent implements OnInit {
 
   save(){
 
-    console.log(this.userForm.value);
+    this.user.firstname=this.userForm.value.firstName;
+    this.user.lastname=this.userForm.value.lastName;
+    this.user.email=this.userForm.value.email;
+    this.user.password=this.userForm.value.passwordGroup.password;
+    this.user.phone=this.userForm.value.phone;
+    this.user.gender= +this.userForm.value.gender;
+    this.user.address=this.userForm.value.address;
+    this.user.username=this.userForm.value.username
+    this.userService.signUP(this.user).subscribe(data=>console.log(data))
 
-    // this.user.id=Math.floor(Math.random()*1000)+"";
-    // this.user.firstName=this.userForm.get('firstName').value
-    // this.user.lastName=this.userForm.get('lastName').value;
-    // this.user.password=this.userForm.get('passwordGroup.password').value;
-    // this.user.username=this.userForm.get('email').value;
-    // this.user.Token="slfjk-sdfkjdkl55f-d45df4-dfllk"
 
-    // this.userHttp.createUser(this.user).subscribe(res=>{
-    //   this.route.navigate(['user/login'])
-    //     console.log(res);
-
-    // });
   }
 }
