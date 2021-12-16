@@ -82,7 +82,6 @@ export class CartService {
   }
   changeQuantity(productId: number, quentity: number) {
     let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: 0 } };
-    debugger;
     if (quentity <= cartItem.product.quantity) {
       this.cartQuantity -= cartItem?.Quantity!;
       cartItem.Quantity = quentity;
