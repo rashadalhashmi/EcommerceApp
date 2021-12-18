@@ -32,6 +32,12 @@ ul li a i {
   font-size: 20px;
 }
 
+.numItems {
+  left: 64%;
+  bottom: 63%;
+}
+
+
 // .badge {
 //   top: 0;
 //   left: 63%;
@@ -41,21 +47,21 @@ ul li a i {
 //   align-items: baseline;
 // }
 
-input:hover
-{
+input:hover {
   border: none;
 }
 
-.nav-link
-{
+.nav-link {
   cursor: pointer;
 }
-.menue{
+
+.menue {
   font-size: 30px;
   color: #fff;
   cursor: pointer;
 
 }
+
 ul {
   list-style: none;
 }
@@ -66,6 +72,7 @@ ul {
   #logo {
     font-size: 20px;
   }
+
   .menue {
     font-size: 20px;
   }

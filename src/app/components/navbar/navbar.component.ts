@@ -8,6 +8,7 @@ import { ICart } from 'src/app/model/ICartItem';
 import { CartService } from 'src/app/services/cartService/cart.service';
 import { NavService } from 'src/app/services/navbar/nav.service';
 import { ProductService } from 'src/app/services/product/product.service';
+import { ProfileService } from 'src/app/services/Profile/profile.service';
 import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import { LoginRegisterViewComponent } from '../users/login-register-view/login-register-view.component';
 
@@ -17,32 +18,40 @@ import { LoginRegisterViewComponent } from '../users/login-register-view/login-r
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  IsLogged:boolean = false;
-  User:string = "user";
+  IsLogged: boolean = false;
+  User: string = "user";
   userName: string = "";
   password: string = "";
 
-  searchInp:string = "";
+  searchInp: string = "";
 
-  cartQuanity:number = 0;
+  cartQuanity: number = 0;
   constructor(public dialog: MatDialog,
-              public NavService :NavService,
-              private cartService:CartService,
-              private userAuth:UserAuthService) {
+    public NavService: NavService,
+    private cartService: CartService,
+    private userAuth: UserAuthService,
+    private profileService: ProfileService) {
   }
 
   ngOnInit(): void {
 
     this.cartService.cart.subscribe({
-      next: (cart) =>
-      {
+      next: (cart) => {
         this.cartQuanity = cart.items.length;
       }
     })
 
     this.userAuth.isloginstatues().subscribe({
-      next: (Islogged) =>
-      this.IsLogged = Islogged
+      next: (Islogged) => {
+        this.IsLogged = Islogged
+        if (Islogged)
+          this.profileService.getProfile().subscribe({
+            next: (profile) => {
+              this.User = profile.data.user.Firstname + profile.data.user.Lastname
+              console.log(profile.data.user.Firstname + profile.data.user.Lastname)
+            }
+          });
+      }
     });
   }
 
@@ -50,7 +59,7 @@ export class NavbarComponent implements OnInit {
     const dialogRef = this.dialog.open(LoginRegisterViewComponent, {
       width: '50%',
 
-      data: {userName: this.userName, password: this.password},
+      data: { userName: this.userName, password: this.password },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -59,13 +68,11 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  search()
-  {
+  search() {
     this.NavService.productsSearch.emit(this.searchInp);
   }
 
-  Logout()
-  {
+  Logout() {
     this.userAuth.Logout();
     //this.isUserLogged = this.userAuth.isLogged();
   }
