@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -11,8 +11,27 @@ export class ProductService {
 
   constructor(private httpService: HttpClient) { }
 
-  getAllProducts(): Observable<IResultViewModel> {
-    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product`);
+  getAllProducts(page:number, pageSize:number): Observable<IResultViewModel> {
+    const httpOption = {
+      headers: new HttpHeaders({
+        'content-type': 'Application/JSON'
+      }),
+      params: new HttpParams(
+        {
+          fromObject:
+          {
+            PageNumber : page,
+            PageSize: pageSize
+          }
+        }
+      )
+    }
+
+    let param = {
+      PageNumber: page,
+      PageSize: pageSize
+    }
+    return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product`, httpOption);
   }
 
   getProductsByCategoryID(categoryId: number): Observable<IResultViewModel> {

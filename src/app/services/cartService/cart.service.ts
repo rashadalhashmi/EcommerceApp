@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 import { NotificationService } from '../notification.service';
 import { ProductService } from '../product/product.service';
 import jwt_decode from 'jwt-decode';
-import { ProfileService } from '../profile.service';
+import { ProfileService } from '../Profile/profile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ import { ProfileService } from '../profile.service';
 export class CartService {
   _cart: ICart = { items: [], totalPrice: 0 };
   cart$: BehaviorSubject<ICart>;
-  cartQuantity:number = 0;
+  cartQuantity: number = 0;
 
   order: IOrder = {} as IOrder;
 
@@ -28,8 +28,8 @@ export class CartService {
   }
 
   constructor(private notificationService: NotificationService,
-              private httpClient: HttpClient,
-              private profileService:ProfileService) {
+    private httpClient: HttpClient,
+    private profileService: ProfileService) {
     this.cart$ = new BehaviorSubject<ICart>(this._cart);
     this.getCartFromLocalStroage();
   }
@@ -97,32 +97,21 @@ export class CartService {
       })
     }
     this.order.items = [];
-
     this._cart.items.forEach(item => {
       this.order.items.push({
-        // "id":Math.floor(Math.random() * 100).toString(),
         amount: item.Quantity,
-        date: new Date(),//  "2021-12-14",
-        productID: item.product.id.toString()
+        date: new Date(),
+        productID: item.product.id.toString(),
       });
-
     });
 
     this.order.status = 0;
     this.order.orderDate = new Date();
-    let customerId = localStorage.getItem("token");
-
-
-    // this.httpClient.get<IResultViewModel>(`${environment.APIURL}/Profile/MyProfile`).subscribe(
-    //   {
-    //     next: (profile) => {
-    //       this.order.customerID = profile.data
-    //     }
-    //   }
-    // );
 
     this.profileService.getProfile().subscribe({
-      next: (profile) => console.log(profile)
+      next: (profile) => {
+        this.order.customerID = profile.data.user.id
+      }
     })
 
     console.log(this.order)

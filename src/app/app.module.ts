@@ -9,7 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { UserAuthModule } from './components/users/user-auth.module';
 import { HomeComponent } from './components/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LoginComponent } from './components/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +24,8 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SliderComponent } from './components/slider/slider.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ClickStopPropagationDirective } from './directive/click-stop-propagation.directive';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UserAuthService } from './services/user/user-auth.service';
 
 @NgModule({
   declarations: [
@@ -47,9 +49,16 @@ import { ClickStopPropagationDirective } from './directive/click-stop-propagatio
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
+    NgxPaginationModule
     //NgbModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserAuthService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

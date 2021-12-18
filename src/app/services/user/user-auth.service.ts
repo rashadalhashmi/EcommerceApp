@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -57,5 +57,16 @@ export class UserAuthService {
   isloginstatues():Observable<boolean>
   {
     return this.loginstatues.asObservable();
+  }
+
+  //for get myprofile
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    });
+
+    return next.handle(request);
   }
 }

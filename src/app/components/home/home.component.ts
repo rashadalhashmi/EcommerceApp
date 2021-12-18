@@ -10,17 +10,38 @@ import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 })
 export class HomeComponent implements OnInit {
   productsList: any;
+  // Pagination parameters.
+  pageSize:number = 1;
+  page:number = 1
+  count:number = 0;
   constructor(private productService: ProductService, private NavService: NavService) {
-    this.productService.getAllProducts().subscribe({
-      next: (products) => {
-        this.productsList = products.data;
-      }
-    })
+    this.getNumberOfProducts();
+    this.getProducts(this.page);
   }
 
   ngOnInit(): void {
     this.NavService.productsSearch.subscribe((searchKey: string) => {
       this.search(searchKey);
+    })
+  }
+
+  getProducts(page:number)
+  {
+    this.productService.getAllProducts(page, this.pageSize).subscribe({
+      next: (products) => {
+        this.productsList = products.data;
+        // this.count = this.productsList.length
+        console.log(this.count)
+      }
+    })
+  }
+
+  getNumberOfProducts()
+  {
+    this.productService.getAllProducts(1, 0).subscribe({
+      next: (products) => {
+        this.count = products.data.length
+      }
     })
   }
 
@@ -30,5 +51,10 @@ export class HomeComponent implements OnInit {
         this.productsList = products.data
       }
     })
+  }
+
+  handlePageChange(event:number) {
+    this.page = event;
+    this.getProducts(this.page);
   }
 }
