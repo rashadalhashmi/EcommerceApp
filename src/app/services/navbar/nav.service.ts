@@ -9,6 +9,7 @@ export class NavService {
   private _open:boolean = false ;
   public open$:BehaviorSubject<boolean>;
   public productsSearch: EventEmitter<string> = new EventEmitter<string>();
+  public userEmitter: EventEmitter<string> = new EventEmitter<string>();
   constructor() {
     this.open$=new BehaviorSubject<boolean>(this._open);
   }

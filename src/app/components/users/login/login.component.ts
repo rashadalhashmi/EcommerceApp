@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import jwt_decode from 'jwt-decode';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
+import { NavService } from 'src/app/services/navbar/nav.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,12 +14,14 @@ import { ProfileService } from 'src/app/services/Profile/profile.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = {} as FormGroup;
   checked:boolean = false;
-  @Input() user:string = "user";
+  user:string = "";
+
   constructor(private formBuilder: FormBuilder,
               private userServices: UserAuthService,
               private router: Router,
               private cookieService: CookieService,
-              private profileService:ProfileService) { }
+              private profileService:ProfileService,
+              private NavService:NavService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -43,8 +46,9 @@ export class LoginComponent implements OnInit {
 
         this.profileService.getProfile().subscribe({
           next: (profile) => {
-            this.user = profile.data.user.Firstname + profile.data.user.Lastname
-            console.log(profile.data.user.Firstname + profile.data.user.Lastname)
+            debugger;
+            this.user = profile.data.user.firstname + " " + profile.data.user.lastname
+            this.NavService.userEmitter.emit(this.user)
           }
         });
         this.router.navigate(['/Home']);

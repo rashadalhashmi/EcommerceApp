@@ -29,8 +29,7 @@ export class NavbarComponent implements OnInit {
   constructor(public dialog: MatDialog,
     public NavService: NavService,
     private cartService: CartService,
-    private userAuth: UserAuthService,
-    private profileService: ProfileService) {
+    private userAuth: UserAuthService) {
   }
 
   ngOnInit(): void {
@@ -47,14 +46,10 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-    if (this.IsLogged)
-          this.profileService.getProfile().subscribe({
-            next: (profile) => {
-              console.log(profile)
-              this.User = profile.data.user.Firstname + profile.data.user.Lastname
-              console.log(profile.data.user.Firstname + profile.data.user.Lastname)
-            }
-          });
+    this.NavService.userEmitter.subscribe(data => {
+      debugger;
+      this.User = data;
+    });
   }
 
   openDialog(): void {
