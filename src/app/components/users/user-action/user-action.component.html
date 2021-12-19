@@ -126,17 +126,16 @@
           <hr />
           <a
             class="nav-link active align-items-start"
-            id="v-pills-home-tab"
+            id="v-pills-order-tab"
             data-bs-toggle="pill"
-            data-bs-target="#v-pills-home"
+            data-bs-target="#v-pills-order"
             type="button"
             role="tab"
-            aria-controls="v-pills-home"
+            aria-controls="v-pills-order"
             aria-selected="true"
-          >
-            <svg class="bi me-2" width="16" height="16">
-              <use xlink:href="#people-circle" /></svg
-            >Profile</a
+            ><svg class="bi me-2" width="16" height="16">
+              <use xlink:href="#table" /></svg
+            >order</a
           >
           <a
             class="nav-link"
@@ -149,42 +148,90 @@
             aria-selected="false"
           >
             <svg class="bi me-2" width="16" height="16">
-              <use xlink:href="#table" /></svg
-            >order</a
-          >
-          <a
-            class="nav-link"
-            id="v-pills-messages-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-messages"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-messages"
-            aria-selected="false"
-          >
-            <svg class="bi me-2" width="16" height="16">
-              <use xlink:href="#grid" /></svg
-            >checkout</a
-          >
-          <a
-            class="nav-link"
-            id="v-pills-settings-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-settings"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-settings"
-            aria-selected="false"
-            >sign out</a
+              <use xlink:href="#people-circle" /></svg
+            >Profile</a
           >
         </div>
         <div class="col-9">
           <div class="tab-content" id="v-pills-tabContent">
             <div
               class="tab-pane fade show active"
-              id="v-pills-home"
+              id="v-pills-order"
               role="tabpanel"
-              aria-labelledby="v-pills-home-tab"
+              aria-labelledby="v-pills-order-tab"
+            >
+              <h1 style="font-weight: bold">my order</h1>
+              <div class="row">
+                <div class="col-md-6 col-lg-6">
+                  <h2
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      mb-3
+                    "
+                  >
+                    Your cart
+                  </h2>
+                  <ul class="list-group mb-3">
+                    <li
+                      class="
+                        list-group-item
+                        d-flex
+                        justify-content-between
+                        lh-sm
+                      "
+                    >
+                      <div>
+                        <h4 class="my-0">Product name</h4>
+                        <small class="text-muted">Brief description</small>
+                      </div>
+                      <span class="text-muted">$12</span>
+                    </li>
+                    <li
+                      class="
+                        list-group-item
+                        d-flex
+                        justify-content-between
+                        lh-sm
+                      "
+                    >
+                      <div>
+                        <h4 class="my-0">Second product</h4>
+                        <small class="text-muted">Brief description</small>
+                      </div>
+                      <span class="text-muted">$8</span>
+                    </li>
+                    <li
+                      class="
+                        list-group-item
+                        d-flex
+                        justify-content-between
+                        lh-sm
+                      "
+                    >
+                      <div>
+                        <h4 class="my-0">Third item</h4>
+                        <small class="text-muted">Brief description</small>
+                      </div>
+                      <span class="text-muted">$5</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                      <span>Total (USD)</span>
+                      <strong>$20</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <app-checkout></app-checkout>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="v-pills-profile"
+              role="tabpanel"
+              aria-labelledby="v-pills-profile-tab"
             >
               <h1 style="font-weight: bold">profile</h1>
               <form action="">
@@ -275,95 +322,6 @@
                 </div>
               </form>
             </div>
-            <div
-              class="tab-pane fade"
-              id="v-pills-profile"
-              role="tabpanel"
-              aria-labelledby="v-pills-profile-tab"
-            >
-              <div class="col-md-5 col-lg-4 order-md-last">
-                <h3
-                  class="d-flex justify-content-between align-items-center mb-3"
-                >
-                  <span class="text-primary">Your cart</span>
-                  <span class="badge bg-primary rounded-pill">3</span>
-                </h3>
-                <ul class="list-group mb-3">
-                  <li
-                    class="list-group-item d-flex justify-content-between lh-sm"
-                  >
-                    <div>
-                      <h4 class="my-0">Product name</h4>
-                      <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$12</span>
-                  </li>
-                  <li
-                    class="list-group-item d-flex justify-content-between lh-sm"
-                  >
-                    <div>
-                      <h4 class="my-0">Second product</h4>
-                      <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$8</span>
-                  </li>
-                  <li
-                    class="list-group-item d-flex justify-content-between lh-sm"
-                  >
-                    <div>
-                      <h4 class="my-0">Third item</h4>
-                      <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$5</span>
-                  </li>
-                  <li
-                    class="
-                      list-group-item
-                      d-flex
-                      justify-content-between
-                      bg-light
-                    "
-                  >
-                    <div class="text-success">
-                      <h4 class="my-0">Promo code</h4>
-                      <small>EXAMPLECODE</small>
-                    </div>
-                    <span class="text-success">−$5</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
-                    <strong>$20</strong>
-                  </li>
-                </ul>
-
-                <form class="card p-2">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Promo code"
-                    />
-                    <button type="submit" class="btn btn-secondary">
-                      Redeem
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="v-pills-messages"
-              role="tabpanel"
-              aria-labelledby="v-pills-messages-tab"
-            >
-              <app-checkout></app-checkout>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="v-pills-settings"
-              role="tabpanel"
-              aria-labelledby="v-pills-settings-tab"
-            ></div>
           </div>
         </div>
       </div>
