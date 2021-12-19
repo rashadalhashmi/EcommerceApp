@@ -114,8 +114,8 @@ export class CartService {
       }
     })
 
-    console.log(this.order)
-    console.log(jwt_decode(localStorage.getItem("token")!))
+    // console.log(this.order)
+    // console.log(jwt_decode(localStorage.getItem("token")!))
     return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
   }
 }

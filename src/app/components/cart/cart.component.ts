@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from 'express';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { map, tap } from 'rxjs';
 import { ICart } from 'src/app/model/ICartItem';
-import { UserAuthGuard } from 'src/app/security/user-auth.guard';
 import { CartService } from 'src/app/services/cartService/cart.service';
-import { UserAuthService } from 'src/app/services/user/user-auth.service';
-import { Iproduct } from 'src/app/viewmodel/product/iproduct';
+
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +13,7 @@ import { Iproduct } from 'src/app/viewmodel/product/iproduct';
 export class CartComponent implements OnInit {
 
   cart:ICart={items:[],totalPrice:0}
-  constructor(private cartservice:CartService, private authguard:UserAuthGuard, private activeroute:ActivatedRoute) { }
+  constructor(private cartservice:CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.cartservice.cart.subscribe(cart=>this.cart=cart)
@@ -34,5 +31,6 @@ export class CartComponent implements OnInit {
   setOrder()
   {
     this.cartservice.placeOrder().subscribe();
+    this.router.navigate(['/User/CheckOut']);
   }
 }

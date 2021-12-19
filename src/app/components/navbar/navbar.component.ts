@@ -18,7 +18,7 @@ import { LoginRegisterViewComponent } from '../users/login-register-view/login-r
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  IsLogged: boolean = false;
+  IsLogged: boolean = localStorage.getItem("Islogged") == true.toString();
   User: string = "user";
   userName: string = "";
   password: string = "";
@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.cartService.cart.subscribe({
       next: (cart) => {
         this.cartQuanity = cart.items.length;
@@ -43,16 +42,19 @@ export class NavbarComponent implements OnInit {
 
     this.userAuth.isloginstatues().subscribe({
       next: (Islogged) => {
-        this.IsLogged = Islogged
-        if (Islogged)
+        this.IsLogged = Islogged;
+        localStorage.setItem("Islogged", this.IsLogged.toString());
+      }
+    });
+
+    if (this.IsLogged)
           this.profileService.getProfile().subscribe({
             next: (profile) => {
+              console.log(profile)
               this.User = profile.data.user.Firstname + profile.data.user.Lastname
               console.log(profile.data.user.Firstname + profile.data.user.Lastname)
             }
           });
-      }
-    });
   }
 
   openDialog(): void {

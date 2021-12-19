@@ -16,7 +16,8 @@ import { UserAuthGuard } from 'src/app/security/user-auth.guard';
 const routes:Routes = [
   {path:"", redirectTo:'/User/MyProfile', pathMatch:"full"},
   {path:'registerorlogin', component:LoginRegisterViewComponent},
-  {path:'MyProfile', component:LoginRegisterViewComponent, canActivate:[UserAuthGuard]},
+  {path:'CheckOut', component:UserActionComponent, canActivate:[UserAuthGuard]},
+  {path:'MyProfile', component:UserActionComponent, canActivate:[UserAuthGuard]},
 ]
 
 

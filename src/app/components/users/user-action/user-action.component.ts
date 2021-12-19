@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileService } from 'src/app/services/Profile/profile.service';
 import { IuserSingUp } from 'src/app/viewmodel/user/IuserSingUp';
 
 @Component({
@@ -7,7 +8,15 @@ import { IuserSingUp } from 'src/app/viewmodel/user/IuserSingUp';
   styleUrls: ['./user-action.component.scss'],
 })
 export class UserActionComponent implements OnInit {
-  constructor() {}
+  constructor(private profileService:ProfileService) {
+    this.profileService.getProfile().subscribe({
+      next: (profile)=>{
+        this.user = profile.data.user
+        console.log(profile.data.user)
+        console.log(this.user)
+      }
+    })
+  }
   user: IuserSingUp = {
     firstname: 'rashad',
     lastname: 'alhashmie',
