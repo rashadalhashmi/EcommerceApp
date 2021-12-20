@@ -12,7 +12,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 export class ProductsofcategoryComponent implements OnInit {
   productsList:any;
   category:any;
-  catgSentedId:number = 0;
+  catgSentedId:string = "0";
   deptName:string = "";
   constructor(private productService:ProductService,
               private categoryService:CategoryService,
@@ -20,7 +20,7 @@ export class ProductsofcategoryComponent implements OnInit {
               private activeRoute: ActivatedRoute) {
     this.activeRoute.paramMap.subscribe(
       (params) => {
-        this.catgSentedId = Number(params.get("CID"));
+        this.catgSentedId = params.get("CID")!.toString();
         this.productService.getProductsByCategoryID(this.catgSentedId).subscribe({
           next: (products) => {
             this.productsList = products.data;
@@ -30,10 +30,11 @@ export class ProductsofcategoryComponent implements OnInit {
         this.categoryService.getCategoryByID(this.catgSentedId).subscribe({
           next: (category) => {
             this.category = category.data;
+            console.log(this.category.imageURL)
             this.deptService.getDepartmentbyId(category.data.departmentID).subscribe({
               next: (dept) =>
               {
-                this.deptName = dept.data.departmentName;
+                this.deptName = dept.data.departmentName
               }
             })
           }

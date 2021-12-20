@@ -49,7 +49,7 @@ export class CartService {
     this.cart$.next(this._cart);
   }
 
-  removeItemFromCart(productId: number) {
+  removeItemFromCart(productId: string) {
     let cartItem: ICartItem | undefined = this._cart?.items.find(item => item.product.id == productId);
     this._cart.items = this._cart.items.filter(item => item != cartItem)
     this._cart.totalPrice = this.calcaulateTotalPrice();
@@ -74,8 +74,8 @@ export class CartService {
       0);
     return totalPrice;
   }
-  changeQuantity(productId: number, quentity: number) {
-    let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: 0 } };
+  changeQuantity(productId: string, quentity: number) {
+    let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: "0" } };
     if (quentity <= cartItem.product.quantity) {
       cartItem.Quantity = quentity;
       this._cart.totalPrice = this.calcaulateTotalPrice()

@@ -12,7 +12,7 @@ export class AsideComponent implements OnInit{
   panelOpenState = false;
   departments: any;
   categoriesInDept: any;
-  deptId: number = 0;
+  deptId: string = "0";
   constructor(private deptService:DepartmentService, private catgService: CategoryService) {
     this.deptService.getAllDepartments().subscribe({
       next: (departmentsobj) => {
@@ -21,7 +21,7 @@ export class AsideComponent implements OnInit{
     });
   }
 
-  getCategories(deptId:number) {
+  getCategories(deptId:string) {
     this.catgService.getCategoriesByDeptID(deptId).subscribe({
       next: (categories) => {
         this.categoriesInDept = categories.data
