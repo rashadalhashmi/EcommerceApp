@@ -49,7 +49,7 @@ export class CartService {
     this.cart$.next(this._cart);
   }
 
-  removeItemFromCart(productId: number) {
+  removeItemFromCart(productId: string) {
     let cartItem: ICartItem | undefined = this._cart?.items.find(item => item.product.id == productId);
     this._cart.items = this._cart.items.filter(item => item != cartItem)
     this._cart.totalPrice = this.calcaulateTotalPrice();
@@ -74,8 +74,8 @@ export class CartService {
       0);
     return totalPrice;
   }
-  changeQuantity(productId: number, quentity: number) {
-    let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: 0 } };
+  changeQuantity(productId: string, quentity: number) {
+    let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: "0" } };
     if (quentity <= cartItem.product.quantity) {
       cartItem.Quantity = quentity;
       this._cart.totalPrice = this.calcaulateTotalPrice()
@@ -98,6 +98,12 @@ export class CartService {
     }
     this.order.items = [];
     this._cart.items.forEach(item => {
+      this.profileService.getProfile().subscribe({
+        next: (profile) => {
+          debugger
+          this.order.customerID = profile.data.user.id
+        }
+      })
       this.order.items.push({
         amount: item.Quantity,
         date: new Date(),
@@ -108,14 +114,10 @@ export class CartService {
     this.order.status = 0;
     this.order.orderDate = new Date();
 
-    this.profileService.getProfile().subscribe({
-      next: (profile) => {
-        this.order.customerID = profile.data.user.id
-      }
-    })
+
 
     console.log(this.order)
-    console.log(jwt_decode(localStorage.getItem("token")!))
+    // console.log(jwt_decode(localStorage.getItem("token")!))
     return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
   }
 }

@@ -14,7 +14,7 @@ export class UserAuthService {
   private loginstatues:BehaviorSubject<boolean>;
 
   constructor(private httpService: HttpClient, private cookiesService: CookieService) {
-    this.loginstatues = new BehaviorSubject<boolean>(false);
+    this.loginstatues = new BehaviorSubject<boolean>(localStorage.getItem("Islogged") == true.toString());
   }
 
   Login(userName: string, password: string, rememberMe: boolean): Observable<IResultViewModel> {
@@ -25,7 +25,6 @@ export class UserAuthService {
 
     if (rememberMe) {
       this.cookiesService.set('userName', userName);
-      this.cookiesService.set('Password', password);
     }
 
     const httpOption = {
@@ -51,6 +50,7 @@ export class UserAuthService {
     localStorage.removeItem("token");
     console.log(localStorage.getItem("token"));
     this.loginstatues.next(false);
+    localStorage.removeItem("Islogged");
     return false;
   }
 

@@ -34,13 +34,13 @@ export class ProductService {
     return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product`, httpOption);
   }
 
-  getProductsByCategoryID(categoryId: number): Observable<IResultViewModel> {
-    if (categoryId == 0) return this.httpService.get<IResultViewModel>(`${environment.APIURL}/products`)
+  getProductsByCategoryID(categoryId: string): Observable<IResultViewModel> {
+    if (categoryId == "0") return this.httpService.get<IResultViewModel>(`${environment.APIURL}/products`)
     else
       return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product/Category/${categoryId}`);
   }
 
-  getProductByID(pID: number): Observable<IResultViewModel> {
+  getProductByID(pID: string): Observable<IResultViewModel> {
     return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product/${pID}`)
   }
 
