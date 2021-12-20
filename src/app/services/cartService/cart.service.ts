@@ -98,6 +98,12 @@ export class CartService {
     }
     this.order.items = [];
     this._cart.items.forEach(item => {
+      this.profileService.getProfile().subscribe({
+        next: (profile) => {
+          debugger
+          this.order.customerID = profile.data.user.id
+        }
+      })
       this.order.items.push({
         amount: item.Quantity,
         date: new Date(),
@@ -108,13 +114,9 @@ export class CartService {
     this.order.status = 0;
     this.order.orderDate = new Date();
 
-    this.profileService.getProfile().subscribe({
-      next: (profile) => {
-        this.order.customerID = profile.data.user.id
-      }
-    })
 
-    // console.log(this.order)
+
+    console.log(this.order)
     // console.log(jwt_decode(localStorage.getItem("token")!))
     return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
   }
