@@ -6,6 +6,7 @@ import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import jwt_decode from 'jwt-decode';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
 import { NavService } from 'src/app/services/navbar/nav.service';
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -52,6 +53,9 @@ export class LoginComponent implements OnInit {
           }
         });
         this.router.navigate(['/Home']);
+        alert("Login Successfully");
+        (document.getElementsByClassName("cdk-overlay-container")[0] as HTMLElement).hidden =true;
+        window.location.reload();
         // if(decoded)
         // {
         //   // alert("Login Please");

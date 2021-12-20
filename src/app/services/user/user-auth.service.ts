@@ -37,7 +37,7 @@ export class UserAuthService {
             Username : userName,
             Password : password,
             IsRemembered : rememberMe,
-            UserRole : "customer"
+            UserRole : "Customer"
           }
         }
       )

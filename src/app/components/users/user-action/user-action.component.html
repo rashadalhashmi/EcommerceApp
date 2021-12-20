@@ -113,12 +113,12 @@
                   </h2>
                   <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-sm"
-                        *ngFor="let prod of cartItems">
+                        *ngFor="let prod of products">
                       <div>
                         <h4 class="my-0">{{prod.name}}</h4>
-                        <small class="text-muted">{{prod.name}}</small>
+                        <small class="text-muted">{{prod.description}}</small>
                       </div>
-                      <span class="text-muted">{{prod.name}}</span>
+                      <span class="text-muted">{{prod.price - (prod.price * prod.discount)/100 }}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                       <span>Total (USD)</span>
@@ -160,9 +160,9 @@
                     </div>
                   </div>
 
-                  <div class="mt-2">
+                  <!-- <div class="mt-2">
                     <input type="submit" value="save" class="btn btn-success" />
-                  </div>
+                  </div> -->
                 </div>
               </form>
               <form action="">
@@ -178,9 +178,9 @@
                       <input type="password" name="password" id="password" placeholder=" {{ user.password }}"
                         class="form-control" />
                     </div>
-                    <div class="mt-4">
+                    <!-- <div class="mt-4">
                       <input type="submit" value="save" class="btn btn-success" />
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </form>

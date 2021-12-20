@@ -29,7 +29,8 @@ export class NavbarComponent implements OnInit {
   constructor(public dialog: MatDialog,
     public NavService: NavService,
     private cartService: CartService,
-    private userAuth: UserAuthService) {
+    private userAuth: UserAuthService,
+    private profileService:ProfileService) {
   }
 
   ngOnInit(): void {
@@ -42,6 +43,13 @@ export class NavbarComponent implements OnInit {
     this.userAuth.isloginstatues().subscribe({
       next: (Islogged) => {
         this.IsLogged = Islogged;
+        this.profileService.getProfile().subscribe({
+          next: (profile) => {
+            debugger;
+            this.User = profile.data.user.firstname + " " + profile.data.user.lastname
+            this.NavService.userEmitter.emit(this.User)
+          }
+        });
         localStorage.setItem("Islogged", this.IsLogged.toString());
       }
     });

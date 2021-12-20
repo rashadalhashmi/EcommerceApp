@@ -90,7 +90,7 @@ export class CartService {
 
   }
 
-  placeOrder() {
+  placeOrder():void {
     const httpOption = {
       headers: new HttpHeaders({
         'content-type': 'Application/JSON'
@@ -110,12 +110,13 @@ export class CartService {
 
     this.profileService.getProfile().subscribe({
       next: (profile) => {
-        this.order.customerID = profile.data.user.id
+        this.order.customerID = profile.data.user.id;
+        this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption).subscribe();
       }
     })
 
     // console.log(this.order)
     // console.log(jwt_decode(localStorage.getItem("token")!))
-    return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
+    //return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
   }
 }
