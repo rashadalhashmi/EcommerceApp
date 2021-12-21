@@ -42,7 +42,7 @@ export class UserAuthService {
         }
       )
     }
-    this.loginstatues.next(true);
+    // this.loginstatues.next(true);
     return this.httpService.post<IResultViewModel>(`${environment.APIURL}/Account/Login`, null, httpOption);
   }
 

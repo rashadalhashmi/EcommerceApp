@@ -14,15 +14,15 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = {} as FormGroup;
-  checked:boolean = false;
-  user:string = "";
+  checked: boolean = false;
+  user: string = "";
 
   constructor(private formBuilder: FormBuilder,
-              private userServices: UserAuthService,
-              private router: Router,
-              private cookieService: CookieService,
-              private profileService:ProfileService,
-              private NavService:NavService) { }
+    private userServices: UserAuthService,
+    private router: Router,
+    private cookieService: CookieService,
+    private profileService: ProfileService,
+    private NavService: NavService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -39,38 +39,48 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userServices.Login(this.loginForm.value['username'],
-                            this.loginForm.value['password'],
-                            this.checked)
-                            .subscribe({
-      next: (token) => {
-        localStorage.setItem("token", token.data);
+      this.loginForm.value['password'],
+      this.checked)
+      .subscribe({
+        next: (token) => {
+          debugger
+          if (token.data != "") {
+            localStorage.setItem("token", token.data);
 
-        this.profileService.getProfile().subscribe({
-          next: (profile) => {
-            debugger;
-            this.user = profile.data.user.firstname + " " + profile.data.user.lastname
-            this.NavService.userEmitter.emit(this.user)
+            this.profileService.getProfile().subscribe({
+              next: (profile) => {
+                debugger;
+                this.user = profile.data.user.firstname + " " + profile.data.user.lastname
+                this.NavService.userEmitter.emit(this.user)
+                localStorage.setItem("Islogged", true.toString());
+              }
+            });
+            this.router.navigate(['/Home']);
+            alert("Login Successfully");
+            (document.getElementsByClassName("cdk-overlay-container")[0] as HTMLElement).hidden = true;
+            window.location.reload();
           }
-        });
-        this.router.navigate(['/Home']);
-        alert("Login Successfully");
-        (document.getElementsByClassName("cdk-overlay-container")[0] as HTMLElement).hidden =true;
-        window.location.reload();
-        // if(decoded)
-        // {
-        //   // alert("Login Please");
-        //   this.router.navigate(['User/SignUp']);
-        // }
-        // console.log(token.data)
-        // // console.log(decoded.UserID)
-        // console.log(JSON.stringify(decoded).includes("customer"));
-      }
-    });
+          else
+          {
+            alert("Not User Register Please");
+            localStorage.setItem("Islogged", false.toString());
+          }
+
+          // if(decoded)
+          // {
+          //   // alert("Login Please");
+          //   this.router.navigate(['User/SignUp']);
+          // }
+          // console.log(token.data)
+          // // console.log(decoded.UserID)
+          // console.log(JSON.stringify(decoded).includes("customer"));
+        }
+      });
 
     this.router.navigate(['/Home']);
   }
 
-  onChange(event:Event) {
+  onChange(event: Event) {
     if ((event.target as HTMLInputElement).checked) {
       this.checked = true;
     }

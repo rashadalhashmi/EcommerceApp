@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 // import {  ModalDismissReasons, NgbModual} from "@ng-bootstrap/ng-bootstrap";
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { userInfo } from 'os';
 import { ICart } from 'src/app/model/ICartItem';
 import { CartService } from 'src/app/services/cartService/cart.service';
@@ -30,7 +31,8 @@ export class NavbarComponent implements OnInit {
     public NavService: NavService,
     private cartService: CartService,
     private userAuth: UserAuthService,
-    private profileService:ProfileService) {
+    private profileService:ProfileService,
+    private router:Router) {
   }
 
   ngOnInit(): void {
@@ -79,6 +81,7 @@ export class NavbarComponent implements OnInit {
 
   Logout() {
     this.userAuth.Logout();
+    this.router.navigate(["/Home"])
     //this.isUserLogged = this.userAuth.isLogged();
   }
 }

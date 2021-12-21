@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     address: "",
     phone: "",
     image: "",
-    userRole: "customer"
+    userRole: "Customer"
   }
 
   userForm: any;
