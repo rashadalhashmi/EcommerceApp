@@ -43,14 +43,12 @@ export class LoginComponent implements OnInit {
       this.checked)
       .subscribe({
         next: (token) => {
-          debugger
           if (token.data != "") {
             localStorage.setItem("token", token.data);
 
             this.profileService.getProfile().subscribe({
               next: (profile) => {
-                debugger;
-                this.user = profile.data.user.firstname + " " + profile.data.user.lastname
+                this.user = profile.data.firstname + " " + profile.data.lastname
                 this.NavService.userEmitter.emit(this.user)
                 localStorage.setItem("Islogged", true.toString());
               }

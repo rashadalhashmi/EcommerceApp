@@ -24,7 +24,6 @@ export class CartComponent implements OnInit {
   }
 
   changeQuantity(id:string,event:any){
-    debugger
     this.cartservice.changeQuantity(id,+event.target.value);
   }
 

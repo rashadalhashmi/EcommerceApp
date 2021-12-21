@@ -116,9 +116,9 @@
                         *ngFor="let prod of products">
                       <div>
                         <h4 class="my-0">{{prod.name}}</h4>
-                        <small class="text-muted">{{prod.description}}</small>
+                        <!-- <small class="text-muted">{{prod.description}}</small> -->
                       </div>
-                      <span class="text-muted">{{prod.price - (prod.price * prod.discount)/100 }}</span>
+                      <span class="text-muted">{{prod.price}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                       <span>Total (USD)</span>

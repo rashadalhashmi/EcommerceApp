@@ -103,19 +103,16 @@ export class CartService {
         this.order.items.push({
           amount: item.Quantity,
           date: new Date(),
-          productID: item.product.id.toString(),
+          productID: item.product.id,
         });
       });
-      debugger
       this.order.status = 0;
       this.order.orderDate = new Date();
-
       this._cart = {} as ICart;
       this.cart$.next(this._cart);
     }
   else
   {
-    debugger
     alert("login please")
     return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(null), httpOption);
   }

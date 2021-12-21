@@ -38,7 +38,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.cart.subscribe({
       next: (cart) => {
-        this.cartQuanity = cart.items.length;
+        console.log(cart)
+        if(Object.keys(cart).length === 0)
+        {
+          this.cartQuanity = 0;
+        }
+        else
+        {
+          this.cartQuanity = cart.items.length;
+        }
       }
     })
 
@@ -47,8 +55,7 @@ export class NavbarComponent implements OnInit {
         this.IsLogged = Islogged;
         this.profileService.getProfile().subscribe({
           next: (profile) => {
-            debugger;
-            this.User = profile.data.user.firstname + " " + profile.data.user.lastname
+            this.User = profile.data.firstname + " " + profile.user.lastname
             this.NavService.userEmitter.emit(this.User)
           }
         });
@@ -57,7 +64,6 @@ export class NavbarComponent implements OnInit {
     });
 
     this.NavService.userEmitter.subscribe(data => {
-      debugger;
       this.User = data;
     });
   }
