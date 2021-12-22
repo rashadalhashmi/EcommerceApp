@@ -22,7 +22,7 @@ export class UserAuthGuard implements CanActivate {
       return false;
 
     let decoded = jwt_decode(token);
-    if(!JSON.stringify(decoded).includes("customer"))
+    if(!JSON.stringify(decoded).includes("Customer"))
     {
       alert("Login Please");
         this.router.navigate(['User/Login']);

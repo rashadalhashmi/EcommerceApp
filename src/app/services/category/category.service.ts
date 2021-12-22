@@ -16,13 +16,13 @@ export class CategoryService {
     return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Category`);
   }
 
-  getCategoriesByDeptID(deptId: number): Observable<IResultViewModel> {
-    if (deptId == 0) return this.httpService.get<IResultViewModel>(`${environment.APIURL}/categories`)
+  getCategoriesByDeptID(deptId: string): Observable<IResultViewModel> {
+    if (deptId == "0") return this.httpService.get<IResultViewModel>(`${environment.APIURL}/categories`)
     else
       return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Category/Department/${deptId}`);
   }
 
-  getCategoryByID(cID: number): Observable<IResultViewModel> {
+  getCategoryByID(cID: string): Observable<IResultViewModel> {
     return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Category/${cID}`)
   }
 }

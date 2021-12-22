@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     address: "",
     phone: "",
     image: "",
-    userRole: "customer"
+    userRole: "Customer"
   }
 
   userForm: any;
@@ -79,7 +79,10 @@ export class RegisterComponent implements OnInit {
     this.user.gender = +this.userForm.value.gender;
     this.user.address = this.userForm.value.address;
     this.user.username = this.userForm.value.username
-    this.userService.signUP(this.user).subscribe(data => console.log(data))
+    this.userService.signUP(this.user).subscribe(data => {
+      console.log(data)
+      alert("Go To Login");
+    })
 
 
   }

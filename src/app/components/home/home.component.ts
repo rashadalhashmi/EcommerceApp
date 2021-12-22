@@ -11,7 +11,7 @@ import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 export class HomeComponent implements OnInit {
   productsList: any;
   // Pagination parameters.
-  pageSize:number = 1;
+  pageSize:number = 5;
   page:number = 1
   count:number = 0;
   constructor(private productService: ProductService, private NavService: NavService) {
