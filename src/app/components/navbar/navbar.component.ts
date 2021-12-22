@@ -70,13 +70,15 @@ export class NavbarComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginRegisterViewComponent, {
-      width: '50%',
+      // width: '50%',
 
       data: { userName: this.userName, password: this.password },
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      // this.router.
+      window.location.reload();
       this.password = result;
     });
   }

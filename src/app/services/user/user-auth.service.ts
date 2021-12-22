@@ -18,11 +18,6 @@ export class UserAuthService {
   }
 
   Login(userName: string, password: string, rememberMe: boolean): Observable<IResultViewModel> {
-    // this.user.Username = userName;
-    // this.user.Password = password;
-    // this.user.IsRemembered = rememberMe;
-    // this.user.UserRole = "9c6d3c3f-bbc5-43d3-af89-bfd566c9ed94";
-
     if (rememberMe) {
       this.cookiesService.set('userName', userName);
     }

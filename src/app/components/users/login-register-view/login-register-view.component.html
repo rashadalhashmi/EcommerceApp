@@ -1,35 +1,20 @@
-<div class="container-fluid" id="dialog">
-  <div class="row">
+<!-- <div class="container-fluid" id="dialog">
+  <div class="row"> -->
     <!--  <div style="height: 500px;" class="my-5"> -->
     <div class="tab">
-      <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="Login">
-          <app-login></app-login>
-        </mat-tab>
+      <mat-dialog-content>
+        <button class="close" mat-button (click)="onNoClick()">X</button>
+        <mat-tab-group mat-align-tabs="center">
+          <mat-tab label="Login">
+            <app-login></app-login>
+          </mat-tab>
 
-        <mat-tab label="Register">
-          <app-register></app-register>
-        </mat-tab>
-        <button md-raised-button md-dialog-close>Cancel</button>
-        <!-- for test the checkout component -->
-        <!-- <mat-tab label="checkout">
-      <app-checkout></app-checkout>
-    </mat-tab> -->
-      </mat-tab-group>
+          <mat-tab label="Register">
+            <app-register></app-register>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-dialog-content>
     </div>
-  </div>
-</div>
-<!-- </div> -->
-
-<!-- <h1 mat-dialog-title>Hi {{data.UserName}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.Password">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button> -->
-<!-- <button mat-button [mat-dialog-close]="data.Password" cdkFocusInitial>Ok</button> -->
+  <!-- </div>
+</div> -->
 <!-- </div> -->

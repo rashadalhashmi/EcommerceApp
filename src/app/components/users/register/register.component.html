@@ -151,18 +151,18 @@
       <!-- Gender -->
       <div class="form-group row mb-2">
         <label class="col-md-12 col-form-label" for="gender">Gender</label>
-        <div class=" row col-md-12">
+        <div class=" row col-md-12 ps-4">
           <input formControlName="gender" class="col-1" type="radio" name="gender"  value="0">M
-          <input  formControlName="gender" class="col-1" type="radio" name="gender"  value="1">F
+          <input formControlName="gender" class="col-1" type="radio" name="gender"  value="1">F
         </div>
       </div>
 
         <!-- submit -->
       <div class="form-group row ">
-        <div class=" offset-md-4 col-md-4 offset-md-4">
+        <div class="col-md-4">
           <button class="btn btn-primary mt-2" type="submit" style="width:100%"
             [disabled]="!userForm.valid">
-            Submit
+            SignUp
           </button>
         </div>
       </div>

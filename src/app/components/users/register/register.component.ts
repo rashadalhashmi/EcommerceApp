@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
     password: "",
     gender: 0,
     address: "",
-    phone: "",
+    phoneNumber: "",
     image: "",
     userRole: "Customer"
   }
@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
     this.user.lastname = this.userForm.value.lastName;
     this.user.email = this.userForm.value.email;
     this.user.password = this.userForm.value.passwordGroup.password;
-    this.user.phone = this.userForm.value.phone;
+    this.user.phoneNumber = this.userForm.value.phone;
     this.user.gender = +this.userForm.value.gender;
     this.user.address = this.userForm.value.address;
     this.user.username = this.userForm.value.username
