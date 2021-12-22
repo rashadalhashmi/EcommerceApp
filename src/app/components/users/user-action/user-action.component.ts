@@ -24,7 +24,7 @@ export class UserActionComponent implements OnInit {
     password: 'djf125522445',
     gender: 0,
     address: 'cairo,nasercity',
-    phone: '01128289672',
+    phoneNumber: '01128289672',
     image: 'llf/dff',
     userRole: 'Customer',
   };
@@ -34,6 +34,7 @@ export class UserActionComponent implements OnInit {
               private productService:ProductService) {
     this.profileService.getProfile().subscribe({
       next: (profile)=>{
+        console.log(profile);
         this.user = profile.data
         this.orderService.getOrders(profile.data.id).subscribe({
           next: (orders)=>{
