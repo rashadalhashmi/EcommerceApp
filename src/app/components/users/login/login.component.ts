@@ -7,6 +7,8 @@ import jwt_decode from 'jwt-decode';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
 import { NavService } from 'src/app/services/navbar/nav.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { response } from 'express';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,51 +20,53 @@ export class LoginComponent implements OnInit {
   user: string = "";
 
   constructor(private formBuilder: FormBuilder,
-    private userServices: UserAuthService,
+    private userAuthServices: UserAuthService,
     private router: Router,
-    private cookieService: CookieService,
     private profileService: ProfileService,
     private NavService: NavService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
       {
-        username: [this.cookieService.get('userName'), [Validators.required]],
-        password: [this.cookieService.get('Passord'), [Validators.required]],
-        rememberMe: []
+        username: ["", [Validators.required]],
+        password: ["", [Validators.required]],
+        rememberMe: true
       }
     )
-    this.loginForm.controls['rememberMe'].valueChanges.subscribe(checked =>
-      this.checked = checked
-    );
+
   }
 
   login() {
-    this.userServices.Login(this.loginForm.value['username'],
-      this.loginForm.value['password'],
-      this.checked)
-      .subscribe({
-        next: (token) => {
-          if (token.data != "") {
-            localStorage.setItem("token", token.data);
+    this.userAuthServices
+    .Login(this.loginForm.value.username,
+                this.loginForm.value.password,this.loginForm.value.rememberMe)
 
-            this.profileService.getProfile().subscribe({
-              next: (profile) => {
-                this.user = profile.data.firstname + " " + profile.data.lastname
-                this.NavService.userEmitter.emit(this.user)
-                localStorage.setItem("Islogged", true.toString());
-              }
-            });
-            this.router.navigate(['/Home']);
-            alert("Login Successfully");
-            (document.getElementsByClassName("cdk-overlay-container")[0] as HTMLElement).hidden = true;
-            window.location.reload();
-          }
-          else
-          {
-            alert("Not User Register Please");
-            localStorage.setItem("Islogged", false.toString());
-          }
+
+    // this.userServices.Login(this.loginForm.value['username'],
+    //   this.loginForm.value['password'],
+    //   this.checked)
+    //   .subscribe({
+    //     next: (token) => {
+    //       if (token.data != "") {
+    //         localStorage.setItem("token", token.data);
+
+    //         this.profileService.getProfile().subscribe({
+    //           next: (profile) => {
+    //             this.user = profile.data.firstname + " " + profile.data.lastname
+    //             this.NavService.userEmitter.emit(this.user)
+    //             localStorage.setItem("Islogged", true.toString());
+    //           }
+    //         });
+    //         this.router.navigate(['/Home']);
+    //         alert("Login Successfully");
+    //         (document.getElementsByClassName("cdk-overlay-container")[0] as HTMLElement).hidden = true;
+    //         window.location.reload();
+    //       }
+    //       else
+    //       {
+    //         alert("Not User Register Please");
+    //         localStorage.setItem("Islogged", false.toString());
+    //       }
 
           // if(decoded)
           // {
@@ -72,10 +76,10 @@ export class LoginComponent implements OnInit {
           // console.log(token.data)
           // // console.log(decoded.UserID)
           // console.log(JSON.stringify(decoded).includes("customer"));
-        }
-      });
+    //     }
+    //   });
 
-    this.router.navigate(['/Home']);
+    // this.router.navigate(['/Home']);
   }
 
   onChange(event: Event) {

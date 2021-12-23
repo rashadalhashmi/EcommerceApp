@@ -19,11 +19,9 @@ import { LoginRegisterViewComponent } from '../users/login-register-view/login-r
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  IsLogged: boolean = localStorage.getItem("Islogged") == true.toString();
-  User: string = "user";
-  userName: string = "";
+  IsLogged: boolean = false;
+  userName: string = "user";
   password: string = "";
-
   searchInp: string = "";
 
   cartQuanity: number = 0;
@@ -50,37 +48,25 @@ export class NavbarComponent implements OnInit {
       }
     })
 
-    this.userAuth.isloginstatues().subscribe({
-      next: (Islogged) => {
-        this.IsLogged = Islogged;
-        this.profileService.getProfile().subscribe({
-          next: (profile) => {
-            this.User = profile.data.firstname + " " + profile.user.lastname
-            this.NavService.userEmitter.emit(this.User)
-          }
-        });
-        localStorage.setItem("Islogged", this.IsLogged.toString());
-      }
-    });
 
-    this.NavService.userEmitter.subscribe(data => {
-      this.User = data;
-    });
+    this.userAuth.loginStatus().subscribe(islogin=>{
+      this.IsLogged=islogin;
+        this.userName=localStorage.getItem('username')??'user'
+
+    })
+
+
+
+
+
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(LoginRegisterViewComponent, {
-      // width: '50%',
-
+     this.dialog.open(LoginRegisterViewComponent, {
       data: { userName: this.userName, password: this.password },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.router.
-      window.location.reload();
-      this.password = result;
-    });
+
   }
 
   search() {
@@ -90,6 +76,5 @@ export class NavbarComponent implements OnInit {
   Logout() {
     this.userAuth.Logout();
     this.router.navigate(["/Home"])
-    //this.isUserLogged = this.userAuth.isLogged();
   }
 }

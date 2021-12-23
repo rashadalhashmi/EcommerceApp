@@ -24,7 +24,7 @@ export class UserActionComponent implements OnInit {
     password: 'djf125522445',
     gender: 0,
     address: 'cairo,nasercity',
-    phoneNumber: '01128289672',
+    phone: '01128289672',
     image: 'llf/dff',
     userRole: 'Customer',
   };

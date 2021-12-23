@@ -6,7 +6,7 @@ export interface IuserSingUp{
   password: string,
   gender: number,
   address: string,
-  phoneNumber: string,
+  phone: string,
   image: string,
   userRole: string
 }
