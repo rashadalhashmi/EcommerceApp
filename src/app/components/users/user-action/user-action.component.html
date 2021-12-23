@@ -92,7 +92,14 @@
             <svg class="bi me-2" width="16" height="16">
               <use xlink:href="#people-circle" />
             </svg>Profile</a>
+
+            <a class="nav-link"  [routerLink]="['profileEditing']">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#people-circle" />
+              </svg> Edit Profile </a>
         </div>
+
+
             <!-- child comonent render her  -->
          <div class="col-9">
           <router-outlet class="tab-content"></router-outlet>

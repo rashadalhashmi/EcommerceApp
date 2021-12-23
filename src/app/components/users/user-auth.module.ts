@@ -13,13 +13,15 @@ import { UserActionComponent } from './user-action/user-action.component';
 import { UserAuthGuard } from 'src/app/security/user-auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
+import { ProfileEditingComponent } from './profile-editing/profile-editing.component';
 
 const routes:Routes = [
   {path:"", redirectTo:'/User/MyProfile', pathMatch:"full"},
   {path:'registerorlogin', component:LoginRegisterViewComponent},
   {path:'useraction', component:UserActionComponent, children:[
     {path:'profile',component:ProfileComponent},
-    {path:"order",component:OrderComponent}
+    {path:"order",component:OrderComponent},
+    {path:"profileEditing",component:ProfileEditingComponent}
 
   ],canActivate:[UserAuthGuard]},
 ]
@@ -33,6 +35,7 @@ const routes:Routes = [
     UserActionComponent,
     ProfileComponent,
     OrderComponent,
+    ProfileEditingComponent,
   ],
   imports: [
     CommonModule,
