@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 // import {  ModalDismissReasons, NgbModual} from "@ng-bootstrap/ng-bootstrap";
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { userInfo } from 'os';
 import { ICart } from 'src/app/model/ICartItem';
 import { CartService } from 'src/app/services/cartService/cart.service';
@@ -19,10 +20,8 @@ import { LoginRegisterViewComponent } from '../users/login-register-view/login-r
 })
 export class NavbarComponent implements OnInit {
   IsLogged: boolean = false;
-  User: string = "user";
-  userName: string = "";
+  userName: string = "user";
   password: string = "";
-
   searchInp: string = "";
 
   cartQuanity: number = 0;
@@ -30,42 +29,44 @@ export class NavbarComponent implements OnInit {
     public NavService: NavService,
     private cartService: CartService,
     private userAuth: UserAuthService,
-    private profileService: ProfileService) {
+    private profileService:ProfileService,
+    private router:Router) {
   }
 
   ngOnInit(): void {
-
     this.cartService.cart.subscribe({
       next: (cart) => {
-        this.cartQuanity = cart.items.length;
+        console.log(cart)
+        if(Object.keys(cart).length === 0)
+        {
+          this.cartQuanity = 0;
+        }
+        else
+        {
+          this.cartQuanity = cart.items.length;
+        }
       }
     })
 
-    this.userAuth.isloginstatues().subscribe({
-      next: (Islogged) => {
-        this.IsLogged = Islogged
-        if (Islogged)
-          this.profileService.getProfile().subscribe({
-            next: (profile) => {
-              this.User = profile.data.user.Firstname + profile.data.user.Lastname
-              console.log(profile.data.user.Firstname + profile.data.user.Lastname)
-            }
-          });
-      }
-    });
+
+    this.userAuth.loginStatus().subscribe(islogin=>{
+      this.IsLogged=islogin;
+        this.userName=localStorage.getItem('username')??'user'
+
+    })
+
+
+
+
+
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(LoginRegisterViewComponent, {
-      width: '50%',
-
+     this.dialog.open(LoginRegisterViewComponent, {
       data: { userName: this.userName, password: this.password },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.password = result;
-    });
+
   }
 
   search() {
@@ -74,6 +75,6 @@ export class NavbarComponent implements OnInit {
 
   Logout() {
     this.userAuth.Logout();
-    //this.isUserLogged = this.userAuth.isLogged();
+    this.router.navigate(["/Home"])
   }
 }

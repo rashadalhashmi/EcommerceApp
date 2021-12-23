@@ -10,7 +10,7 @@
   <div class="px-2">
     <h4>{{product.name}}</h4>
     <div class="mt-1">
-      <span class="text-dark">{{product.price | currency}}</span>
+      <span class="text-dark">{{price | currency}}</span>
       <span class="text-secondary text-decoration-line-through px-2">{{priceWithoutDiscount | number}}</span>
       <span class="text-danger fw-normal">save {{(priceWithoutDiscount - price) | number}}</span>
     </div>

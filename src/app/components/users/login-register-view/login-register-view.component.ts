@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import { IUser } from 'src/app/viewmodel/iuserLogin';
 
 @Component({
@@ -13,13 +14,16 @@ export class LoginRegisterViewComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<LoginRegisterViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IUser,
+    private userAuthService :UserAuthService
   ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
   ngOnInit(): void {
+    this.userAuthService.loginStatus().subscribe(islogin=>{
+      if(islogin){
+        this.dialogRef.close();
+
+      }
+    })
   }
 
 }

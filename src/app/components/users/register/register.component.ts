@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
+import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { Gender } from 'src/app/viewmodel/Gender';
 import { IuserSingUp } from 'src/app/viewmodel/user/IuserSingUp';
@@ -40,14 +42,15 @@ export class RegisterComponent implements OnInit {
     address: "",
     phone: "",
     image: "",
-    userRole: "customer"
+    userRole: "Customer"
   }
 
   userForm: any;
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private userService: UserService) {
+    private userAuthService:UserAuthService,
+    private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
@@ -78,9 +81,10 @@ export class RegisterComponent implements OnInit {
     this.user.phone = this.userForm.value.phone;
     this.user.gender = +this.userForm.value.gender;
     this.user.address = this.userForm.value.address;
-    this.user.username = this.userForm.value.username
-    this.userService.signUP(this.user).subscribe(data => console.log(data))
+    this.user.username = this.userForm.value.username;
 
+
+    this.userAuthService.signUp(this.user);
 
   }
 }

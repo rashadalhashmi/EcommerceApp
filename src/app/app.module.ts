@@ -39,7 +39,7 @@ import { UserAuthService } from './services/user/user-auth.service';
     SliderComponent,
     CartComponent,
     ClickStopPropagationDirective,
-    ProductsofcategoryComponent
+    ProductsofcategoryComponent,
   ],
   imports: [
     BrowserModule,

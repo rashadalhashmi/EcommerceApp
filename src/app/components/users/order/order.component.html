@@ -1,0 +1,23 @@
+<div class="tab-pane fade show active" id="v-pills-order" role="tabpanel"
+      aria-labelledby="v-pills-order-tab">
+      <h1 style="font-weight: bold">my order</h1>
+      <div class="row">
+        <div class="col-md-6 col-lg-6">
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm"
+                *ngFor="let prod of products">
+              <div>
+                <h4 class="my-0">{{prod.name}}</h4>
+              </div>
+              <span class="text-muted">{{prod.price}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (USD)</span>
+              <strong>{{totalPrice}}</strong>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-lg-4">
+        </div>
+      </div>
+    </div>

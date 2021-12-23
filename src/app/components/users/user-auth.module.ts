@@ -9,14 +9,21 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginRegisterViewComponent } from './login-register-view/login-register-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { UserActionComponent } from './user-action/user-action.component';
 import { UserAuthGuard } from 'src/app/security/user-auth.guard';
+import { ProfileComponent } from './profile/profile.component';
+import { OrderComponent } from './order/order.component';
+import { ProfileEditingComponent } from './profile-editing/profile-editing.component';
 
 const routes:Routes = [
   {path:"", redirectTo:'/User/MyProfile', pathMatch:"full"},
   {path:'registerorlogin', component:LoginRegisterViewComponent},
-  {path:'MyProfile', component:LoginRegisterViewComponent, canActivate:[UserAuthGuard]},
+  {path:'useraction', component:UserActionComponent, children:[
+    {path:'profile',component:ProfileComponent},
+    {path:"order",component:OrderComponent},
+    {path:"profileEditing",component:ProfileEditingComponent}
+
+  ],canActivate:[UserAuthGuard]},
 ]
 
 
@@ -25,8 +32,10 @@ const routes:Routes = [
     LoginComponent,
     RegisterComponent,
     LoginRegisterViewComponent,
-    CheckoutComponent,
     UserActionComponent,
+    ProfileComponent,
+    OrderComponent,
+    ProfileEditingComponent,
   ],
   imports: [
     CommonModule,

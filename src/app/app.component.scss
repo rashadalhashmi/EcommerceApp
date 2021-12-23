@@ -1,18 +1,25 @@
-.container-fluid
-{
+.container-fluid {
   width: 80%;
   padding: 0;
 }
-mat-sidenave-container{
+
+mat-sidenave-container {
 
   height: 100%;
 }
 
-mat-sidenave ,mat-sidenav-content{
+@media only screen and (max-width: 900px) {
+  .mat-sidenav-container {
+    width: 130%;
+  }
+}
+
+mat-sidenave,
+mat-sidenav-content {
   padding: 16px;
 }
 
-mat-sidenav{
+mat-sidenav {
   background-color: #fff;
   width: 320px;
 

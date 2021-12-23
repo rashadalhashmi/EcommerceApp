@@ -16,13 +16,13 @@ export class UserAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     // this.isUserLogged = this.userAuthService.isLogged();
-    let token = localStorage.getItem("token");
+    let token = localStorage.getItem("Token");
 
     if(token == null)
       return false;
 
     let decoded = jwt_decode(token);
-    if(!JSON.stringify(decoded).includes("customer"))
+    if(!JSON.stringify(decoded).includes("Customer"))
     {
       alert("Login Please");
         this.router.navigate(['User/Login']);

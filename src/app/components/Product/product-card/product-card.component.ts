@@ -9,11 +9,11 @@ import { Iproduct } from 'src/app/viewmodel/product/iproduct';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-  src:string = "assets/headphone.png";
-  name:string = "A4TECH HeadphoneHS-19";
-  discount:number = 15;
-  priceWithoutDiscount = 12552;
-  price:number = this.priceWithoutDiscount - (12552 * this.discount/100);
+  src:string = "";
+  name:string = "";
+  discount:number = 0;
+  priceWithoutDiscount = 0;
+  price:number = this.priceWithoutDiscount - (this.priceWithoutDiscount * this.discount/100);
 
   @Input() product:any;
   constructor(private cartService:CartService) {
@@ -27,6 +27,6 @@ export class ProductCardComponent implements OnInit {
   ngOnInit(): void {
     this.discount = this.product.discount;
     this.priceWithoutDiscount = this.product.price;
-    this.price = this.priceWithoutDiscount - (12552 * this.discount/100);
+    this.price = this.product.price - (this.product.price * this.discount/100);
   }
 }

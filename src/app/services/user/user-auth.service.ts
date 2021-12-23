@@ -1,72 +1,103 @@
-import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler,  HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
-import { environment } from 'src/environments/environment';
-import { IUser } from '../../viewmodel/iuserLogin';
+import { IuserSingUp } from 'src/app/viewmodel/user/IuserSingUp';
+import { NotificationService } from '../notification.service';
+import { UserService } from './user.service';
+import jwt_decode from 'jwt-decode';
+import { IuserToken } from 'src/app/viewmodel/user/IuserToken';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
-  user: IUser = {} as IUser;
-  private loginstatues:BehaviorSubject<boolean>;
+  user: IuserSingUp = {} as IuserSingUp;
 
-  constructor(private httpService: HttpClient, private cookiesService: CookieService) {
-    this.loginstatues = new BehaviorSubject<boolean>(false);
+  private _isLoggedSubject: BehaviorSubject<boolean>;
+  private _userData: BehaviorSubject<IuserSingUp>;
+  public userData$:Observable<IuserSingUp>;
+
+  constructor(private httpService: HttpClient,
+    private cookiesService: CookieService, private userService: UserService,
+    private notificationService: NotificationService) {
+    this._isLoggedSubject = new BehaviorSubject<boolean>(false);
+    this._userData = new BehaviorSubject<IuserSingUp>(this.user);
+    this.userData$=this._userData.asObservable();
   }
 
-  Login(userName: string, password: string, rememberMe: boolean): Observable<IResultViewModel> {
-    // this.user.Username = userName;
-    // this.user.Password = password;
-    // this.user.IsRemembered = rememberMe;
-    // this.user.UserRole = "9c6d3c3f-bbc5-43d3-af89-bfd566c9ed94";
+  Login(userName: string, password: string, rememberMe: boolean) {
+    this.userService.login(userName, password, rememberMe).subscribe(response => {
+      if (response.isSuccess == true) {
+        localStorage.setItem("Token", response.data);
+        rememberMe ? localStorage.setItem('rememberMe', 'ok') : "";
+        this.getUserData(response.data);
+        this._isLoggedSubject.next(true);
 
-    if (rememberMe) {
-      this.cookiesService.set('userName', userName);
-      this.cookiesService.set('Password', password);
-    }
+      }
+      else {
+        this.notificationService.error(response.message)
+      }
+      console.log(response);
+    })
+  }
+  signUp(user: IuserSingUp) {
+    this.userService.signUP(user).subscribe(response => {
+      if (response.isSuccess == true) {
+        this.notificationService.success("you sign up succefully");
+        localStorage.setItem("Token", response.data);
+        this.getUserData(response.data);
+        localStorage.setItem('rememberMe', 'ok');
+        this._isLoggedSubject.next(true);
+      }
+      else { this.notificationService.error(response.data[0].description); }
 
-    const httpOption = {
-      headers: new HttpHeaders({
-        'content-type': 'Application/JSON'
-      }),
-      params: new HttpParams(
-        {
-          fromObject: {
-            Username : userName,
-            Password : password,
-            IsRemembered : rememberMe,
-            UserRole : "customer"
-          }
-        }
-      )
-    }
-    this.loginstatues.next(true);
-    return this.httpService.post<IResultViewModel>(`${environment.APIURL}/Account/Login`, null, httpOption);
+      console.log(response)
+    })
   }
 
   Logout() {
-    localStorage.removeItem("token");
-    console.log(localStorage.getItem("token"));
-    this.loginstatues.next(false);
-    return false;
+    localStorage.removeItem('Token');
+    localStorage.removeItem('rememberMe');
+    localStorage.removeItem("username");
+    this._isLoggedSubject.next(false);
+
   }
 
-  isloginstatues():Observable<boolean>
+  loginStatus(): Observable<boolean> {
+    if (localStorage.getItem('Token')) {
+      this._isLoggedSubject.next(true);
+    }
+    return this._isLoggedSubject.asObservable();
+  }
+
+  getUserIdFromToken(token: string): string {
+    let userid = jwt_decode<IuserToken>(token).UserID;
+    return userid;
+  }
+  getUserData(token:string)
   {
-    return this.loginstatues.asObservable();
+    this.userService.getUserData(token).subscribe(response=>{
+    localStorage.setItem("username",response.data.username)
+    this._userData.next(response.data);
+    this._isLoggedSubject.next(true);
+    console.log(response.data)
+     })
   }
 
-  //for get myprofile
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
+        Authorization: `Bearer ${localStorage.getItem("Token")}`
       }
     });
 
     return next.handle(request);
   }
+
+
+
+
 }
