@@ -14,24 +14,9 @@ import { IuserSingUp } from 'src/app/viewmodel/user/IuserSingUp';
 })
 export class UserActionComponent implements OnInit {
 
-  cartItems:ICartItem = {} as ICartItem;
-  products:Iproduct[] = [];
-  product:Iproduct = {} as Iproduct;
-  totalPrice:number = 0;
+
   user: IuserSingUp ;
 
-  // {
-  //   firstname: 'rashad',
-  //   lastname: 'alhashmie',
-  //   email: 'rashaami@gamil.com',
-  //   username: 'rad2kk021',
-  //   password: 'djf125522445',
-  //   gender: 0,
-  //   address: 'cairo,nasercity',
-  //   phone: '01128289672',
-  //   image: 'llf/dff',
-  //   userRole: 'Customer',
-  // };
   constructor(private userAuthservice:UserAuthService){
 
     this.user={} as IuserSingUp ;

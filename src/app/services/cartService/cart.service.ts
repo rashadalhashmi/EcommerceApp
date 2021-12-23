@@ -96,11 +96,11 @@ export class CartService {
         'content-type': 'Application/JSON'
       })
     }
-    if(localStorage.getItem("token"))
+    if(localStorage.getItem("Token"))
     {
       this.order.items = [];
       this._cart.items.forEach(item => {
-        this.order.items.push({
+      this.order.items.push({
           amount: item.Quantity,
           date: new Date(),
           productID: item.product.id,

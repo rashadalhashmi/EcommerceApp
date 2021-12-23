@@ -79,7 +79,7 @@ export class UserAuthService {
   getUserData(token:string)
   {
     this.userService.getUserData(token).subscribe(response=>{
-    localStorage.setItem("username",response.data.userName)
+    localStorage.setItem("username",response.data.username)
     this._userData.next(response.data);
     this._isLoggedSubject.next(true);
     console.log(response.data)

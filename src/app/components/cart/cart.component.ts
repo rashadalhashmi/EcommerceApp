@@ -30,6 +30,6 @@ export class CartComponent implements OnInit {
   setOrder()
   {
     this.cartservice.placeOrder().subscribe();
-    this.router.navigate(['/User/CheckOut']);
+    this.router.navigate(['/User/useraction']);
   }
 }
