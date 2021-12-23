@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IuserSingUp } from 'src/app/viewmodel/user/IuserSingUp';
-import { IUser } from '../../viewmodel/iuserLogin';
 import { NotificationService } from '../notification.service';
 import { UserService } from './user.service';
 import jwt_decode from 'jwt-decode';
@@ -77,7 +76,7 @@ export class UserAuthService {
     let userid = jwt_decode<IuserToken>(token).UserID;
     return userid;
   }
-  private getUserData(token:string)
+  getUserData(token:string)
   {
     this.userService.getUserData(token).subscribe(response=>{
     localStorage.setItem("username",response.data.userName)

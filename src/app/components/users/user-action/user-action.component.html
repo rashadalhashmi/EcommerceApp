@@ -85,109 +85,65 @@
             welcome <span>{{ user.firstname }}</span>
           </p>
           <hr />
-          <a class="nav-link active align-items-start" id="v-pills-order-tab" data-bs-toggle="pill"
-            data-bs-target="#v-pills-order" type="button" role="tab" aria-controls="v-pills-order"
-            aria-selected="true"><svg class="bi me-2" width="16" height="16">
+          <a class="nav-link  align-items-start" [routerLink]="['order']" ><svg class="bi me-2" width="16" height="16">
               <use xlink:href="#table" />
             </svg>order</a>
-          <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
-            type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+          <a class="nav-link"  [routerLink]="['profile']">
             <svg class="bi me-2" width="16" height="16">
               <use xlink:href="#people-circle" />
             </svg>Profile</a>
         </div>
-        <div class="col-9">
-          <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-order" role="tabpanel"
-              aria-labelledby="v-pills-order-tab">
-              <h1 style="font-weight: bold">my order</h1>
-              <div class="row">
-                <div class="col-md-6 col-lg-6">
-                  <h2 class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                      mb-3
-                    ">
-                    Your cart
-                  </h2>
-                  <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-sm"
-                        *ngFor="let prod of products">
-                      <div>
-                        <h4 class="my-0">{{prod.name}}</h4>
-                        <!-- <small class="text-muted">{{prod.description}}</small> -->
-                      </div>
-                      <span class="text-muted">{{prod.price}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                      <span>Total (USD)</span>
-                      <strong>{{totalPrice}}</strong>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <app-checkout></app-checkout>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-              <h1 style="font-weight: bold">profile</h1>
-              <form action="">
-                <h2 class="form-header">edite user information</h2>
-                <div class="container">
-                  <div class="d-flex">
-                    <div class="form-group mr-5">
-                      <label for="firstname">firstname</label>
-                      <input type="text" name="firstname" id="firstname" placeholder="{{ user.firstname }}"
-                        class="form-control" />
-                    </div>
-                    <div class="form-group mr-5">
-                      <label for="lastname">lastname</label>
-                      <input type="text" name="lastname" id="lastname" placeholder=" {{ user.lastname }}"
-                        class="form-control" />
-                    </div>
-                    <div class="form-group mr-5">
-                      <label for="phone">phone</label>
-                      <input type="text" name="phone" id="phone" placeholder="{{ user.phone }}" class="form-control" />
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <div class="form-group mr-5">
-                      <label for="address">address</label>
-                      <input type="text" name="address" id="address" placeholder="{{ user.address }}"
-                        class="form-control" />
-                    </div>
-                  </div>
+         <div class="col-9">
+          <router-outlet class="tab-content"></router-outlet>
 
-                  <!-- <div class="mt-2">
-                    <input type="submit" value="save" class="btn btn-success" />
-                  </div> -->
-                </div>
-              </form>
-              <form action="">
-                <h2 class="form-header">security</h2>
-                <div class="container">
-                  <div class="d-flex">
-                    <div class="form-group mr-5">
-                      <label for="email">email</label>
-                      <input type="text" name="email" id="email" placeholder=" {{ user.email }}" class="form-control" />
-                    </div>
-                    <div class="form-group mr-5">
-                      <label for="password">password</label>
-                      <input type="password" name="password" id="password" placeholder=" {{ user.password }}"
-                        class="form-control" />
-                    </div>
-                    <!-- <div class="mt-4">
-                      <input type="submit" value="save" class="btn btn-success" />
-                    </div> -->
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+         </div>
+
       </div>
     </div>
   </div>
 </div>
+
+
+ <!-- <div class="col-9">
+  <div class="tab-content" id="v-pills-tabContent">
+
+    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+      <h1 style="font-weight: bold">profile</h1>
+      <form action="">
+        <h2 class="form-header">edite user information</h2>
+        <div class="container">
+          <div class="d-flex">
+            <div class="form-group mr-5">
+              <label for="firstname">firstname</label>
+              <input type="text" name="firstname" id="firstname" placeholder="{{ user.firstname }}"
+                class="form-control" />
+            </div>
+
+
+
+
+            <div class="form-group mr-5">
+              <label for="lastname">lastname</label>
+              <input type="text" name="lastname" id="lastname" placeholder=" {{ user.lastname }}"
+                class="form-control" />
+            </div>
+            <div class="form-group mr-5">
+              <label for="phone">phone</label>
+              <input type="text" name="phone" id="phone" placeholder="{{ user.phone }}" class="form-control" />
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="form-group mr-5">
+              <label for="address">address</label>
+              <input type="text" name="address" id="address" placeholder="{{ user.address }}"
+                class="form-control" />
+            </div>
+          </div>
+
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div> -->
