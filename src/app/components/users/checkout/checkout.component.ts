@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { render } from 'creditcardpayments/creditCardPayments';
+import { OrderService } from 'src/app/services/order/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -7,12 +8,13 @@ import { render } from 'creditcardpayments/creditCardPayments';
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit {
-  totalPrice: string = '80';
-  constructor() {
+  @Input() receivedTotalprice: number = 0;
+  orderStatus: number = 1;
+  constructor(private Status: OrderService) {
     render({
       id: '#myPaypalButtons',
       currency: 'USD',
-      value: this.totalPrice,
+      value: this.receivedTotalprice.toString(),
       onApprove: (detailes) => {
         alert('transaction successfull');
       },
