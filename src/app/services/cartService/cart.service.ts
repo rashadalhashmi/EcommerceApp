@@ -96,8 +96,7 @@ export class CartService {
         'content-type': 'Application/JSON'
       })
     }
-    if(localStorage.getItem("Token"))
-    {
+
       this.order.items = [];
       this._cart.items.forEach(item => {
       this.order.items.push({
@@ -110,12 +109,8 @@ export class CartService {
       this.order.orderDate = new Date();
       this._cart = {} as ICart;
       this.cart$.next(this._cart);
-    }
-  else
-  {
-    alert("login please")
-    return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(null), httpOption);
-  }
-    return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
-  }
+     this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption).subscribe();
+
+}
+
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { map, tap } from 'rxjs';
 import { ICart } from 'src/app/model/ICartItem';
 import { CartService } from 'src/app/services/cartService/cart.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { CartService } from 'src/app/services/cartService/cart.service';
 export class CartComponent implements OnInit {
 
   cart:ICart={items:[],totalPrice:0}
-  constructor(private cartservice:CartService, private router: Router) { }
+  constructor(private cartservice:CartService, private router: Router,
+    private notficationService:NotificationService) { }
 
   ngOnInit(): void {
     this.cartservice.cart.subscribe(cart=>this.cart=cart)
@@ -29,7 +31,14 @@ export class CartComponent implements OnInit {
 
   setOrder()
   {
-    this.cartservice.placeOrder().subscribe();
-    this.router.navigate(['/User/useraction']);
+    if(localStorage.getItem('Token'))
+    {
+      this.cartservice.placeOrder();
+      this.router.navigate(['/User/useraction/order']);
+     }
+     else{
+            this.notficationService.error("please login firsrt")
+     }
+
   }
 }
