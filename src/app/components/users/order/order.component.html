@@ -1,23 +1,136 @@
-<div class="tab-pane fade show active" id="v-pills-order" role="tabpanel"
-      aria-labelledby="v-pills-order-tab">
-      <h1 style="font-weight: bold">my order</h1>
-      <div class="row">
-        <div class="col-md-6 col-lg-6">
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-sm"
-                *ngFor="let prod of products">
-              <div>
-                <h4 class="my-0">{{prod.name}}</h4>
+<div class="container">
+  <h1 style="font-weight: bold">order List</h1>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              <div class="row">
+                <!-- order Date -->
+                <div class="col-lg-2 first">
+                  <span>2017 <strong>02</strong> Dec</span>
+                </div>
+                <div class="col-lg-6 second">
+                  <div>order: <span class="order">#359</span></div>
+                  <div><span class="userName">ibrahim khaled</span></div>
+                  <div>ibrahimkhaled01@gmail.com</div>
+                </div>
+                <div class="col-lg-2 third">
+                  Total
+                  <h3>$152.00</h3>
+                </div>
+                <div class="col-lg-2 fourth"><small>on Hold</small></div>
               </div>
-              <span class="text-muted">{{prod.price}}</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>{{totalPrice}}</strong>
-            </li>
-          </ul>
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body m-0 bg-light">
+              <table class="table table-dark table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTow">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTow"
+              aria-expanded="true"
+              aria-controls="collapseTow"
+            >
+              <div class="row">
+                <!-- order Date -->
+                <div class="col-lg-2 first">
+                  <span>2017 <strong>02</strong> Dec</span>
+                </div>
+                <div class="col-lg-6 second">
+                  <div>order: <span class="order">#359</span></div>
+                  <div><span class="userName">ibrahim khaled</span></div>
+                  <div>ibrahimkhaled01@gmail.com</div>
+                </div>
+                <div class="col-lg-2 third">
+                  Total
+                  <h3>$152.00</h3>
+                </div>
+                <div class="col-lg-2 fourth"><small>Processing</small></div>
+              </div>
+            </button>
+          </h2>
+          <div
+            id="collapseTow"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingTow"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body m-0 bg-light">
+              <table class="table table-dark table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="col-lg-4" style="border: solid red">
+      <h1 style="font-weight: bold">for paypal</h1>
+    </div>
+  </div>
+</div>
