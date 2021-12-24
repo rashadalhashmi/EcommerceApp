@@ -1,16 +1,28 @@
-
-<div class="card ">
-
+<div class="card">
   <div class="card-body">
+    <div class="" style="text-align: center">
+      <h1>edite User information</h1>
+    </div>
     <form novalidate (submit)="save()" [formGroup]="userForm">
-
       <!--First Name -->
       <div class="form-group row mb-2">
-        <label class="col-md-12 col-form-label" for="firstNameId">First Name</label>
+        <label class="col-md-12 col-form-label" for="firstNameId"
+          >First Name</label
+        >
         <div class="col-md-12">
-          <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
+          <input
+            class="form-control"
+            id="firstNameId"
+            type="text"
+            placeholder="First Name (required)"
             formControlName="firstName"
-            [ngClass]="{'is-invalid': (userForm.get('firstName').touched || userForm.get('firstName').dirty) && !userForm.get('firstName').valid }" />
+            [ngClass]="{
+              'is-invalid':
+                (userForm.get('firstName').touched ||
+                  userForm.get('firstName').dirty) &&
+                !userForm.get('firstName').valid
+            }"
+          />
           <span class="invalid-feedback">
             <span *ngIf="userForm.get('firstName').errors?.required">
               Please enter your first name.
@@ -23,11 +35,23 @@
       </div>
       <!-- Last Name -->
       <div class="form-group row mb-2">
-        <label class="col-md-12 col-form-label" for="lastNameId">Last Name</label>
+        <label class="col-md-12 col-form-label" for="lastNameId"
+          >Last Name</label
+        >
         <div class="col-md-12">
-          <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
+          <input
+            class="form-control"
+            id="lastNameId"
+            type="text"
+            placeholder="Last Name (required)"
             formControlName="lastName"
-            [ngClass]="{'is-invalid': (userForm.get('lastName').touched || userForm.get('lastName').dirty) && !userForm.get('lastName').valid }" />
+            [ngClass]="{
+              'is-invalid':
+                (userForm.get('lastName').touched ||
+                  userForm.get('lastName').dirty) &&
+                !userForm.get('lastName').valid
+            }"
+          />
           <span class="invalid-feedback">
             <span *ngIf="userForm.get('lastName').errors?.required">
               Please enter your last name.
@@ -42,8 +66,19 @@
       <div class="form-group row mb-2">
         <label class="col-md-12 col-form-label" for="emailId">Email</label>
         <div class="col-md-12">
-          <input class="form-control" id="emailId" type="email" placeholder="Email (required)" formControlName="email"
-            [ngClass]="{'is-invalid': (userForm.get('email').touched || userForm.get('email').dirty) && !userForm.get('email').valid }" />
+          <input
+            class="form-control"
+            id="emailId"
+            type="email"
+            placeholder="Email (required)"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid':
+                (userForm.get('email').touched ||
+                  userForm.get('email').dirty) &&
+                !userForm.get('email').valid
+            }"
+          />
           <span class="invalid-feedback">
             <span *ngIf="userForm.get('email').errors?.required">
               Please enter your email address.
@@ -54,12 +89,23 @@
           </span>
         </div>
       </div>
-<!-- username -->
+      <!-- username -->
       <div class="form-group row mb-2">
         <label class="col-md-12 col-form-label" for="username">Username</label>
         <div class="col-md-12">
-          <input class="form-control" id="username" type="text" placeholder="username (required)" formControlName="username"
-            [ngClass]="{'is-invalid': (userForm.get('username').touched || userForm.get('username').dirty) && !userForm.get('username').valid }" />
+          <input
+            class="form-control"
+            id="username"
+            type="text"
+            placeholder="username (required)"
+            formControlName="username"
+            [ngClass]="{
+              'is-invalid':
+                (userForm.get('username').touched ||
+                  userForm.get('username').dirty) &&
+                !userForm.get('username').valid
+            }"
+          />
           <span class="invalid-feedback">
             <span *ngIf="userForm.get('username').errors?.required">
               Please enter your username.
@@ -70,14 +116,25 @@
           </span>
         </div>
       </div>
-        <!-- password -->
+      <!-- password -->
 
       <!-- address -->
       <div class="form-group row mb-2">
         <label class="col-md-12 col-form-label" for="address">Address</label>
         <div class="col-md-12">
-          <input class="form-control" id="address" type="text" placeholder="address (required)" formControlName="address"
-            [ngClass]="{'is-invalid': (userForm.get('address').touched || userForm.get('address').dirty) && !userForm.get('address').valid }" />
+          <input
+            class="form-control"
+            id="address"
+            type="text"
+            placeholder="address (required)"
+            formControlName="address"
+            [ngClass]="{
+              'is-invalid':
+                (userForm.get('address').touched ||
+                  userForm.get('address').dirty) &&
+                !userForm.get('address').valid
+            }"
+          />
           <span class="invalid-feedback">
             <span *ngIf="userForm.get('address').errors?.required">
               Please enter your address.
@@ -89,13 +146,23 @@
         </div>
       </div>
 
-
       <!-- phone -->
       <div class="form-group row mb-2">
         <label class="col-md-12 col-form-label" for="phone">Phone</label>
         <div class="col-md-12">
-          <input class="form-control" id="phone" type="text" placeholder="phone (required)" formControlName="phone"
-            [ngClass]="{'is-invalid': (userForm.get('phone').touched || userForm.get('phone').dirty) && !userForm.get('phone').valid }" />
+          <input
+            class="form-control"
+            id="phone"
+            type="text"
+            placeholder="phone (required)"
+            formControlName="phone"
+            [ngClass]="{
+              'is-invalid':
+                (userForm.get('phone').touched ||
+                  userForm.get('phone').dirty) &&
+                !userForm.get('phone').valid
+            }"
+          />
           <span class="invalid-feedback">
             <span *ngIf="userForm.get('phone').errors?.required">
               Please enter your phone.
@@ -112,16 +179,36 @@
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="gender">Gender</label>
-        <div class=" row col-md-9 mt-2">
-          <input formControlName="gender" class="col-1" type="radio" name="gender"  value="0">Male
-          <input formControlName="gender" class="col-1" type="radio" name="gender"  value="1">Female
+        <div class="row col-md-9 mt-2">
+          <input
+            formControlName="gender"
+            class="col-1"
+            type="radio"
+            name="gender"
+            value="0"
+          />Male
+          <input
+            formControlName="gender"
+            class="col-1"
+            type="radio"
+            name="gender"
+            value="1"
+          />Female
         </div>
       </div>
-        <!-- submit -->
-      <div class="form-group row ">
+      <!-- submit -->
+      <div class="form-group row">
         <div class="col-md-4">
-          <button class="mt-2" mat-stroked-button color="primary" type="submit" [disabled]="!userForm.valid">save</button>
-<!--
+          <button
+            class="mt-2"
+            mat-stroked-button
+            color="primary"
+            type="submit"
+            [disabled]="!userForm.valid"
+          >
+            save
+          </button>
+          <!--
           <button class="btn btn-primary mt-2" type="submit" style="width:100%"
             [disabled]="!userForm.valid">
             Save
@@ -130,25 +217,7 @@
       </div>
     </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <<div class="container">
+    <!-- <<div class="container">
   <h1 style="font-weight: bold">Edite user profile</h1>
   <form action="" (ngSubmit)="editeUserprofile()" [formGroup]="editeUserForm">
     <div>
@@ -219,4 +288,6 @@
   </form>
 </div> -->
 
-<!-- <app-register></app-register> -->
+    <!-- <app-register></app-register> -->
+  </div>
+</div>
