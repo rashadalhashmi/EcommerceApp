@@ -86,7 +86,9 @@ export class UserAuthService {
      })
   }
 
-
+ updatUser(user:IuserSingUp) : Observable<any>{
+   return this.userService.updateUser(user);
+ }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {

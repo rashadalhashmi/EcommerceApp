@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICart, ICartItem } from 'src/app/model/ICartItem';
 import { OrderService } from 'src/app/services/order/order.service';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -17,13 +18,13 @@ export class UserActionComponent implements OnInit {
 
   user: IuserSingUp ;
 
-  constructor(private userAuthservice:UserAuthService){
+  constructor(private userAuthservice:UserAuthService ){
 
     this.user={} as IuserSingUp ;
+
  }
 
  ngOnInit(): void {
-
     let token= localStorage.getItem("Token")
     if(token!=null) {
      this.userAuthservice.getUserData(token)
