@@ -17,12 +17,10 @@ export class ProductCardComponent implements OnInit {
 
   @Input() product:any;
   constructor(private cartService:CartService) {
-
   }
 
   addToCart(){
     this.cartService.addToshppingCart(this.product)
-
   }
   ngOnInit(): void {
     this.discount = this.product.discount;
