@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { response } from 'express';
 import { map, tap } from 'rxjs';
 import { ICart } from 'src/app/model/ICartItem';
 import { CartService } from 'src/app/services/cartService/cart.service';
@@ -16,7 +17,9 @@ export class CartComponent implements OnInit {
   cart:ICart={items:[],totalPrice:0}
 
   constructor(private cartService:CartService, private router: Router,private notficationService:NotificationService) {
-    this.cartService.isCartEmpty()!?this._isCartEmpty:this._isCartEmpty = false;
+    this.cartService.isCartEmpty().subscribe(response=>{
+      this._isCartEmpty = response
+    })
   }
 
   ngOnInit(): void {

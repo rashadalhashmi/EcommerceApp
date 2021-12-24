@@ -22,6 +22,8 @@ export class CartService {
   cart$: BehaviorSubject<ICart>;
   cartQuantity: number = 0;
 
+  _isCartEmpty:BehaviorSubject<boolean>;
+
   order: IOrder = {} as IOrder;
 
   public get cart(): Observable<ICart> {
@@ -32,6 +34,7 @@ export class CartService {
     private httpClient: HttpClient,
     private userService: UserAuthService) {
     this.cart$ = new BehaviorSubject<ICart>(this._cart);
+    this._isCartEmpty = new BehaviorSubject<boolean>(true);
     this.getCartFromLocalStroage();
   }
 
@@ -48,6 +51,7 @@ export class CartService {
 
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
+    this._isCartEmpty.next(false);
   }
 
   removeItemFromCart(productId: string) {
@@ -56,6 +60,14 @@ export class CartService {
     this._cart.totalPrice = this.calcaulateTotalPrice();
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
+    if(this._cart.items.length == 0)
+    {
+      this._isCartEmpty.next(true);
+    }
+    else
+    {
+      this._isCartEmpty.next(false);
+    }
   }
 
   getCartFromLocalStroage() {
@@ -100,7 +112,7 @@ export class CartService {
       })
     }
     let token = localStorage.getItem("Token");
-    if(token) {
+    if (token) {
       this.order.items = [];
       this._cart.items.forEach(item => {
         this.order.items.push({
@@ -111,20 +123,16 @@ export class CartService {
       });
       this.order.status = 0;
       this.order.orderDate = new Date();
-      this.order.customerID = this.userService.getUserIdFromToken(token!)
+      debugger
+      // this.order.customerID = this.userService.getUserIdFromToken(token!)
 
       this._cart = {} as ICart;
       this.cart$.next(this._cart);
-     this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption).subscribe();
-
-}
-
-
-}
-isCartEmpty() {
-    if(this._cart.items.length === 0)
-      return true;
-
-    return false;
+      this._isCartEmpty.next(true);
+      this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption).subscribe();
+    }
+  }
+  isCartEmpty(): Observable<boolean> {
+      return this._isCartEmpty.asObservable();
   }
 }
