@@ -29,14 +29,14 @@ export class ProductsofcategoryComponent implements OnInit {
 
         this.categoryService.getCategoryByID(this.catgSentedId).subscribe({
           next: (category) => {
-            this.category = category.data;
-            console.log(this.category.imageURL)
-            this.deptService.getDepartmentbyId(category.data.departmentID).subscribe({
-              next: (dept) =>
-              {
-                this.deptName = dept.data.departmentName
-              }
-            })
+          this.category = category.data;
+          this.getDepartmentbyId(category.data.departmentID)
+            // this.deptService.getDepartmentbyId(category.data.departmentID).subscribe({
+            //   next: (dept) =>
+            //   {
+            //     this.deptName = dept.data.departmentName
+            //   }
+            // })
           }
         });
 
@@ -46,5 +46,12 @@ export class ProductsofcategoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  getDepartmentbyId(id:any) {
+    this.deptService.getDepartmentbyId(id).subscribe({
+      next: (dept) =>
+      {
+        this.deptName = dept.data.departmentName
+      }
+    })
+    }
 }

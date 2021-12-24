@@ -57,4 +57,18 @@ export class UserService {
      return this.httpclient.get(`${environment.APIURL}/Profile/MyProfile`, httpOption);
 
   }
+
+  updateUser(user:IuserSingUp) : Observable<any>{
+
+    const httpOption = {
+      headers: new HttpHeaders(
+      {
+        'content-type': 'Application/JSON',
+      }),
+    }
+
+   return  this.httpclient.put(`${environment.APIURL}/Profile/Edit`,JSON.stringify(user),httpOption);
+
+  }
+
 }
