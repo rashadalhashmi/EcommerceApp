@@ -14,18 +14,27 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userAuthservice:UserAuthService){
 
-    this.user={} as IuserSingUp ;
+    this.user={
+
+      firstname: "",
+      lastname: "",
+      email: "",
+      username: "",
+      gender: 0,
+      address: "",
+      phone: "",
+    }  ;
  }
 
  ngOnInit(): void {
 
-    let token= localStorage.getItem("Token")
-    if(token!=null) {
-     this.userAuthservice.getUserData(token)
-    }
-    this.userAuthservice.userData$.subscribe(response=>{
-        this.user=response;
-    })
+    // let token= localStorage.getItem("Token")
+    // if(token!=null) {
+    //  this.userAuthservice.getUserData(token)
+    // }
+    // this.userAuthservice.userData$.subscribe(response=>{
+    //     this.user=response;
+    // })
 
 }
 
