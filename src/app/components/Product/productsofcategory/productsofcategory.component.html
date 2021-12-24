@@ -6,17 +6,17 @@
     <div class="col-12 col-lg-10" >
       <div class="row px-2">
         <div class="shadow-sm bg-white mb-4 p-0">
-          <h1 class="fs-1 fw-bold px-4 pt-4 text-capitalize">{{category.categoryName}}</h1>
+          <h1 class="fs-1 fw-bold px-4 pt-4 text-capitalize">{{category?.categoryName??""}}</h1>
           <div class="px-4">
             <a routerLink="/Home">All Categories</a>
             <i class="fas fa-chevron-right px-1"></i>
             <a>{{deptName}}</a>
             <i class="fas fa-chevron-right px-1"></i>
-            <a class="fw-bold text-capitalize">{{category.categoryName}}</a>
+            <a class="fw-bold text-capitalize">{{category?.categoryName??""}}</a>
           </div>
 
           <div class="imgheader p-0 mt-4">
-            <img [src]="category.imageURL">
+            <img [src]="category?.imageURL">
           </div>
         </div>
       </div>

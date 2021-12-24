@@ -83,10 +83,12 @@ export class UserAuthService {
     this._userData.next(response.data);
     this._isLoggedSubject.next(true);
     console.log(response.data)
-     })
+    })
   }
 
-
+ updatUser(user:IuserSingUp) : Observable<any>{
+   return this.userService.updateUser(user);
+ }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
@@ -96,8 +98,4 @@ export class UserAuthService {
 
     return next.handle(request);
   }
-
-
-
-
 }

@@ -42,44 +42,7 @@ export class LoginComponent implements OnInit {
                 this.loginForm.value.password,this.loginForm.value.rememberMe)
 
 
-    // this.userServices.Login(this.loginForm.value['username'],
-    //   this.loginForm.value['password'],
-    //   this.checked)
-    //   .subscribe({
-    //     next: (token) => {
-    //       if (token.data != "") {
-    //         localStorage.setItem("token", token.data);
 
-    //         this.profileService.getProfile().subscribe({
-    //           next: (profile) => {
-    //             this.user = profile.data.firstname + " " + profile.data.lastname
-    //             this.NavService.userEmitter.emit(this.user)
-    //             localStorage.setItem("Islogged", true.toString());
-    //           }
-    //         });
-    //         this.router.navigate(['/Home']);
-    //         alert("Login Successfully");
-    //         (document.getElementsByClassName("cdk-overlay-container")[0] as HTMLElement).hidden = true;
-    //         window.location.reload();
-    //       }
-    //       else
-    //       {
-    //         alert("Not User Register Please");
-    //         localStorage.setItem("Islogged", false.toString());
-    //       }
-
-          // if(decoded)
-          // {
-          //   // alert("Login Please");
-          //   this.router.navigate(['User/SignUp']);
-          // }
-          // console.log(token.data)
-          // // console.log(decoded.UserID)
-          // console.log(JSON.stringify(decoded).includes("customer"));
-    //     }
-    //   });
-
-    // this.router.navigate(['/Home']);
   }
 
   onChange(event: Event) {
