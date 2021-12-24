@@ -11,25 +11,28 @@ import { CartService } from 'src/app/services/cartService/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
+  _isCartEmpty:boolean = true;
   cart:ICart={items:[],totalPrice:0}
-  constructor(private cartservice:CartService, private router: Router) { }
+  constructor(private cartService:CartService, private router: Router) {
+    this.cartService.isCartEmpty()!?this._isCartEmpty:this._isCartEmpty = false;
+  }
 
   ngOnInit(): void {
-    this.cartservice.cart.subscribe(cart=>this.cart=cart)
+    this.cartService.cart.subscribe(cart=>this.cart=cart)
+    this.cartService.isCartEmpty()!?this._isCartEmpty:this._isCartEmpty = false;
   }
 
   removeFromCart(id:string){
-          this.cartservice.removeItemFromCart(id)
+          this.cartService.removeItemFromCart(id)
   }
 
   changeQuantity(id:string,event:any){
-    this.cartservice.changeQuantity(id,+event.target.value);
+    this.cartService.changeQuantity(id,+event.target.value);
   }
 
   setOrder()
   {
-    this.cartservice.placeOrder().subscribe();
+    this.cartService.placeOrder().subscribe();
     this.router.navigate(['/User/useraction']);
   }
 }

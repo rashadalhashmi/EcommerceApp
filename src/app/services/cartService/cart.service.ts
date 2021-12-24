@@ -12,6 +12,7 @@ import { NotificationService } from '../notification.service';
 import { ProductService } from '../product/product.service';
 import jwt_decode from 'jwt-decode';
 import { ProfileService } from '../Profile/profile.service';
+import { UserAuthService } from '../user/user-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class CartService {
 
   constructor(private notificationService: NotificationService,
     private httpClient: HttpClient,
-    private profileService: ProfileService) {
+    private userService: UserAuthService) {
     this.cart$ = new BehaviorSubject<ICart>(this._cart);
     this.getCartFromLocalStroage();
   }
@@ -67,6 +68,7 @@ export class CartService {
       localStorage.setItem('cart', JSON.stringify(this._cart));
     }
   }
+
   calcaulateTotalPrice(): number {
     const totalPrice = this._cart.items.reduce((total, item) =>
       total + item.Quantity * (item.product.price - (item.product.price * item.product.discount / 100))
@@ -74,6 +76,7 @@ export class CartService {
       0);
     return totalPrice;
   }
+
   changeQuantity(productId: string, quentity: number) {
     let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: "0" } };
     if (quentity <= cartItem.product.quantity) {
@@ -96,26 +99,38 @@ export class CartService {
         'content-type': 'Application/JSON'
       })
     }
-    if(localStorage.getItem("Token"))
-    {
+    let token = localStorage.getItem("Token");
+    if(token) {
       this.order.items = [];
       this._cart.items.forEach(item => {
-      this.order.items.push({
+        this.order.items.push({
           amount: item.Quantity,
           date: new Date(),
-          productID: item.product.id,
+          productID: item.product.id
         });
       });
       this.order.status = 0;
       this.order.orderDate = new Date();
+      this.order.customerID = this.userService.getUserIdFromToken(token!)
+
       this._cart = {} as ICart;
       this.cart$.next(this._cart);
     }
-  else
-  {
-    alert("login please")
-    return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(null), httpOption);
-  }
+    else {
+      alert("login please")
+      return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(null), httpOption);
+    }
     return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
   }
-}
+
+  isCartEmpty() {
+    debugger
+    // this.cart$.subscribe(cart => {
+      if(this._cart.items.length === 0)
+        return true;
+
+      return false;
+    }
+    // if (Object.keys(this._cart).length === 0)
+
+  }

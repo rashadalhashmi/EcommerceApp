@@ -35,7 +35,7 @@ export class UserService {
             Username : userName,
             Password : password,
             IsRemembered : rememberMe,
-            UserRole : "customer"
+            UserRole : "Customer"
           }
         }
       )

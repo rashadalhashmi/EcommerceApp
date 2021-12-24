@@ -5,38 +5,32 @@
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
-            <button
-              class="accordion-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
-            >
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
               <div class="row">
                 <!-- order Date -->
                 <div class="col-lg-2 first">
-                  <span>2017 <strong>02</strong> Dec</span>
+                  <span>{{order.orderDate|date:'yyyy'}} <strong>{{order.orderDate|date:'dd'}}</strong>
+                    {{order.orderDate|date:'MMM'}}</span>
                 </div>
                 <div class="col-lg-6 second">
-                  <div>order: <span class="order">#359</span></div>
+                  <div>order: <span class="order">#1</span></div>
                   <div><span class="userName">ibrahim khaled</span></div>
                   <div>ibrahimkhaled01@gmail.com</div>
                 </div>
                 <div class="col-lg-2 third">
                   Total
-                  <h3>$152.00</h3>
+                  <h3>{{totalPrice|currency}}</h3>
                 </div>
-                <div class="col-lg-2 fourth"><small>on Hold</small></div>
+                <div class="col-lg-2 fourth">
+                  <small *ngIf="order.status == 0; else onProcessing">onHold</small>
+                  <ng-template #onProcessing><small>onProcessing</small></ng-template>
+                </div>
               </div>
             </button>
           </h2>
-          <div
-            id="collapseOne"
-            class="accordion-collapse collapse show"
-            aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample"
-          >
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
             <div class="accordion-body m-0 bg-light">
               <table class="table table-dark table-hover">
                 <thead>
@@ -67,14 +61,8 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTow">
-            <button
-              class="accordion-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTow"
-              aria-expanded="true"
-              aria-controls="collapseTow"
-            >
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTow"
+              aria-expanded="true" aria-controls="collapseTow">
               <div class="row">
                 <!-- order Date -->
                 <div class="col-lg-2 first">
@@ -93,12 +81,8 @@
               </div>
             </button>
           </h2>
-          <div
-            id="collapseTow"
-            class="accordion-collapse collapse show"
-            aria-labelledby="headingTow"
-            data-bs-parent="#accordionExample"
-          >
+          <div id="collapseTow" class="accordion-collapse collapse show" aria-labelledby="headingTow"
+            data-bs-parent="#accordionExample">
             <div class="accordion-body m-0 bg-light">
               <table class="table table-dark table-hover">
                 <thead>

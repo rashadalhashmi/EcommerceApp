@@ -83,7 +83,7 @@ export class UserAuthService {
     this._userData.next(response.data);
     this._isLoggedSubject.next(true);
     console.log(response.data)
-     })
+    })
   }
 
 
@@ -96,8 +96,4 @@ export class UserAuthService {
 
     return next.handle(request);
   }
-
-
-
-
 }
