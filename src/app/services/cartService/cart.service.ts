@@ -75,6 +75,8 @@ export class CartService {
     if (cart) {
       this._cart = JSON.parse(cart);
       this.cart$.next(this._cart);
+      this._isCartEmpty.next(false);
+
     }
     else {
       localStorage.setItem('cart', JSON.stringify(this._cart));
@@ -123,9 +125,6 @@ export class CartService {
       });
       this.order.status = 0;
       this.order.orderDate = new Date();
-      debugger
-      // this.order.customerID = this.userService.getUserIdFromToken(token!)
-
       this._cart = { items: [], totalPrice: 0 };
       this.cart$.next(this._cart);
       this._isCartEmpty.next(true);
