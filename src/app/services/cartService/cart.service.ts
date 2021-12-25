@@ -12,6 +12,7 @@ import { NotificationService } from '../notification.service';
 import { ProductService } from '../product/product.service';
 import jwt_decode from 'jwt-decode';
 import { ProfileService } from '../Profile/profile.service';
+import { UserAuthService } from '../user/user-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,8 @@ export class CartService {
   cart$: BehaviorSubject<ICart>;
   cartQuantity: number = 0;
 
+  _isCartEmpty:BehaviorSubject<boolean>;
+
   order: IOrder = {} as IOrder;
 
   public get cart(): Observable<ICart> {
@@ -29,8 +32,9 @@ export class CartService {
 
   constructor(private notificationService: NotificationService,
     private httpClient: HttpClient,
-    private profileService: ProfileService) {
+    private userService: UserAuthService) {
     this.cart$ = new BehaviorSubject<ICart>(this._cart);
+    this._isCartEmpty = new BehaviorSubject<boolean>(true);
     this.getCartFromLocalStroage();
   }
 
@@ -47,6 +51,7 @@ export class CartService {
 
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
+    this._isCartEmpty.next(false);
   }
 
   removeItemFromCart(productId: string) {
@@ -55,6 +60,14 @@ export class CartService {
     this._cart.totalPrice = this.calcaulateTotalPrice();
     localStorage.setItem('cart', JSON.stringify(this._cart));
     this.cart$.next(this._cart);
+    if(this._cart.items.length == 0)
+    {
+      this._isCartEmpty.next(true);
+    }
+    else
+    {
+      this._isCartEmpty.next(false);
+    }
   }
 
   getCartFromLocalStroage() {
@@ -62,11 +75,14 @@ export class CartService {
     if (cart) {
       this._cart = JSON.parse(cart);
       this.cart$.next(this._cart);
+      this._isCartEmpty.next(false);
+
     }
     else {
       localStorage.setItem('cart', JSON.stringify(this._cart));
     }
   }
+
   calcaulateTotalPrice(): number {
     const totalPrice = this._cart.items.reduce((total, item) =>
       total + item.Quantity * (item.product.price - (item.product.price * item.product.discount / 100))
@@ -74,6 +90,7 @@ export class CartService {
       0);
     return totalPrice;
   }
+
   changeQuantity(productId: string, quentity: number) {
     let cartItem = this._cart.items.find(item => item.product.id == productId) ?? { Quantity: 0, product: { quantity: 0, id: "0" } };
     if (quentity <= cartItem.product.quantity) {
@@ -96,26 +113,25 @@ export class CartService {
         'content-type': 'Application/JSON'
       })
     }
-    if(localStorage.getItem("Token"))
-    {
+    let token = localStorage.getItem("Token");
+    if (token) {
       this.order.items = [];
       this._cart.items.forEach(item => {
-      this.order.items.push({
+        this.order.items.push({
           amount: item.Quantity,
           date: new Date(),
-          productID: item.product.id,
+          productID: item.product.id
         });
       });
       this.order.status = 0;
       this.order.orderDate = new Date();
-      this._cart = {} as ICart;
+      this._cart = { items: [], totalPrice: 0 };
       this.cart$.next(this._cart);
+      this._isCartEmpty.next(true);
+      this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption).subscribe();
     }
-  else
-  {
-    alert("login please")
-    return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(null), httpOption);
   }
-    return this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption);
+  isCartEmpty(): Observable<boolean> {
+      return this._isCartEmpty.asObservable();
   }
 }

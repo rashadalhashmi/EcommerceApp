@@ -1,5 +1,11 @@
 <div class="container">
-  <div class="card my-5">
+  <div [hidden]="!_isCartEmpty" class="text-center my-5 ">
+    <img src="assets/products/empty-state-cart.svg" width="300" height="300">
+    <p class="fs-3 text-info">Your cart is empty</p>
+    <a routerLink="/Home" class="btn btn-outline-dark mt-3">Go to shopping</a>
+  </div>
+
+  <div class="card my-5" [hidden]="_isCartEmpty">
     <div class="card-header">
       Cart
     </div>

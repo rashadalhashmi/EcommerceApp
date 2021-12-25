@@ -11,7 +11,7 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getOrders(CID:string):Observable<IResultViewModel>{
-    return this.httpClient.get<IResultViewModel>(`${environment.APIURL}/Order/Customer/${CID}`);
+  getOrdersByCustomer():Observable<IResultViewModel>{
+    return this.httpClient.get<IResultViewModel>(`${environment.APIURL}/Order/Customer`);
   }
 }

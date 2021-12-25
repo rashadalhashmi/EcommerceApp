@@ -54,11 +54,6 @@ export class NavbarComponent implements OnInit {
         this.userName=localStorage.getItem('username')??'user'
 
     })
-
-
-
-
-
   }
 
   openDialog(): void {
