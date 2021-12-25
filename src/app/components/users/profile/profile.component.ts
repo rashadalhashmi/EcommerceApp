@@ -41,7 +41,5 @@ export class ProfileComponent implements OnInit {
     this.userAuthservice.userData$.subscribe(response=>{
         this.user=response;
     })
-
 }
-
 }

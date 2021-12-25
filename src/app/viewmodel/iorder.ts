@@ -1,13 +1,19 @@
+import { OrderStatus } from "./OrderStatus.enum";
+
 export interface IOrder {
-  status: 0,
+  id?:string
+  status: OrderStatus,
   orderDate: Date,
   customerID: string,
+  totalPrice:number,
   items: IItem[]
 }
 
 export interface IItem {
-  // id:string,
+  id?:string,
   amount: number,
+  price?:number,
   date: Date,
-  productID: string
+  productID: string,
+  productName?:string
 }
