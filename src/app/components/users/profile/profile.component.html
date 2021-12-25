@@ -27,7 +27,12 @@
       <div class="row pt-3">
         <div class="col-lg-2"><span>Gender</span></div>
         <div class="col-lg-10">
-          <h3>{{ user.gender }}</h3>
+           <div *ngIf="user.gender==0">
+            <h3>Male</h3>
+           </div>
+           <div *ngIf="user.gender==1">
+            <h3>Female</h3>
+           </div>
         </div>
       </div>
     </div>
