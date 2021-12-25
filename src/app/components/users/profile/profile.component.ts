@@ -14,19 +14,19 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userAuthservice:UserAuthService){
 
-    this.user=
+    this.user= {} as IuserSingUp;
 
-    {
+    // {
 
-        firstname: "rashad",
-        lastname: "hussien",
-        email: "rashad@gamil.com",
-        username: "rashad2021",
-        gender: 0,
-        address: "shoge",
-        phone: "01128289672",
+    //     firstname: "rashad",
+    //     lastname: "hussien",
+    //     email: "rashad@gamil.com",
+    //     username: "rashad2021",
+    //     gender: 0,
+    //     address: "shoge",
+    //     phone: "01128289672",
 
-    } ;
+    // } ;
  }
 
  ngOnInit(): void {
