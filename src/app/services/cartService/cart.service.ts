@@ -75,7 +75,12 @@ export class CartService {
     if (cart) {
       this._cart = JSON.parse(cart);
       this.cart$.next(this._cart);
+
+    if( this._cart.items.length==0)
+      this._isCartEmpty.next(true);
+      else
       this._isCartEmpty.next(false);
+
 
     }
     else {
