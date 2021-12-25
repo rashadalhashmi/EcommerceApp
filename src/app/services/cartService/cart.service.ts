@@ -126,7 +126,7 @@ export class CartService {
       debugger
       // this.order.customerID = this.userService.getUserIdFromToken(token!)
 
-      this._cart = {} as ICart;
+      this._cart = { items: [], totalPrice: 0 };
       this.cart$.next(this._cart);
       this._isCartEmpty.next(true);
       this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption).subscribe();
