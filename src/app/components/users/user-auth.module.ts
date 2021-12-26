@@ -14,6 +14,7 @@ import { UserAuthGuard } from 'src/app/security/user-auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { ProfileEditingComponent } from './profile-editing/profile-editing.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/User/MyProfile', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
     ProfileComponent,
     OrderComponent,
     ProfileEditingComponent,
+    CheckOutComponent,
   ],
   imports: [
     CommonModule,
