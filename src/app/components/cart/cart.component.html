@@ -19,8 +19,7 @@
         <span class="my-1  price">Quntity</span>
         <input (change)="changeQuantity(item.product.id,$event)" class="mx-1" type="number" min="1"
           [max]="item.product.quantity" [value]="item.Quantity" style="width: 40px;">
-        <br>
-        <button class="my-1" mat-raised-button color="warn" (click)="removeFromCart(item.product.id)">Delete</button>
+        <button class="my-1" mat-stroked-button color="warn" (click)="removeFromCart(item.product.id)">Delete</button>
 
       </div>
       <div class=" col-3 offset-md-2 col-md-2 mt-3 price ">
@@ -32,10 +31,10 @@
       <div class="border-bottom offset-1 col-10 offset-1 my-3"></div>
     </div>
     <div class="row order">
-      <div class="col-3 mb-3">
-        <button class="btn btn-success mt-2" (click)="setOrder()">Order</button>
+      <div class="col-3">
+        <button mat-raised-button class="" color="primary" (click)="setOrder()">Order</button>
       </div>
-      <div class="col-9 mb-3 mt-2">
+      <div class="col-9">
         <span class="price">Total Price : {{cart.totalPrice|currency}}</span>
       </div>
     </div>
