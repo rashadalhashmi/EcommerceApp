@@ -52,7 +52,6 @@ export class NavbarComponent implements OnInit {
     this.userAuth.loginStatus().subscribe(islogin=>{
       this.IsLogged=islogin;
         this.userName=localStorage.getItem('username')??'user'
-
     })
   }
 
@@ -60,11 +59,10 @@ export class NavbarComponent implements OnInit {
      this.dialog.open(LoginRegisterViewComponent, {
       data: { userName: this.userName, password: this.password },
     });
-
-
   }
 
   search() {
+    this.router.navigate(["/Home"])
     this.NavService.productsSearch.emit(this.searchInp);
   }
 

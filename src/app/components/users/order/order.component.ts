@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import { IOrder } from 'src/app/viewmodel/iorder';
 import { Iproduct } from 'src/app/viewmodel/product/iproduct';
+import { render } from 'creditcardpayments/creditCardPayments';
 
 @Component({
   selector: 'app-order',
@@ -12,26 +13,45 @@ import { Iproduct } from 'src/app/viewmodel/product/iproduct';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  orders : IOrder[] = [];
-  totalPrice:number = 0;
-  _isOrderEmpty:boolean = true;
+  orders: IOrder[] = [];
+  totalPrice: number = 0;
+  _isOrderEmpty: boolean = true;
+  orderId: string = "";
 
-  constructor(private orderService:OrderService) {
-    this.orderService.getOrdersByCustomer().subscribe(order => {
-      this.orders = order.data
-      //for payment
-      this.orders.forEach(order => {
-        if(order.status == 0)
-        this.totalPrice += order.totalPrice
-      })
+  constructor(private orderService: OrderService) {
 
-      console.log(this.totalPrice)
 
-      if(this.orders)
-      this._isOrderEmpty = false;
-      else
-      this._isOrderEmpty = true;
-    })
+    this.orderService.getOrdersByCustomer().subscribe({
+      next: (order) => {
+        this.orders = order.data;
+        //for payment
+        [...this.orders].filter(o => o.status === 0).forEach(order => {
+            this.totalPrice += order.totalPrice
+        })
+
+        console.log(this.totalPrice)
+
+        if (this.orders)
+          this._isOrderEmpty = false;
+        else
+          this._isOrderEmpty = true;
+      },
+      complete: () => {
+        if (this.totalPrice) {
+          render({
+            id: '#myPaypalButtons',
+            currency: 'USD',
+            value: this.totalPrice.toString(),
+            onApprove: (detailes) => {
+              alert('transaction successfull');
+              [...this.orders].filter(o => o.status === 0).forEach(order => {
+                this.orderService.updateStatusOfOrder(order.id!, 1).subscribe();
+              });
+            },
+          });
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
