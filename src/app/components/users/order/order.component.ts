@@ -6,6 +6,7 @@ import { UserAuthService } from 'src/app/services/user/user-auth.service';
 import { IOrder } from 'src/app/viewmodel/iorder';
 import { Iproduct } from 'src/app/viewmodel/product/iproduct';
 import { render } from 'creditcardpayments/creditCardPayments';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-order',
@@ -18,7 +19,8 @@ export class OrderComponent implements OnInit {
   _isOrderEmpty: boolean = true;
   orderId: string = "";
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService,
+              private notficationService:NotificationService) {
 
 
     this.orderService.getOrdersByCustomer().subscribe({
@@ -43,10 +45,12 @@ export class OrderComponent implements OnInit {
             currency: 'USD',
             value: this.totalPrice.toString(),
             onApprove: (detailes) => {
-              alert('transaction successfull');
+              //alert('transaction successfull');
               [...this.orders].filter(o => o.status === 0).forEach(order => {
                 this.orderService.updateStatusOfOrder(order.id!, 1).subscribe();
               });
+              window.location.reload();
+              this.notficationService.success("transaction successfull");
             },
           });
         }

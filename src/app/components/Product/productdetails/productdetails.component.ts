@@ -1,6 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cartService/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
@@ -18,7 +19,9 @@ export class ProductdetailsComponent implements OnInit {
   @ViewChild("img") img!: ElementRef;
   @ViewChild("actv") imgActive!: ElementRef;
 
-  constructor(private activeRoute: ActivatedRoute, private productService: ProductService) {
+  constructor(private activeRoute: ActivatedRoute,
+              private productService: ProductService,
+              private cartService:CartService) {
     this.activeRoute.paramMap.subscribe(
       (params) => {
         this.productSentedId = params.get("PID")!.toString();
@@ -37,6 +40,9 @@ export class ProductdetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addToCart(){
+    this.cartService.addToshppingCart(this.product)
+  }
 
   styleProductImage(imgs: any){
     let images = this.imgActive.nativeElement.children;
