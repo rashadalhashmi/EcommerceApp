@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,11 +6,9 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
-import { UserAuthModule } from './components/users/user-auth.module';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { LoginComponent } from './components/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { CookieService } from 'ngx-cookie-service';
@@ -26,6 +23,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ClickStopPropagationDirective } from './directive/click-stop-propagation.directive';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UserAuthService } from './services/user/user-auth.service';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -39,7 +37,7 @@ import { UserAuthService } from './services/user/user-auth.service';
     SliderComponent,
     CartComponent,
     ClickStopPropagationDirective,
-    ProductsofcategoryComponent,
+    ProductsofcategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +48,6 @@ import { UserAuthService } from './services/user/user-auth.service';
     AngularMaterialModule,
     HttpClientModule,
     NgxPaginationModule
-    //NgbModule,
   ],
   providers: [CookieService,
     {
