@@ -14,11 +14,23 @@ import { Iproduct } from 'src/app/viewmodel/product/iproduct';
 export class OrderComponent implements OnInit {
   orders : IOrder[] = [];
   totalPrice:number = 0;
+  _isOrderEmpty:boolean = true;
 
   constructor(private orderService:OrderService) {
-
     this.orderService.getOrdersByCustomer().subscribe(order => {
       this.orders = order.data
+      //for payment
+      this.orders.forEach(order => {
+        if(order.status == 0)
+        this.totalPrice += order.totalPrice
+      })
+
+      console.log(this.totalPrice)
+
+      if(this.orders)
+      this._isOrderEmpty = false;
+      else
+      this._isOrderEmpty = true;
     })
   }
 
