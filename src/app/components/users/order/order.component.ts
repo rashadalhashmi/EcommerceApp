@@ -27,9 +27,9 @@ export class OrderComponent implements OnInit {
       next: (order) => {
         this.orders = order.data;
         //for payment
-        [...this.orders].filter(o => o.status === 0).forEach(order => {
-            this.totalPrice += order.totalPrice
-        })
+        // [...this.orders].filter(o => o.status === 0).forEach(order => {
+        //     this.totalPrice += order.totalPrice
+        // })
 
         console.log(this.totalPrice)
 
@@ -39,21 +39,21 @@ export class OrderComponent implements OnInit {
           this._isOrderEmpty = true;
       },
       complete: () => {
-        if (this.totalPrice) {
-          render({
-            id: '#myPaypalButtons',
-            currency: 'USD',
-            value: this.totalPrice.toString(),
-            onApprove: (detailes) => {
-              //alert('transaction successfull');
-              [...this.orders].filter(o => o.status === 0).forEach(order => {
-                this.orderService.updateStatusOfOrder(order.id!, 1).subscribe();
-              });
-              window.location.reload();
-              this.notficationService.success("transaction successfull");
-            },
-          });
-        }
+        // if (this.totalPrice) {
+        //   render({
+        //     id: '#myPaypalButtons',
+        //     currency: 'USD',
+        //     value: this.totalPrice.toString(),
+        //     onApprove: (detailes) => {
+        //       //alert('transaction successfull');
+        //       [...this.orders].filter(o => o.status === 0).forEach(order => {
+        //         this.orderService.updateStatusOfOrder(order.id!, 1).subscribe();
+        //       });
+        //       window.location.reload();
+        //       this.notficationService.success("transaction successfull");
+        //     },
+        //   });
+        // }
       }
     });
   }

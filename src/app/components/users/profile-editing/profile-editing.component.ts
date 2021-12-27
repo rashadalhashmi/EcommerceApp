@@ -89,6 +89,7 @@ export class ProfileEditingComponent implements OnInit {
       console.log(response);
     })
 
-
+    this.notificationService.success("Success")
+    window.location.reload()
   }
 }

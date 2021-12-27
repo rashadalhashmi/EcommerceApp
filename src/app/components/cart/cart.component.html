@@ -13,7 +13,7 @@
       <img class=" col-3 offset-md-1 col-md-3" [src]="item.product.images[0]" alt="" height="50%">
       <div class="col-6 col-md-4 card-body">
         <h3 class="card-title">{{item.product.name}}</h3>
-        <p class="card-text">
+        <p class="desc card-text">
           {{item.product.description}}
         </p>
         <span class="my-1  price">Quntity</span>
@@ -32,10 +32,15 @@
     </div>
     <div class="row order pb-3">
       <div class="col-3">
-        <button mat-raised-button class="" color="primary" (click)="setOrder()">Order</button>
+        <button mat-raised-button class="" color="primary" (click)="payment()">Order</button>
       </div>
-      <div class="col-9">
+      <div class="col-3">
         <span class="price">Total Price : {{cart.totalPrice|currency}}</span>
+      </div>
+      <div class="col-6">
+        <div [hidden]="_isCartEmpty" class="mx-5">
+          <div id="myPaypalButtons"></div>
+        </div>
       </div>
     </div>
   </div>

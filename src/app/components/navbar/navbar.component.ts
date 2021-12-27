@@ -62,7 +62,6 @@ export class NavbarComponent implements OnInit {
   }
 
   search() {
-    this.router.navigate(["/Home"])
     this.NavService.productsSearch.emit(this.searchInp);
   }
 
