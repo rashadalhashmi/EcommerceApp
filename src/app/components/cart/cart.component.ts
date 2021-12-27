@@ -16,7 +16,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class CartComponent implements OnInit {
   _isCartEmpty: boolean = true;
   cart: ICart = { items: [], totalPrice: 0 }
-  _isOrder: boolean = false;
+  _isRender: boolean = true;
 
   constructor(private cartService: CartService, private router: Router, private notficationService: NotificationService) {
     this.cartService.isCartEmpty().subscribe(response => {
@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
     this.cartService.cart.subscribe(cart => this.cart = cart)
     this.cartService.isCartEmpty()! ? this._isCartEmpty : this._isCartEmpty = false;
 
-    this.payment();
+    //this.payment();
   }
 
   removeFromCart(id: string) {
@@ -40,41 +40,45 @@ export class CartComponent implements OnInit {
   }
 
   setOrder() {
-    if (localStorage.getItem('Token')) {
+    //if (localStorage.getItem('Token')) {
       this.cartService.placeOrder();
       setTimeout(() => {
         debugger
         this.router.navigate(['/User/useraction/order']);
       }, 500);
       // this.payment();
-      this._isOrder = true;
-    }
-    else {
-      this.notficationService.error("please login firsrt")
-    }
+    // }
+    // else {
+    //   this.notficationService.error("please login firsrt")
+    // }
   }
 
   payment() {
     if (localStorage.getItem('Token')) {
-      //this.notficationService.success("Please Pay Paypal or Credit")
+      if(this._isRender)
+      {
+        this.notficationService.success("Please Pay Paypal or Credit")
         render({
-        id: '#myPaypalButtons',
-        currency: 'USD',
-        value: this.cart.totalPrice.toString(),
-        onApprove: (detailes) => {
-          //alert('transaction successfull');
-          // [...this.orders].filter(o => o.status === 0).forEach(order => {
-          //   this.orderService.updateStatusOfOrder(order.id!, 1).subscribe();
-          // });
-          // window.location.reload();
-          this.notficationService.success("transaction successfull");
-          this.setOrder();
-          // this.router.navigate(['/User/useraction/order']);
-        },
-      });
+          id: '#myPaypalButtons',
+          currency: 'USD',
+          value: this.cart.totalPrice.toString(),
+          onApprove: (detailes) => {
+            //alert('transaction successfull');
+            // [...this.orders].filter(o => o.status === 0).forEach(order => {
+            //   this.orderService.updateStatusOfOrder(order.id!, 1).subscribe();
+            // });
+            // window.location.reload();
+            this.notficationService.success("transaction successfull");
+            this.setOrder();
+            // this.router.navigate(['/User/useraction/order']);
+          },
+        });
+      }
+
+      this._isRender = false;
     }
     else {
-      this.notficationService.error("please login firsrt")
+      this.notficationService.error("please login first")
     }
   }
 

@@ -78,7 +78,6 @@ export class OrderComponent implements OnInit {
     //     }
     //   });
     // }
-    debugger
     if (event.target.value == 3) {
       this.ordersNew = this.orders;
     }
