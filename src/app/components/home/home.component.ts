@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavService } from 'src/app/services/navbar/nav.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
@@ -11,10 +12,11 @@ import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
 export class HomeComponent implements OnInit {
   productsList: any;
   // Pagination parameters.
-  pageSize:number = 5;
+  pageSize:number = 8;
   page:number = 1
   count:number = 0;
-  constructor(private productService: ProductService, private NavService: NavService) {
+  constructor(private productService: ProductService,
+              private NavService: NavService) {
     this.getNumberOfProducts();
     this.getProducts(this.page);
   }

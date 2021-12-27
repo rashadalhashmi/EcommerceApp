@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IResultViewModel } from '../../viewmodel/iresult-view-model';
@@ -9,7 +10,7 @@ import { IResultViewModel } from '../../viewmodel/iresult-view-model';
 })
 export class ProductService {
 
-  constructor(private httpService: HttpClient) { }
+  constructor(private httpService: HttpClient, private router:Router) { }
 
   getAllProducts(page:number, pageSize:number): Observable<IResultViewModel> {
     const httpOption = {
@@ -45,6 +46,7 @@ export class ProductService {
   }
 
   search(prodName: string): Observable<IResultViewModel> {
+    this.router.navigate(["/Home"])
     if (prodName == "")
       return this.httpService.get<IResultViewModel>(`${environment.APIURL}/Product`)
     else

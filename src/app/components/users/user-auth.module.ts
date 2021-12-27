@@ -23,9 +23,9 @@ const routes: Routes = [
     path: 'useraction',
     component: UserActionComponent,
     children: [
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent, canActivate:[UserAuthGuard]},
       { path: 'order', component: OrderComponent ,canActivate:[UserAuthGuard]},
-      { path: 'profileEditing', component: ProfileEditingComponent },
+      { path: 'profileEditing', component: ProfileEditingComponent, canActivate:[UserAuthGuard] },
     ],
   },
 ];
