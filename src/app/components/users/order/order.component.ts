@@ -7,6 +7,8 @@ import { IOrder } from 'src/app/viewmodel/iorder';
 import { Iproduct } from 'src/app/viewmodel/product/iproduct';
 import { render } from 'creditcardpayments/creditCardPayments';
 import { NotificationService } from 'src/app/services/notification.service';
+import { WatchStatusReporter } from 'typescript';
+import { OrderStatus } from 'src/app/viewmodel/OrderStatus.enum';
 
 @Component({
   selector: 'app-order',
@@ -18,6 +20,7 @@ export class OrderComponent implements OnInit {
   totalPrice: number = 0;
   _isOrderEmpty: boolean = true;
   orderId: string = "";
+  selectedStatus:OrderStatus = 1;
 
   constructor(private orderService: OrderService,
               private notficationService:NotificationService) {
@@ -60,4 +63,18 @@ export class OrderComponent implements OnInit {
     });
   }
 
+  getOrdersByStatus(event:any)
+  {
+    this.orderService.getOrdersByStatus(event.target.value).subscribe(response => {
+      if(response.data)
+      {
+        this.orders = response.data;
+      }
+      else
+      {
+        this.orders = [];
+        this.notficationService.error("No Orders");
+      }
+    });
+  }
 }

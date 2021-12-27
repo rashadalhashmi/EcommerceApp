@@ -128,7 +128,7 @@ export class CartService {
           productID: item.product.id
         });
       });
-      this.order.status = 1;
+      this.order.status = 0;
       this.order.orderDate = new Date();
       this._cart = { items: [], totalPrice: 0 };
       localStorage.setItem('cart', JSON.stringify(this._cart));

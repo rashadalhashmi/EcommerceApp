@@ -8,6 +8,15 @@
       </div>
       <div [hidden]="_isOrderEmpty">
         <h1 style="font-weight: bold">order List</h1>
+        <div class="my-5">
+          <h3 class="d-inline-block">Choose status</h3>
+          <select class="form-select" (change)="getOrdersByStatus($event)">
+          <option value="0">Processing</option>
+          <option value="1">Delivered</option>
+          <option value="2">Canceled</option>
+        </select>
+        </div>
+
         <div class="accordion" id="accordionExample">
           <div class="accordion-item" *ngFor="let order of orders let i = index">
             <h2 class="accordion-header" id="headingOne">
@@ -30,10 +39,10 @@
                     <h3>{{order.totalPrice|currency}}</h3>
                   </div>
                   <div class="col-lg-2 fourth">
-                    <small *ngIf="order.status == 0;" class="text-secondary">onHold</small>
-                    <small *ngIf="order.status == 1;" class="text-warning">Processing</small>
-                    <small *ngIf="order.status == 2;" class="text-success">Delivered</small>
-                    <small *ngIf="order.status == 3;" class="text-danger">Canceled</small>
+                    <!-- <small *ngIf="order.status == 0;" class="text-secondary">onHold</small> -->
+                    <small *ngIf="order.status == 0;" class="text-warning">Processing</small>
+                    <small *ngIf="order.status == 1;" class="text-success">Delivered</small>
+                    <small *ngIf="order.status == 2;" class="text-danger">Canceled</small>
                   </div>
                 </div>
               </button>
@@ -41,7 +50,7 @@
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
               data-bs-parent="#accordionExample">
               <div class="accordion-body m-0 bg-light">
-                <table [class.table-secondary]="order.status == 0" [class.table-warning]="order.status == 1" [class.table-success]="order.status == 2" [class.table-danger]="order.status == 3" class="table table-hover">
+                <table [class.table-secondary]="order.status == 0" [class.table-success]="order.status == 1" [class.table-danger]="order.status == 2" class="table table-hover">
                   <!-- <thead>
                     <tr>
                       <th scope="col">#</th>

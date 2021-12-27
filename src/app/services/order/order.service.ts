@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IResultViewModel } from 'src/app/viewmodel/iresult-view-model';
@@ -16,6 +16,23 @@ export class OrderService {
     return this.httpClient.get<IResultViewModel>(`${environment.APIURL}/Order/Customer`);
   }
 
+  getOrdersByStatus(status:OrderStatus): Observable<IResultViewModel> {
+    const httpOption = {
+      headers: new HttpHeaders(
+      {
+        'content-type': 'Application/JSON'
+      }),
+      params: new HttpParams(
+        {
+          fromObject: {
+            Status : status,
+          }
+        }
+      )
+    }
+    return this.httpClient.get<IResultViewModel>(`${environment.APIURL}/Order/Status`, httpOption);
+  }
+
   updateStatusOfOrder(id:string, status: OrderStatus): Observable<any> {
 
     const httpOption = {
@@ -24,14 +41,11 @@ export class OrderService {
           'content-type': 'Application/JSON',
         }),
     }
-
     const order =
     {
       "id": id,
       "orderStatus": status
     }
-
-
     return this.httpClient.put(`${environment.APIURL}/Order/Status`, JSON.stringify(order), httpOption);
   }
 }
