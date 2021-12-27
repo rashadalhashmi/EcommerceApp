@@ -27,6 +27,8 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.cart.subscribe(cart => this.cart = cart)
     this.cartService.isCartEmpty()! ? this._isCartEmpty : this._isCartEmpty = false;
+
+    this.payment();
   }
 
   removeFromCart(id: string) {
@@ -40,21 +42,22 @@ export class CartComponent implements OnInit {
   setOrder() {
     if (localStorage.getItem('Token')) {
       this.cartService.placeOrder();
-      this.router.navigate(['/User/useraction/order']);
+      setTimeout(() => {
+        debugger
+        this.router.navigate(['/User/useraction/order']);
+      }, 500);
       // this.payment();
       this._isOrder = true;
-
     }
     else {
       this.notficationService.error("please login firsrt")
     }
   }
 
-  // "
   payment() {
     if (localStorage.getItem('Token')) {
-      this.notficationService.success("Please Pay Paypal or Credit")
-      render({
+      //this.notficationService.success("Please Pay Paypal or Credit")
+        render({
         id: '#myPaypalButtons',
         currency: 'USD',
         value: this.cart.totalPrice.toString(),

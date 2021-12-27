@@ -22,7 +22,9 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService,
               private notficationService:NotificationService) {
 
+  }
 
+  ngOnInit(): void {
     this.orderService.getOrdersByCustomer().subscribe({
       next: (order) => {
         this.orders = order.data;
@@ -56,9 +58,6 @@ export class OrderComponent implements OnInit {
         // }
       }
     });
-  }
-
-  ngOnInit(): void {
   }
 
 }
