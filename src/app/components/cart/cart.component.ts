@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
   // "
   payment() {
     if (localStorage.getItem('Token')) {
-      this.notficationService.alert("Please Pay Paypal or Credit")
+      this.notficationService.success("Please Pay Paypal or Credit")
       render({
         id: '#myPaypalButtons',
         currency: 'USD',
