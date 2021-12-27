@@ -11,14 +11,15 @@
         <div class="my-5">
           <h3 class="d-inline-block">Choose status</h3>
           <select class="form-select" (change)="getOrdersByStatus($event)">
-          <option value="0">Processing</option>
-          <option value="1">Delivered</option>
-          <option value="2">Canceled</option>
-        </select>
+            <option value="3">All</option>
+            <option value="0">Processing</option>
+            <option value="1">Delivered</option>
+            <option value="2">Canceled</option>
+          </select>
         </div>
 
         <div class="accordion" id="accordionExample">
-          <div class="accordion-item" *ngFor="let order of orders let i = index">
+          <div class="accordion-item" *ngFor="let order of ordersNew let i = index">
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button" type="button" data-bs-target="#collapseOne"
                 aria-expanded="true" aria-controls="collapseOne">

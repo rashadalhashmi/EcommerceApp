@@ -17,13 +17,14 @@ import { OrderStatus } from 'src/app/viewmodel/OrderStatus.enum';
 })
 export class OrderComponent implements OnInit {
   orders: IOrder[] = [];
+  ordersNew: IOrder[] = [];
   totalPrice: number = 0;
   _isOrderEmpty: boolean = true;
   orderId: string = "";
-  selectedStatus:OrderStatus = 1;
+  // selectedStatus:OrderStatus = 1;
 
   constructor(private orderService: OrderService,
-              private notficationService:NotificationService) {
+    private notficationService: NotificationService) {
 
   }
 
@@ -31,6 +32,7 @@ export class OrderComponent implements OnInit {
     this.orderService.getOrdersByCustomer().subscribe({
       next: (order) => {
         this.orders = order.data;
+        this.ordersNew = this.orders;
         //for payment
         // [...this.orders].filter(o => o.status === 0).forEach(order => {
         //     this.totalPrice += order.totalPrice
@@ -63,18 +65,30 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  getOrdersByStatus(event:any)
-  {
-    this.orderService.getOrdersByStatus(event.target.value).subscribe(response => {
-      if(response.data)
-      {
-        this.orders = response.data;
-      }
-      else
-      {
-        this.orders = [];
+  getOrdersByStatus(event: any) {
+    //this.orderService.getOrdersByStatus(event.target.value).subscribe(response => {
+    //     if(response.data)
+    //     {
+    //       this.orders = response.data;
+    //     }
+    //     else
+    //     {
+    //       this.orders = [];
+    //       this.notficationService.error("No Orders");
+    //     }
+    //   });
+    // }
+    debugger
+    if (event.target.value == 3) {
+      this.ordersNew = this.orders;
+    }
+    else {
+      this.ordersNew = [...this.orders].filter(o => o.status == event.target.value)
+      if (this.ordersNew == null) {
+        this.ordersNew = [];
         this.notficationService.error("No Orders");
       }
-    });
+    }
+
   }
 }
