@@ -131,6 +131,7 @@ export class CartService {
       this.order.status = 0;
       this.order.orderDate = new Date();
       this._cart = { items: [], totalPrice: 0 };
+      localStorage.setItem('cart', JSON.stringify(this._cart));
       this.cart$.next(this._cart);
       this._isCartEmpty.next(true);
       this.httpClient.post(`${environment.APIURL}/Order`, JSON.stringify(this.order), httpOption).subscribe();

@@ -25,3 +25,5 @@ strong {
 // .accordion-body {
 //     padding: 0;
 // }
+.accordion-button:not(.collapsed)::after {
+  display: none;}
