@@ -65,29 +65,29 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  getOrdersByStatus(event: any) {
-    //this.orderService.getOrdersByStatus(event.target.value).subscribe(response => {
-    //     if(response.data)
-    //     {
-    //       this.orders = response.data;
-    //     }
-    //     else
-    //     {
-    //       this.orders = [];
-    //       this.notficationService.error("No Orders");
-    //     }
-    //   });
-    // }
-    if (event.target.value == 3) {
-      this.ordersNew = this.orders;
-    }
-    else {
-      this.ordersNew = [...this.orders].filter(o => o.status == event.target.value)
-      if (this.ordersNew == null) {
-        this.ordersNew = [];
-        this.notficationService.error("No Orders");
-      }
-    }
+  // getOrdersByStatus(event: any) {
+  //   //this.orderService.getOrdersByStatus(event.target.value).subscribe(response => {
+  //   //     if(response.data)
+  //   //     {
+  //   //       this.orders = response.data;
+  //   //     }
+  //   //     else
+  //   //     {
+  //   //       this.orders = [];
+  //   //       this.notficationService.error("No Orders");
+  //   //     }
+  //   //   });
+  //   // }
+  //   if (event.target.value == 3) {
+  //     this.ordersNew = this.orders;
+  //   }
+  //   else {
+  //     this.ordersNew = [...this.orders].filter(o => o.status == event.target.value)
+  //     if (this.ordersNew == null) {
+  //       this.ordersNew = [];
+  //       this.notficationService.error("No Orders");
+  //     }
+  //   }
 
-  }
+  // }
 }

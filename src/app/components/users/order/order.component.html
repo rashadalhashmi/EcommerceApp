@@ -8,7 +8,7 @@
       </div>
       <div [hidden]="_isOrderEmpty">
         <h1 style="font-weight: bold">order List</h1>
-        <div class="my-5">
+        <!-- <div class="my-5">
           <h3 class="d-inline-block">Choose status</h3>
           <select class="form-select" (change)="getOrdersByStatus($event)">
             <option value="3">All</option>
@@ -16,7 +16,7 @@
             <option value="1">Delivered</option>
             <option value="2">Canceled</option>
           </select>
-        </div>
+        </div> -->
 
         <div class="accordion" id="accordionExample">
           <div class="accordion-item" *ngFor="let order of ordersNew let i = index">
