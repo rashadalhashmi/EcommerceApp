@@ -19,7 +19,11 @@ export class UserAuthGuard implements CanActivate {
     let token = localStorage.getItem("Token");
 
     if(token == null)
+    {
+      this.router.navigate(['Home']);
       return false;
+    }
+
 
     let decoded = jwt_decode(token);
     if(!JSON.stringify(decoded).includes("Customer"))
